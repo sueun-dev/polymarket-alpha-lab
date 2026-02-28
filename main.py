@@ -133,12 +133,58 @@ def run_list(config: dict):
     print(f"\nTotal: {len(strategies)} strategies")
 
 
+def run_backtest(config: dict, strategy_filter: str | None = None, data_dir: str = "data/historical/"):
+    from backtest.data_loader import DataLoader
+    from backtest.engine import BacktestEngine
+    from backtest.report import BacktestReport
+
+    registry = StrategyRegistry()
+    registry.discover()
+
+    strategies = registry.get_all()
+    if strategy_filter:
+        strategies = [s for s in strategies if strategy_filter in s.name]
+
+    if not strategies:
+        print("No strategies found.")
+        return
+
+    loader = DataLoader()
+    data_path = Path(data_dir)
+
+    # Load all CSV/JSON files from data directory
+    all_data = []
+    if data_path.exists():
+        for f in data_path.iterdir():
+            if f.suffix == ".csv":
+                all_data.extend(loader.load_csv(str(f)))
+            elif f.suffix == ".json":
+                all_data.extend(loader.load_json(str(f)))
+
+    if not all_data:
+        print(f"No historical data found in {data_dir}")
+        print("Expected CSV format: timestamp,condition_id,question,yes_price,no_price,volume")
+        print("Place .csv or .json files in data/historical/ and try again.")
+        return
+
+    initial = config.get("backtest", {}).get("initial_balance", 10000.0)
+    slippage = config.get("backtest", {}).get("slippage", 0.005)
+
+    for strategy in sorted(strategies, key=lambda x: x.strategy_id):
+        engine = BacktestEngine(strategy=strategy, initial_balance=initial, slippage=slippage)
+        result = engine.run(all_data)
+        report = BacktestReport(result)
+        print(f"\n--- {strategy.name} (#{strategy.strategy_id}, Tier {strategy.tier}) ---")
+        print(report.to_text())
+
+
 def main():
     parser = argparse.ArgumentParser(description="Polymarket Alpha Lab Trading Bot")
     parser.add_argument("command", nargs="?", default="run", choices=["run", "list", "backtest"], help="Command to execute")
     parser.add_argument("--config", default="config.yaml", help="Config file path")
     parser.add_argument("--strategy", default=None, help="Filter to specific strategy name")
     parser.add_argument("--dry-run", action="store_true", help="Run in paper mode regardless of config")
+    parser.add_argument("--data-dir", default="data/historical/", help="Historical data directory for backtests")
     args = parser.parse_args()
 
     config = load_config(args.config)
@@ -148,7 +194,7 @@ def main():
     elif args.command == "run":
         run_bot(config, strategy_filter=args.strategy, dry_run=args.dry_run)
     elif args.command == "backtest":
-        print("Backtest engine coming soon...")
+        run_backtest(config, strategy_filter=args.strategy, data_dir=args.data_dir)
 
 
 if __name__ == "__main__":

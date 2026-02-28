@@ -1,0 +1,10 @@
+timestamp,condition_id,question,yes_price,no_price,volume
+2026-01-01T10:00:00,cond_001,Will Russia invade Poland by March 2026?,0.85,0.15,50000
+2026-01-02T10:00:00,cond_001,Will Russia invade Poland by March 2026?,0.80,0.20,55000
+2026-01-03T10:00:00,cond_001,Will Russia invade Poland by March 2026?,0.75,0.25,60000
+2026-01-01T10:00:00,cond_002,Will it snow in NYC in January 2026?,0.30,0.70,20000
+2026-01-02T10:00:00,cond_002,Will it snow in NYC in January 2026?,0.35,0.65,22000
+2026-01-03T10:00:00,cond_002,Will it snow in NYC in January 2026?,0.40,0.60,25000
+2026-01-01T10:00:00,cond_003,Will Trump win 2028 election?,0.72,0.28,100000
+2026-01-02T10:00:00,cond_003,Will Trump win 2028 election?,0.70,0.30,110000
+2026-01-03T10:00:00,cond_003,Will Trump win 2028 election?,0.68,0.32,120000
