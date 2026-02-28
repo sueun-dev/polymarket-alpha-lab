@@ -1,0 +1,8 @@
+[project]
+name = "polymarket-alpha-lab"
+version = "0.1.0"
+description = "Polymarket prediction market trading bot with 100 strategies"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
