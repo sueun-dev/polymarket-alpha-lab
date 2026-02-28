@@ -1,0 +1,24 @@
+bot:
+  mode: paper
+  scan_interval: 60
+  base_currency: USDC
+  log_level: INFO
+
+risk:
+  max_position_pct: 0.10
+  max_daily_loss_pct: 0.05
+  max_open_positions: 20
+  kelly_fraction: 0.25
+  min_edge: 0.05
+
+scanner:
+  min_volume: 1000
+  min_liquidity: 500
+  categories: []
+
+notifications:
+  enabled: false
+  telegram: false
+  discord: false
+
+strategies: {}

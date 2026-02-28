@@ -4,6 +4,12 @@ __pycache__/
 *.pyo
 .venv/
 venv/
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
 
 # OS
 .DS_Store
@@ -12,3 +18,9 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Data
+*.csv
+*.json
+!config.yaml
+!.env.example
