@@ -24,3 +24,7 @@ Thumbs.db
 *.json
 !config.yaml
 !.env.example
+
+# Cache
+data/cache/
+.cache/
