@@ -74,8 +74,17 @@ class CrossPlatformArb(BaseStrategy):
         )
 
     def _get_kalshi_no_price(self, question: str) -> Optional[float]:
-        # Placeholder -- real impl uses data/kalshi.py
-        return None
+        kalshi = self.get_data("kalshi")
+        if kalshi is not None:
+            markets = kalshi.get_markets()
+            if markets:
+                match = kalshi.match_polymarket_to_kalshi(question, markets)
+                if match:
+                    # Get NO price from Kalshi (1 - YES bid)
+                    yes_bid = match.get("yes_bid", 0)
+                    if yes_bid and yes_bid > 0:
+                        return 1.0 - (yes_bid / 100.0)  # Kalshi prices in cents
+        return None  # Original fallback
 
     def _get_yes_token_id(self, opportunity: Opportunity) -> Optional[str]:
         tokens = opportunity.metadata.get("tokens", [])
