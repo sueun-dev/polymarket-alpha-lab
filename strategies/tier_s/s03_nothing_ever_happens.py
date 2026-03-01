@@ -15,7 +15,7 @@ class NothingEverHappens(BaseStrategy):
     name = "s03_nothing_ever_happens"
     tier = "S"
     strategy_id = 3
-    required_data = []
+    required_data = ["base_rates"]
 
     DRAMATIC_KEYWORDS = [
         "war", "invade", "invasion", "crash", "collapse", "impeach", "resign",
@@ -52,8 +52,16 @@ class NothingEverHappens(BaseStrategy):
     def analyze(self, opportunity: Opportunity) -> Optional[Signal]:
         yes_price = opportunity.market_price
 
-        # NO probability estimate based on base rate
-        estimated_no_prob = self.BASE_NO_RATE
+        # Use category-specific base rate if available
+        base_rates = self.get_data("base_rates")
+        if base_rates is not None:
+            category = opportunity.category or "unknown"
+            # Also try categorizing from the question itself
+            if category == "unknown" or category == "":
+                category = base_rates.categorize_question(opportunity.question)
+            estimated_no_prob = base_rates.get_no_rate(category)
+        else:
+            estimated_no_prob = self.BASE_NO_RATE  # Original fallback
         no_price = 1 - yes_price
         edge = round(estimated_no_prob - no_price, 10)
 

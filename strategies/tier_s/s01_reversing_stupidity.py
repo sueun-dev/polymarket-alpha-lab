@@ -16,7 +16,7 @@ class ReversingStupidity(BaseStrategy):
     name = "s01_reversing_stupidity"
     tier = "S"
     strategy_id = 1
-    required_data = []
+    required_data = ["base_rates", "news"]
 
     OVERREACTION_KEYWORDS = [
         "trump", "maga", "war", "crash", "moon",
@@ -52,9 +52,25 @@ class ReversingStupidity(BaseStrategy):
 
     def analyze(self, opportunity: Opportunity) -> Optional[Signal]:
         yes_price = opportunity.market_price
-        # Base rate: most dramatic events don't happen as expected
-        # If YES > 0.70 for emotional market, estimated fair value ~0.50
-        base_rate = 0.50  # Conservative estimate for emotional markets
+
+        # Use category-specific base rate if available
+        base_rates = self.get_data("base_rates")
+        news = self.get_data("news")
+
+        if base_rates is not None:
+            # Use category base rate for the "fair value" of dramatic events
+            category = opportunity.category or "unknown"
+            no_rate = base_rates.get_no_rate(category)
+            base_rate = 1.0 - no_rate  # YES fair value
+        else:
+            base_rate = 0.50  # Original fallback
+
+        # If news provider available, check for volume-driving sentiment
+        if news is not None:
+            sentiment_data = news.get_sentiment_for_market(opportunity.question)
+            if sentiment_data and sentiment_data.get("avg_sentiment", 0) > 0.3:
+                # Positive sentiment driving YES up -- even more likely overpriced
+                base_rate *= 0.9  # Reduce fair value further
 
         if yes_price - base_rate < self.OVERREACTION_THRESHOLD:
             return None

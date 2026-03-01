@@ -5,6 +5,7 @@ S02: Weather NOAA Arbitrage
 Use NOAA weather data to find mispriced weather prediction markets.
 Casual traders price by gut feeling; NOAA data gives precise probabilities.
 """
+import re
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
@@ -77,11 +78,38 @@ class WeatherNOAA(BaseStrategy):
         )
 
     def _estimate_weather_prob(self, opportunity: Opportunity) -> Optional[float]:
-        # Placeholder -- real impl calls data/noaa.py
-        # Return None if we can't estimate
+        noaa = self.get_data("noaa_weather")
+        if noaa is not None:
+            city = noaa.extract_city_from_question(opportunity.question)
+            if city:
+                q_lower = opportunity.question.lower()
+                # Try temperature-based probability
+                if any(kw in q_lower for kw in ["temperature", "degrees", "fahrenheit", "celsius", "hot", "cold", "high", "low"]):
+                    # Extract threshold from question (simple pattern matching)
+                    threshold = self._extract_temperature(q_lower)
+                    if threshold is not None:
+                        above = "above" in q_lower or "exceed" in q_lower or "over" in q_lower or "high" in q_lower
+                        prob = noaa.temperature_probability(city, threshold, above=above)
+                        if prob is not None:
+                            return prob
+                # Try precipitation-based probability
+                if any(kw in q_lower for kw in ["rain", "snow", "precipitation", "storm"]):
+                    prob = noaa.precipitation_probability(city)
+                    if prob is not None:
+                        return prob
+
+        # Original fallback
         price = opportunity.market_price
         if price < 0.05:
             return price + 0.10  # Assume some underpricing
+        return None
+
+    @staticmethod
+    def _extract_temperature(text: str) -> Optional[float]:
+        """Extract a temperature threshold from question text."""
+        match = re.search(r'(\d+)\s*(?:°|degrees?|f|fahrenheit)', text)
+        if match:
+            return float(match.group(1))
         return None
 
     def _get_yes_token_id(self, opportunity: Opportunity) -> Optional[str]:

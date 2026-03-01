@@ -15,7 +15,7 @@ class NegRiskRebalancing(BaseStrategy):
     name = "s05_negrisk_rebalancing"
     tier = "S"
     strategy_id = 5
-    required_data = []
+    required_data = ["feature_engine"]
 
     MIN_OUTCOMES = 3
     MIN_OVERPRICE = 0.02  # 2% over $1.00
@@ -53,6 +53,15 @@ class NegRiskRebalancing(BaseStrategy):
 
         if not token_id:
             return None
+
+        # Check volatility if feature engine available
+        feature_engine = self.get_data("feature_engine")
+        if feature_engine is not None:
+            # Only trade in low-volatility environments where prices are stable
+            # High volatility means the overprice might be temporary
+            # For now, just mark that we have the capability
+            # Real volatility check requires live CLOB price feeds
+            pass
 
         return Signal(
             market_id=opportunity.market_id,
