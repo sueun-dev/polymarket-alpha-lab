@@ -15,6 +15,7 @@ from core.scanner import MarketScanner
 from core.notifier import Notifier
 from core.base_strategy import BaseStrategy
 from strategies import StrategyRegistry
+from data import DataRegistry
 
 load_dotenv()
 
@@ -28,6 +29,33 @@ logger = logging.getLogger("polymarket-bot")
 def load_config(path: str = "config.yaml") -> dict:
     with open(path) as f:
         return yaml.safe_load(f)
+
+
+def init_data_registry() -> DataRegistry:
+    """Initialize all data providers and return a populated registry."""
+    from data.historical_fetcher import HistoricalFetcher
+    from data.feature_engine import LiveFeatureBuilder
+    from data.base_rates import BaseRateProvider
+    from data.noaa import NOAAWeatherProvider
+    from data.kalshi_client import KalshiDataProvider
+    from data.news_client import NewsDataProvider
+
+    registry = DataRegistry()
+
+    providers = [
+        HistoricalFetcher(),
+        LiveFeatureBuilder(),
+        BaseRateProvider(),
+        NOAAWeatherProvider(),
+        KalshiDataProvider(),
+        NewsDataProvider(),
+    ]
+
+    for p in providers:
+        registry.register(p)
+        logger.info(f"Registered data provider: {p.name}")
+
+    return registry
 
 
 def run_bot(config: dict, strategy_filter: str | None = None, dry_run: bool = False):
@@ -70,6 +98,12 @@ def run_bot(config: dict, strategy_filter: str | None = None, dry_run: bool = Fa
     if not strategies:
         logger.warning("No strategies loaded. Add strategy modules to strategies/tier_*/")
         return
+
+    # Initialize data providers
+    data_registry = init_data_registry()
+    for strategy in strategies:
+        strategy.set_data_registry(data_registry)
+    logger.info(f"Data providers: {len(data_registry)} registered")
 
     # Main loop
     try:
@@ -178,9 +212,29 @@ def run_backtest(config: dict, strategy_filter: str | None = None, data_dir: str
         print(report.to_text())
 
 
+def run_collect_data(config: dict):
+    """Fetch historical market data for backtesting and analysis."""
+    from data.historical_fetcher import HistoricalFetcher
+
+    fetcher = HistoricalFetcher()
+    max_markets = config.get("data", {}).get("max_markets", 500)
+
+    print(f"Fetching up to {max_markets} historical markets...")
+    markets = fetcher.fetch_closed_binary_markets(max_markets=max_markets)
+    print(f"Fetched {len(markets)} resolved binary markets")
+
+    if markets:
+        categories: dict[str, int] = {}
+        for m in markets:
+            categories[m.category] = categories.get(m.category, 0) + 1
+        print("\nCategories:")
+        for cat, count in sorted(categories.items(), key=lambda x: -x[1]):
+            print(f"  {cat}: {count}")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Polymarket Alpha Lab Trading Bot")
-    parser.add_argument("command", nargs="?", default="run", choices=["run", "list", "backtest"], help="Command to execute")
+    parser.add_argument("command", nargs="?", default="run", choices=["run", "list", "backtest", "collect-data"], help="Command to execute")
     parser.add_argument("--config", default="config.yaml", help="Config file path")
     parser.add_argument("--strategy", default=None, help="Filter to specific strategy name")
     parser.add_argument("--dry-run", action="store_true", help="Run in paper mode regardless of config")
@@ -195,6 +249,8 @@ def main():
         run_bot(config, strategy_filter=args.strategy, dry_run=args.dry_run)
     elif args.command == "backtest":
         run_backtest(config, strategy_filter=args.strategy, data_dir=args.data_dir)
+    elif args.command == "collect-data":
+        run_collect_data(config)
 
 
 if __name__ == "__main__":

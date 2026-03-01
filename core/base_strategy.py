@@ -25,5 +25,20 @@ class BaseStrategy(ABC):
     def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
         ...
 
+    def set_data_registry(self, registry) -> None:
+        """Inject the data registry. Called by main.py during initialization."""
+        self._data_registry = registry
+
+    def get_data(self, name: str):
+        """Get a data provider by name. Returns None if no registry or provider not found.
+
+        This is backward-compatible: returns None when no registry is set,
+        so existing tests and strategies work unchanged.
+        """
+        registry = getattr(self, "_data_registry", None)
+        if registry is None:
+            return None
+        return registry.get(name)
+
     def size_position(self, signal: Signal, bankroll: float) -> float:
         return self.kelly.bet_amount(bankroll=bankroll, p=signal.estimated_prob, market_price=signal.market_price)
