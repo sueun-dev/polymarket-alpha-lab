@@ -21,6 +21,7 @@ class MarketSample:
     close_ts: int
     yes_token: str
     yes_won: bool
+    volume: float = 0.0
 
 
 def normalize_yes_no(outcomes: Sequence[object]) -> Dict[str, int]:
@@ -144,6 +145,7 @@ class HistoricalFetcher(BaseDataProvider):
                         close_ts=close_ts,
                         yes_token=token,
                         yes_won=yes_won,
+                        volume=float(m.get("volumeNum", m.get("volume", 0)) or 0),
                     )
                 )
                 if len(samples) >= max_markets:

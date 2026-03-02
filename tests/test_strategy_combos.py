@@ -76,12 +76,12 @@ STRATEGY_META = {
     },
     "s06_btc_latency_arb": {
         "id": "S06", "tier": "S",
-        "edge_type": "latency",
+        "edge_type": "disabled",
         "domains": ["crypto"],
-        "latency": "high",      # needs sub-second
-        "risk_style": "arbitrage",
-        "data_deps": ["cex_feed"],
-        "description": "BTC price latency arb (CEX vs Polymarket)",
+        "latency": "low",
+        "risk_style": "inactive",
+        "data_deps": [],
+        "description": "BTC 5-minute strategy disabled; kept for registry compatibility",
     },
     "s10_yes_bias": {
         "id": "S10", "tier": "S",
@@ -277,7 +277,7 @@ def create_synthetic_markets() -> List[Market]:
                         "politics", 0.72, 15000))
 
     # ---- Crypto markets ----
-    markets.append(_mk("Will BTC 15-minute candle close above $100k?",
+    markets.append(_mk("Will BTC close above $100k by end of quarter?",
                         "crypto", 0.45, 20000))
     markets.append(_mk("Will Bitcoin reach $150k by end of 2026?",
                         "crypto", 0.38, 80000, price_change_24h=0.12))
@@ -589,12 +589,12 @@ NAMED_COMBOS = {
         "s15_news_mean_reversion", "s45_twitter_sentiment_reversal",
         "s01_reversing_stupidity",
     ],
-    "High-frequency + Passive (S06+S12+S49)": [
-        "s06_btc_latency_arb", "s12_high_prob_harvesting",
+    "Weather + Passive Yield (S02+S12+S49)": [
+        "s02_weather_noaa", "s12_high_prob_harvesting",
         "s49_stablecoin_yield",
     ],
-    "Domain Specialist: Weather+Sports+Crypto (S02+S30+S06)": [
-        "s02_weather_noaa", "s30_sportsbook_arb", "s06_btc_latency_arb",
+    "Domain Specialist: Weather+Sports+Crypto (S02+S30+S39)": [
+        "s02_weather_noaa", "s30_sportsbook_arb", "s39_volume_momentum",
     ],
     "Meta-Strategy Combos (S19+S28+S100)": [
         "s19_kelly_framework", "s28_portfolio_agent", "s100_meta_strategy",

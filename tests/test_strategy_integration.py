@@ -395,6 +395,33 @@ class TestS02WithNOAA:
         assert signal.token_id == "y2"
         assert signal.side == "buy"
 
+    def test_analyze_bearish_weather_buys_no(self):
+        strategy = WeatherNOAA()
+        # 70F forecast vs exceed 80F -> YES prob near 0, NO side should be selected.
+        forecast = _make_forecast_periods(temp=70, count=24)
+        registry = make_registry_with_noaa(forecast)
+        strategy.set_data_registry(registry)
+
+        opp = Opportunity(
+            market_id="0x2c",
+            question="Will Chicago high temperature exceed 80 degrees fahrenheit?",
+            market_price=0.70,
+            category="weather",
+            metadata={
+                "tokens": [
+                    {"token_id": "y2c", "outcome": "Yes", "price": "0.70"},
+                    {"token_id": "n2c", "outcome": "No", "price": "0.30"},
+                ],
+                "volume": 1000,
+            },
+        )
+        signal = strategy.analyze(opp)
+
+        assert signal is not None
+        assert signal.token_id == "n2c"
+        assert signal.side == "buy"
+        assert signal.metadata.get("side_selected") == "no"
+
     def test_unknown_city_falls_to_fallback(self):
         strategy = WeatherNOAA()
         forecast = _make_forecast_periods(temp=85, count=24)
@@ -461,6 +488,29 @@ class TestS02ExtractTemperature:
 
     def test_just_f(self):
         assert WeatherNOAA._extract_temperature("above 100f") == 100.0
+
+
+class TestS02TemperatureContracts:
+    """Test temperature bucket parsing and gaussian probability conversion."""
+
+    def test_parse_between_contract(self):
+        contract = WeatherNOAA._extract_temperature_contract("will the highest temperature be between 38-39°F on march 2?")
+        assert contract == ("between", 38.0, 39.0)
+
+    def test_parse_or_below_contract(self):
+        contract = WeatherNOAA._extract_temperature_contract("will the highest temperature be 10°C or below on march 3?")
+        assert contract == ("le", 10.0, None)
+
+    def test_parse_exact_contract(self):
+        contract = WeatherNOAA._extract_temperature_contract("will the highest temperature be 11°C on march 3?")
+        assert contract == ("eq", 11.0, None)
+
+    def test_contract_probability_shapes(self):
+        strategy = WeatherNOAA()
+        assert strategy._temperature_contract_probability(10.0, 1.0, ("eq", 10.0, None)) == pytest.approx(0.383, abs=0.02)
+        assert strategy._temperature_contract_probability(10.0, 1.0, ("le", 10.0, None)) == pytest.approx(0.691, abs=0.02)
+        assert strategy._temperature_contract_probability(10.0, 1.0, ("ge", 10.0, None)) == pytest.approx(0.691, abs=0.02)
+        assert strategy._temperature_contract_probability(10.0, 1.0, ("between", 10.0, 11.0)) == pytest.approx(0.625, abs=0.03)
 
 
 # ===========================================================================

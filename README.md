@@ -6,9 +6,9 @@ Research repository + fully executable Python trading bot implementing 100 strat
 
 | File | Language | Description |
 |------|----------|-------------|
-| `EN-polymarket-market-inefficiencies.md` | EN | Comprehensive market inefficiency research — past cases, academic foundations, live mispricings (as of Feb 2026), strategies, risks, and 100+ cited sources across EN/KR/CN |
-| `EN-polymarket-top-100-strategies.md` | EN | Top 100 trading strategies curated from 600+ internet sources (Reddit, Twitter/X, Substack, Medium, academic papers, GitHub, KR/CN sources). Ranked by Tier S/A/B/C |
-| `KR-polymarket-top-100-strategies.md` | KR | Same top 100 strategies document in Korean |
+| `research/EN-polymarket-market-inefficiencies.md` | EN | Comprehensive market inefficiency research — past cases, academic foundations, live mispricings (as of Feb 2026), strategies, risks, and 100+ cited sources across EN/KR/CN |
+| `research/EN-polymarket-top-100-strategies.md` | EN | Top 100 trading strategies curated from 600+ internet sources (Reddit, Twitter/X, Substack, Medium, academic papers, GitHub, KR/CN sources). Ranked by Tier S/A/B/C |
+| `research/KR-polymarket-top-100-strategies.md` | KR | Same top 100 strategies document in Korean |
 
 ## Strategy Tiers
 
@@ -57,9 +57,23 @@ python3 main.py backtest --data-dir data/historical/
 streamlit run dashboard/app.py
 
 # 10. Launch React dashboard (liquid glass UI)
+# terminal 1
+python3 dashboard_api.py --host 127.0.0.1 --port 8001
+
+# terminal 2
 cd dashboard-react
 npm install
 npm run dev
+
+# 11. Run NOAA weather strategy (s02) with native C++ weather kernel
+# Optional: compile native weather kernel
+clang++ -O3 -march=native -std=c++17 -o native/s02_weather_signal_engine native/s02_weather_signal_engine.cpp
+
+# run only s02 strategy (paper/live based on config.yaml)
+python3 main.py run --strategy s02_weather_noaa
+
+# 12. Forensic audit on closed weather markets (public-data reverse analysis)
+python3 tools/weather_market_forensics.py --max-rows 12000 --max-markets 120 --min-trades 5 --report-path logs/weather_forensics_report.json
 ```
 
 ### Project Structure
@@ -82,7 +96,9 @@ backtest/           # Backtesting engine (slippage simulation, Sharpe/MDD)
 dashboard/          # Streamlit web dashboard
 dashboard-react/    # React web dashboard (Vite)
 data/               # External data collectors (NOAA, Kalshi, sentiment, etc.)
-tests/              # 187 unit tests
+tests/              # Unit/integration test suite
+research/           # Research papers/notes (EN/KR market documents)
+development/        # Development planning docs
 config.yaml         # Strategy parameters & risk settings
 .env.example        # Environment variable template
 ```
@@ -103,13 +119,13 @@ config.yaml         # Strategy parameters & risk settings
 
 ```bash
 python3 -m pytest tests/ -v
-# 187 tests, all passing
+# Run the full test suite
 ```
 
 ## How to Read the Research
 
-1. Start with `EN-polymarket-market-inefficiencies.md` for the research foundation
-2. Then read `EN-polymarket-top-100-strategies.md` (or KR version) for actionable strategies
+1. Start with `research/EN-polymarket-market-inefficiencies.md` for the research foundation
+2. Then read `research/EN-polymarket-top-100-strategies.md` (or KR version) for actionable strategies
 3. Each strategy includes: source, evidence, execution steps, expected edge, and key risks
 
 ## Disclaimer
@@ -128,9 +144,9 @@ Polymarket 예측 시장의 비효율성과 트레이딩 전략을 분석한 리
 
 | 파일 | 언어 | 설명 |
 |------|------|------|
-| `EN-polymarket-market-inefficiencies.md` | EN | 시장 비효율성 종합 연구 — 과거 사례, 학술 근거, 라이브 미스프라이싱 (2026년 2월 기준), 전략, 리스크, 영/한/중 100+개 출처 |
-| `EN-polymarket-top-100-strategies.md` | EN | 인터넷 600+개 글에서 엄선한 Top 100 트레이딩 전략 (영어 버전) |
-| `KR-polymarket-top-100-strategies.md` | KR | 동일한 Top 100 전략 문서 (한국어 버전) |
+| `research/EN-polymarket-market-inefficiencies.md` | EN | 시장 비효율성 종합 연구 — 과거 사례, 학술 근거, 라이브 미스프라이싱 (2026년 2월 기준), 전략, 리스크, 영/한/중 100+개 출처 |
+| `research/EN-polymarket-top-100-strategies.md` | EN | 인터넷 600+개 글에서 엄선한 Top 100 트레이딩 전략 (영어 버전) |
+| `research/KR-polymarket-top-100-strategies.md` | KR | 동일한 Top 100 전략 문서 (한국어 버전) |
 
 ## 전략 티어
 
@@ -179,9 +195,23 @@ python3 main.py backtest --data-dir data/historical/
 streamlit run dashboard/app.py
 
 # 10. React 대시보드 실행 (liquid glass UI)
+# 터미널 1
+python3 dashboard_api.py --host 127.0.0.1 --port 8001
+
+# 터미널 2
 cd dashboard-react
 npm install
 npm run dev
+
+# 11. NOAA 날씨 전략(s02) 네이티브 C++ 커널 실행
+# 선택: 네이티브 날씨 커널 빌드
+clang++ -O3 -march=native -std=c++17 -o native/s02_weather_signal_engine native/s02_weather_signal_engine.cpp
+
+# s02 전략만 실행 (config.yaml의 paper/live 모드 따름)
+python3 main.py run --strategy s02_weather_noaa
+
+# 12. 종료된 날씨 시장 포렌식 분석 (공개 데이터 기반 역추적)
+python3 tools/weather_market_forensics.py --max-rows 12000 --max-markets 120 --min-trades 5 --report-path logs/weather_forensics_report.json
 ```
 
 ### 설정
@@ -200,13 +230,13 @@ npm run dev
 
 ```bash
 python3 -m pytest tests/ -v
-# 187개 테스트 전체 통과
+# 전체 테스트 스위트 실행
 ```
 
 ## 읽는 방법
 
-1. `EN-polymarket-market-inefficiencies.md`로 리서치 기반 파악
-2. `KR-polymarket-top-100-strategies.md` (또는 EN 버전)으로 실행 가능한 전략 확인
+1. `research/EN-polymarket-market-inefficiencies.md`로 리서치 기반 파악
+2. `research/KR-polymarket-top-100-strategies.md` (또는 EN 버전)으로 실행 가능한 전략 확인
 3. 각 전략에는 출처, 증거, 실행 방법, 예상 엣지, 핵심 리스크 포함
 
 ## 참고
