@@ -7,7 +7,7 @@ class OracleLatency(BaseStrategy):
     name = "s09_oracle_latency"
     tier = "S"
     strategy_id = 9
-    required_data = ["cex_feed"]
+    required_data = []
 
     HOURLY_KEYWORDS = ["hourly", "1-hour", "next hour", "by the hour"]
 

@@ -1,15 +1,15 @@
 # core/models.py
 from __future__ import annotations
 
-import pytest
-from pydantic import BaseModel, computed_field
+from pydantic import BaseModel, Field, computed_field
 from datetime import datetime
 from typing import Any, Optional, List, Dict
 
 class Market(BaseModel):
     condition_id: str
     question: str
-    tokens: List[dict] = []
+    slug: str = ""
+    tokens: List[dict] = Field(default_factory=list)
     end_date_iso: Optional[str] = None
     active: bool = True
     volume: float = 0.0
@@ -22,7 +22,7 @@ class Opportunity(BaseModel):
     question: str
     market_price: float
     category: str = ""
-    metadata: Dict[str, Any] = {}
+    metadata: Dict[str, Any] = Field(default_factory=dict)
 
 class Signal(BaseModel):
     market_id: str
@@ -32,7 +32,7 @@ class Signal(BaseModel):
     market_price: float
     confidence: float
     strategy_name: str
-    metadata: Dict[str, Any] = {}
+    metadata: Dict[str, Any] = Field(default_factory=dict)
 
     @computed_field
     @property
