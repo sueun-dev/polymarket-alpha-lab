@@ -55,6 +55,11 @@ python3 main.py backtest --data-dir data/historical/
 
 # 9. Launch dashboard
 streamlit run dashboard/app.py
+
+# 10. Launch React dashboard (liquid glass UI)
+cd dashboard-react
+npm install
+npm run dev
 ```
 
 ### Project Structure
@@ -75,6 +80,7 @@ strategies/         # 100 strategy plugins (auto-discovered)
   tier_c/           # #71-#100: Experimental
 backtest/           # Backtesting engine (slippage simulation, Sharpe/MDD)
 dashboard/          # Streamlit web dashboard
+dashboard-react/    # React web dashboard (Vite)
 data/               # External data collectors (NOAA, Kalshi, sentiment, etc.)
 tests/              # 187 unit tests
 config.yaml         # Strategy parameters & risk settings
@@ -171,6 +177,11 @@ python3 main.py backtest --data-dir data/historical/
 
 # 9. 대시보드 실행
 streamlit run dashboard/app.py
+
+# 10. React 대시보드 실행 (liquid glass UI)
+cd dashboard-react
+npm install
+npm run dev
 ```
 
 ### 설정
