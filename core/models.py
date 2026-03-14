@@ -16,6 +16,10 @@ class Market(BaseModel):
     liquidity: float = 0.0
     category: str = ""
     description: str = ""
+    resolution_source: Optional[str] = None
+    event_id: Optional[str] = None
+    tags: List[str] = Field(default_factory=list)
+    enable_order_book: bool = False
 
 class Opportunity(BaseModel):
     market_id: str

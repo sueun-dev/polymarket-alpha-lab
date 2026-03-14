@@ -21,4 +21,20 @@ notifications:
   telegram: false
   discord: false
 
+ai_judge:
+  enabled: true
+  providers:
+    - openai
+    - anthropic
+  require_consensus: false
+  min_confidence: 0.65
+  blend_weight: 0.65
+  timeout_seconds: 20
+  max_output_tokens: 350
+  cache_ttl_seconds: 300
+  openai_model: gpt-5.4
+  openai_reasoning_effort: medium
+  anthropic_model: claude-sonnet-4-20250514
+  anthropic_version: "2023-06-01"
+
 strategies: {}

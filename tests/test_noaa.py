@@ -27,6 +27,8 @@ def _make_points_response(
             "gridY": grid_y,
             "forecast": f"https://api.weather.gov/gridpoints/{office}/{grid_x},{grid_y}/forecast",
             "forecastHourly": f"https://api.weather.gov/gridpoints/{office}/{grid_x},{grid_y}/forecast/hourly",
+            "forecastGridData": f"https://api.weather.gov/gridpoints/{office}/{grid_x},{grid_y}",
+            "observationStations": f"https://api.weather.gov/gridpoints/{office}/{grid_x},{grid_y}/stations",
         },
     }
 
@@ -56,6 +58,57 @@ def _make_forecast_response(periods: List[Dict[str, Any]] | None = None) -> Dict
     if periods is None:
         periods = [_make_period(temperature=70 + i, precip_value=10 * i) for i in range(6)]
     return {"properties": {"periods": periods}}
+
+
+def _make_observation_response(temp_c: float = 20.0) -> Dict[str, Any]:
+    """Return a realistic latest-observation response."""
+    return {
+        "properties": {
+            "timestamp": "2026-03-11T13:00:00+00:00",
+            "temperature": {
+                "unitCode": "wmoUnit:degC",
+                "value": temp_c,
+            },
+        }
+    }
+
+
+def _make_grid_data_response() -> Dict[str, Any]:
+    return {
+        "properties": {
+            "temperature": {
+                "uom": "wmoUnit:degC",
+                "values": [
+                    {"validTime": "2026-03-11T13:00:00+00:00/PT1H", "value": 2.0},
+                    {"validTime": "2026-03-11T14:00:00+00:00/PT1H", "value": 4.0},
+                ],
+            },
+            "maxTemperature": {
+                "uom": "wmoUnit:degC",
+                "values": [
+                    {"validTime": "2026-03-11T13:00:00+00:00/PT12H", "value": 6.0},
+                ],
+            },
+            "probabilityOfPrecipitation": {
+                "uom": "wmoUnit:percent",
+                "values": [
+                    {"validTime": "2026-03-11T13:00:00+00:00/PT1H", "value": 45},
+                ],
+            },
+            "quantitativePrecipitation": {
+                "uom": "wmoUnit:mm",
+                "values": [
+                    {"validTime": "2026-03-11T13:00:00+00:00/PT6H", "value": 2.0},
+                ],
+            },
+            "snowfallAmount": {
+                "uom": "wmoUnit:mm",
+                "values": [
+                    {"validTime": "2026-03-11T13:00:00+00:00/PT6H", "value": 0.0},
+                ],
+            },
+        }
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -252,6 +305,66 @@ class TestGetForecast:
         result = self.provider.get_forecast("  Miami  ")
         assert result is not None
         assert result[0]["temperature"] == 85
+
+
+class TestGridData:
+    def setup_method(self) -> None:
+        self.provider = NOAAWeatherProvider()
+
+    @mock.patch("data.noaa.http_get_json")
+    def test_get_grid_data_success(self, mock_http: mock.MagicMock) -> None:
+        mock_http.side_effect = [
+            _make_points_response("LOT", 76, 73),
+            _make_grid_data_response(),
+        ]
+        grid = self.provider.get_grid_data("chicago")
+        assert grid is not None
+        assert "temperature" in grid
+        assert mock_http.call_count == 2
+
+    @mock.patch("data.noaa.http_get_json")
+    def test_get_grid_data_cached(self, mock_http: mock.MagicMock) -> None:
+        mock_http.side_effect = [
+            _make_points_response("LOT", 76, 73),
+            _make_grid_data_response(),
+        ]
+        first = self.provider.get_grid_data("chicago")
+        second = self.provider.get_grid_data("chicago")
+        assert first == second
+        assert mock_http.call_count == 2
+
+
+# ---------------------------------------------------------------------------
+# city_profile / observation helpers
+# ---------------------------------------------------------------------------
+
+
+class TestCityProfilesAndObservations:
+    def setup_method(self) -> None:
+        self.provider = NOAAWeatherProvider()
+
+    def test_city_profile_for_alias(self) -> None:
+        profile = self.provider.city_profile("nyc")
+        assert profile is not None
+        assert profile["canonical"] == "new york"
+        assert profile["station_id"] == "KLGA"
+
+    @mock.patch("data.noaa.http_get_json")
+    def test_latest_observation_parses_temperature(self, mock_http: mock.MagicMock) -> None:
+        mock_http.return_value = _make_observation_response(temp_c=20.0)
+        obs = self.provider.get_latest_observation("new york")
+        assert obs is not None
+        assert obs["station_id"] == "KLGA"
+        assert obs["temperature_c"] == pytest.approx(20.0)
+        assert obs["temperature_f"] == pytest.approx(68.0)
+
+    @mock.patch("data.noaa.http_get_json")
+    def test_latest_observation_caches(self, mock_http: mock.MagicMock) -> None:
+        mock_http.return_value = _make_observation_response(temp_c=18.0)
+        first = self.provider.get_latest_observation("chicago")
+        second = self.provider.get_latest_observation("chicago")
+        assert first == second
+        assert mock_http.call_count == 1
 
 
 # ---------------------------------------------------------------------------

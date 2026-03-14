@@ -31,22 +31,31 @@ def load_config(path: str = "config.yaml") -> dict:
         return yaml.safe_load(f)
 
 
-def init_data_registry() -> DataRegistry:
+def init_data_registry(config: dict | None = None) -> DataRegistry:
     """Initialize all data providers and return a populated registry."""
     from data.historical_fetcher import HistoricalFetcher
     from data.feature_engine import LiveFeatureBuilder
+    from data.ai_judge import AIJudgeProvider
     from data.base_rates import BaseRateProvider
-    from data.noaa import NOAAWeatherProvider
+    from data.aviationweather import AviationWeatherProvider
+    from data.global_climate import GlobalClimateProvider
+    from data.nws_climate import NWSClimateProvider
+    from data.weather_router import WeatherRouterProvider
     from data.kalshi_client import KalshiDataProvider
     from data.news_client import NewsDataProvider
 
+    cfg = config or {}
     registry = DataRegistry()
 
     providers = [
         HistoricalFetcher(),
         LiveFeatureBuilder(),
+        AIJudgeProvider(cfg.get("ai_judge")),
         BaseRateProvider(),
-        NOAAWeatherProvider(),
+        WeatherRouterProvider(),
+        AviationWeatherProvider(),
+        NWSClimateProvider(),
+        GlobalClimateProvider(),
         KalshiDataProvider(),
         NewsDataProvider(),
     ]
@@ -58,7 +67,116 @@ def init_data_registry() -> DataRegistry:
     return registry
 
 
-def run_bot(config: dict, strategy_filter: str | None = None, dry_run: bool = False):
+def apply_strategy_runtime_config(strategies: list[BaseStrategy], config: dict) -> None:
+    """Apply runtime sizing controls from config onto instantiated strategies."""
+    risk_cfg = config.get("risk", {}) if isinstance(config, dict) else {}
+    raw_fraction = risk_cfg.get("kelly_fraction")
+    try:
+        kelly_fraction = float(raw_fraction)
+    except (TypeError, ValueError):
+        kelly_fraction = None
+
+    for strategy in strategies:
+        if kelly_fraction is not None and hasattr(strategy, "kelly"):
+            strategy.kelly.fraction = max(0.0, min(1.0, kelly_fraction))
+
+
+def run_bot_cycle(
+    client: PolymarketClient,
+    risk: RiskManager,
+    scanner: MarketScanner,
+    notifier: Notifier,
+    strategies: list[BaseStrategy],
+    scan_limit: int = 100,
+) -> dict:
+    bankroll = client.get_balance()
+    positions = client.get_positions()
+    markets = scanner.scan(limit=max(1, int(scan_limit)))
+    logger.info(f"Scanned {len(markets)} markets | Balance: ${bankroll:.2f}")
+
+    summary = {
+        "market_count": len(markets),
+        "strategy_count": len(strategies),
+        "signals": 0,
+        "orders": 0,
+        "manuals": 0,
+        "errors": 0,
+    }
+
+    for strategy in strategies:
+        try:
+            opportunities = strategy.scan(markets)
+            for opp in opportunities:
+                signal = strategy.analyze(opp)
+                if signal is None:
+                    continue
+                summary["signals"] += 1
+                if not risk.can_trade(signal, bankroll=bankroll, current_positions=positions):
+                    continue
+                size = strategy.size_position(signal, bankroll=bankroll)
+                manual_instruction = build_manual_instruction(
+                    strategy,
+                    signal,
+                    client=client,
+                    size=size if size > 0 else None,
+                )
+                if size <= 0:
+                    if manual_instruction:
+                        summary["manuals"] += 1
+                        notifier.manual_trade_alert(strategy.name, opp.question, manual_instruction)
+                        logger.info(f"[{strategy.name}] Manual: {manual_instruction}")
+                    continue
+                order = strategy.execute(signal, size, client=client)
+                if order:
+                    summary["orders"] += 1
+                    notifier.trade_alert(
+                        strategy=strategy.name,
+                        side=order.side,
+                        market=signal.market_id,
+                        price=order.price,
+                        size=order.size,
+                    )
+                    logger.info(f"[{strategy.name}] Order: {order.side} {order.size}x @ {order.price}")
+                elif manual_instruction:
+                    summary["manuals"] += 1
+                    notifier.manual_trade_alert(strategy.name, opp.question, manual_instruction)
+                    logger.info(f"[{strategy.name}] Manual: {manual_instruction}")
+        except Exception as e:
+            summary["errors"] += 1
+            logger.error(f"Strategy {strategy.name} error: {e}")
+            notifier.error_alert(f"{strategy.name}: {e}")
+    return summary
+
+
+def build_manual_instruction(
+    strategy: BaseStrategy,
+    signal,
+    client=None,
+    size: float | None = None,
+) -> str | None:
+    plan = strategy.build_manual_plan(signal, client=client, size=size)
+    if not isinstance(plan, dict):
+        return None
+
+    instruction = str(plan.get("instruction_kr", "")).strip()
+    if not instruction:
+        return None
+
+    status = str(plan.get("status", "manual")).strip()
+    limit_price = plan.get("recommended_limit_no_price", plan.get("suggested_limit_no_price"))
+    return (
+        f"[{status}] "
+        f"NO limit <= {limit_price} | {instruction}"
+    )
+
+
+def run_bot(
+    config: dict,
+    strategy_filter: str | None = None,
+    dry_run: bool = False,
+    once: bool = False,
+    scan_limit: int | None = None,
+):
     bot_cfg = config.get("bot", {})
     risk_cfg = config.get("risk", {})
     scan_cfg = config.get("scanner", {})
@@ -66,6 +184,7 @@ def run_bot(config: dict, strategy_filter: str | None = None, dry_run: bool = Fa
 
     mode = "paper" if dry_run else bot_cfg.get("mode", "paper")
     scan_interval = bot_cfg.get("scan_interval", 60)
+    effective_scan_limit = max(1, int(scan_limit or scan_cfg.get("scan_limit", 100)))
 
     client = PolymarketClient(mode=mode)
     risk = RiskManager(
@@ -100,45 +219,32 @@ def run_bot(config: dict, strategy_filter: str | None = None, dry_run: bool = Fa
         return
 
     # Initialize data providers
-    data_registry = init_data_registry()
+    data_registry = init_data_registry(config)
     for strategy in strategies:
         strategy.set_data_registry(data_registry)
+    apply_strategy_runtime_config(strategies, config)
     logger.info(f"Data providers: {len(data_registry)} registered")
 
     # Main loop
     try:
         while True:
             try:
-                bankroll = client.get_balance()
-                positions = client.get_positions()
-                markets = scanner.scan()
-                logger.info(f"Scanned {len(markets)} markets | Balance: ${bankroll:.2f}")
-
-                for strategy in strategies:
-                    try:
-                        opportunities = strategy.scan(markets)
-                        for opp in opportunities:
-                            signal = strategy.analyze(opp)
-                            if signal is None:
-                                continue
-                            if not risk.can_trade(signal, bankroll=bankroll, current_positions=[]):
-                                continue
-                            size = strategy.size_position(signal, bankroll=bankroll)
-                            if size <= 0:
-                                continue
-                            order = strategy.execute(signal, size, client=client)
-                            if order:
-                                notifier.trade_alert(
-                                    strategy=strategy.name,
-                                    side=order.side,
-                                    market=signal.market_id,
-                                    price=order.price,
-                                    size=order.size,
-                                )
-                                logger.info(f"[{strategy.name}] Order: {order.side} {order.size}x @ {order.price}")
-                    except Exception as e:
-                        logger.error(f"Strategy {strategy.name} error: {e}")
-                        notifier.error_alert(f"{strategy.name}: {e}")
+                summary = run_bot_cycle(
+                    client=client,
+                    risk=risk,
+                    scanner=scanner,
+                    notifier=notifier,
+                    strategies=strategies,
+                    scan_limit=effective_scan_limit,
+                )
+                logger.info(
+                    "Cycle summary | markets=%s signals=%s orders=%s manuals=%s errors=%s",
+                    summary["market_count"],
+                    summary["signals"],
+                    summary["orders"],
+                    summary["manuals"],
+                    summary["errors"],
+                )
 
             except KeyboardInterrupt:
                 raise
@@ -146,10 +252,14 @@ def run_bot(config: dict, strategy_filter: str | None = None, dry_run: bool = Fa
                 logger.error(f"Main loop error: {e}")
                 notifier.error_alert(str(e))
 
+            if once:
+                break
             time.sleep(scan_interval)
 
     except KeyboardInterrupt:
         logger.info("Bot stopped by user")
+    finally:
+        client.close()
 
 
 def run_list(config: dict):
@@ -238,6 +348,8 @@ def main():
     parser.add_argument("--config", default="config.yaml", help="Config file path")
     parser.add_argument("--strategy", default=None, help="Filter to specific strategy name")
     parser.add_argument("--dry-run", action="store_true", help="Run in paper mode regardless of config")
+    parser.add_argument("--once", action="store_true", help="Run exactly one scan/trade cycle and exit")
+    parser.add_argument("--scan-limit", type=int, default=None, help="Maximum active markets to fetch per cycle")
     parser.add_argument("--data-dir", default="data/historical/", help="Historical data directory for backtests")
     args = parser.parse_args()
 
@@ -246,7 +358,13 @@ def main():
     if args.command == "list":
         run_list(config)
     elif args.command == "run":
-        run_bot(config, strategy_filter=args.strategy, dry_run=args.dry_run)
+        run_bot(
+            config,
+            strategy_filter=args.strategy,
+            dry_run=args.dry_run,
+            once=bool(args.once),
+            scan_limit=args.scan_limit,
+        )
     elif args.command == "backtest":
         run_backtest(config, strategy_filter=args.strategy, data_dir=args.data_dir)
     elif args.command == "collect-data":

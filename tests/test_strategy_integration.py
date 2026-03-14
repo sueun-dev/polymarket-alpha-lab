@@ -70,6 +70,17 @@ def make_registry_with_feature_engine():
     return registry
 
 
+class _StubAIJudge:
+    name = "ai"
+
+    def __init__(self, result):
+        self._result = result
+        self.blend_weight = 0.65
+
+    def judge_overreaction(self, **kwargs):
+        return self._result
+
+
 # ---------------------------------------------------------------------------
 # Shared test fixtures
 # ---------------------------------------------------------------------------
@@ -271,6 +282,47 @@ class TestS01WithNews:
         assert signal is not None
         assert signal.metadata["base_rate"] == pytest.approx(0.05, abs=0.01)
 
+
+class TestS01WithAIJudge:
+    """S01 can use AI gating and fair-value adjustment when available."""
+
+    def test_ai_veto_blocks_trade(self):
+        strategy = ReversingStupidity()
+        registry = DataRegistry()
+        registry.register(BaseRateProvider())
+        registry.register(_StubAIJudge({
+            "should_fade_yes": False,
+            "fair_yes_prob": 0.40,
+            "confidence": 0.82,
+            "blend_weight": 0.65,
+        }))
+        strategy.set_data_registry(registry)
+
+        signal = strategy.analyze(_s01_opportunity(category="politics"))
+        assert signal is None
+
+    def test_ai_adjusts_base_rate_and_confidence(self):
+        strategy = ReversingStupidity()
+        registry = DataRegistry()
+        registry.register(BaseRateProvider())
+        registry.register(_StubAIJudge({
+            "should_fade_yes": True,
+            "fair_yes_prob": 0.20,
+            "confidence": 0.84,
+            "blend_weight": 0.65,
+            "providers_used": ["openai", "anthropic"],
+        }))
+        strategy.set_data_registry(registry)
+
+        signal = strategy.analyze(_s01_opportunity(category="politics"))
+
+        assert signal is not None
+        expected_base_rate = (0.05 * 0.35) + (0.20 * 0.65)
+        assert signal.metadata["rule_base_rate"] == pytest.approx(0.05, abs=0.01)
+        assert signal.metadata["base_rate"] == pytest.approx(expected_base_rate, abs=0.01)
+        assert signal.metadata["ai_judgment"]["providers_used"] == ["openai", "anthropic"]
+        assert signal.confidence == pytest.approx(0.84, abs=0.01)
+
     def test_no_sentiment_data_no_change(self):
         strategy = ReversingStupidity()
 
@@ -422,7 +474,7 @@ class TestS02WithNOAA:
         assert signal.side == "buy"
         assert signal.metadata.get("side_selected") == "no"
 
-    def test_unknown_city_falls_to_fallback(self):
+    def test_unknown_city_no_longer_uses_price_bump_fallback(self):
         strategy = WeatherNOAA()
         forecast = _make_forecast_periods(temp=85, count=24)
         registry = make_registry_with_noaa(forecast)
@@ -437,14 +489,13 @@ class TestS02WithNOAA:
             metadata={"tokens": [{"token_id": "y2", "outcome": "Yes"}], "volume": 500},
         )
         prob = strategy._estimate_weather_prob(opp)
-        # Falls back to original: price=0.03 < 0.05 -> 0.03 + 0.10 = 0.13
-        assert prob == pytest.approx(0.13, abs=0.01)
+        assert prob is None
 
 
 class TestS02WithoutRegistry:
-    """S02 without registry falls back to original placeholder behavior."""
+    """S02 without supporting data stays silent instead of inventing a cheap-edge placeholder."""
 
-    def test_original_fallback_cheap(self):
+    def test_without_registry_returns_none_for_cheap_unpriced_market(self):
         strategy = WeatherNOAA()
         opp = Opportunity(
             market_id="0x2",
@@ -454,8 +505,7 @@ class TestS02WithoutRegistry:
             metadata={"tokens": [{"token_id": "y2", "outcome": "Yes"}], "volume": 500},
         )
         prob = strategy._estimate_weather_prob(opp)
-        # Original fallback: price < 0.05 -> price + 0.10
-        assert prob == pytest.approx(0.13, abs=0.01)
+        assert prob is None
 
     def test_original_fallback_not_cheap(self):
         strategy = WeatherNOAA()
@@ -467,7 +517,6 @@ class TestS02WithoutRegistry:
             metadata={"tokens": [{"token_id": "y2", "outcome": "Yes"}], "volume": 500},
         )
         prob = strategy._estimate_weather_prob(opp)
-        # Original fallback: price >= 0.05 -> None
         assert prob is None
 
 
@@ -795,7 +844,7 @@ class TestRequiredDataDeclarations:
     """Verify each strategy declares its required data providers."""
 
     def test_s01_required_data(self):
-        assert ReversingStupidity.required_data == ["base_rates", "news"]
+        assert ReversingStupidity.required_data == ["base_rates", "news", "ai"]
 
     def test_s02_required_data(self):
         assert WeatherNOAA.required_data == ["noaa"]

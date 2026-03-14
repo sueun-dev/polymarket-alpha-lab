@@ -31,3 +31,24 @@ def test_price_cache():
     scanner = MarketScanner(client=MagicMock(), min_volume=0)
     assert scanner.update_price_cache("m1", 0.50) is None
     assert scanner.update_price_cache("m1", 0.65) == 0.50
+
+
+def test_scan_paginates_and_uses_volume_order():
+    client = MagicMock()
+    client.get_markets.side_effect = [
+        [
+            Market(condition_id="0x1", question="Q1", tokens=[], volume=5000, liquidity=100),
+            Market(condition_id="0x2", question="Q2", tokens=[], volume=4000, liquidity=100),
+        ],
+        [
+            Market(condition_id="0x3", question="Q3", tokens=[], volume=3000, liquidity=100),
+        ],
+    ]
+
+    scanner = MarketScanner(client=client, min_volume=0, page_size=2)
+    markets = scanner.scan(limit=3)
+
+    assert [market.condition_id for market in markets] == ["0x1", "0x2", "0x3"]
+    first_call = client.get_markets.call_args_list[0]
+    assert first_call.kwargs["order_by"] == "volume"
+    assert first_call.kwargs["ascending"] is False

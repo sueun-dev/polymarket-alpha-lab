@@ -69,12 +69,42 @@ npm run dev
 # Optional: compile native weather kernel
 clang++ -O3 -march=native -std=c++17 -o native/s02_weather_signal_engine native/s02_weather_signal_engine.cpp
 
-# run only s02 strategy (paper/live based on config.yaml)
+# run only s02 strategy continuously (paper/live based on config.yaml)
 python3 main.py run --strategy s02_weather_noaa
+
+# run exactly one s02 scan/trade cycle for E2E verification
+python3 main.py run --strategy s02_weather_noaa --dry-run --once --scan-limit 500
 
 # 12. Forensic audit on closed weather markets (public-data reverse analysis)
 python3 tools/weather_market_forensics.py --max-rows 12000 --max-markets 120 --min-trades 5 --report-path logs/weather_forensics_report.json
+
+# 13. Rank live weather setups for the upgraded S02 engine
+python3 tools/weather_market_watch.py --limit 300 --top 20
+
+# 14. Fast live S02 runner with batch CLOB pricing + websocket watch
+python3 tools/weather_live_runner.py --max-markets 800 --top 10 --watch-seconds 20
+
+# 15. Save all active weather markets by city/country/region
+python3 tools/weather_market_catalog.py --max-markets 5000 --out logs/weather_market_catalog.json
+
+# 16. Run only one discovered city from the saved catalog
+python3 tools/weather_live_runner.py --catalog-path logs/weather_market_catalog.json --city atlanta --top 10
+
+# 17. Run only the fixed saved weather universe (no full market rescan)
+python3 tools/weather_live_runner.py --catalog-path logs/weather_market_catalog.json --catalog-only --supported-only --top 10
+
+# 18. Keep a live on-screen weather monitor running with automatic paper fills
+python3 tools/weather_live_runner.py --mode paper --catalog-path logs/weather_market_catalog.json --catalog-only --supported-only --loop --screen --execute --refresh-seconds 5 --watch-seconds 2
+
+# 19. Show bettable / monitor / blocked markets together in JSON
+python3 tools/weather_live_runner.py --catalog-path logs/weather_market_catalog.json --catalog-only --supported-only --top 3 --monitor-top 3 --blocked-top 3 --json
 ```
+
+The upgraded `s02_weather_noaa` engine now blends multiple official weather feeds:
+- NOAA `forecast/hourly`
+- NOAA raw `forecastGridData` (temperature, max/min temp, PoP, QPF, snowfall)
+- Aviation Weather Center `METAR` and `TAF` for airport-station observations and precip confirmation
+- NWS climate products `CLI` / `CF6` for actual settlement-aware daily and month-to-date weather totals
 
 ### Project Structure
 
@@ -82,7 +112,7 @@ python3 tools/weather_market_forensics.py --max-rows 12000 --max-markets 120 --m
 core/               # Shared infrastructure
   client.py         # Polymarket CLOB API wrapper (paper + live modes)
   risk.py           # Portfolio risk management (position limits, daily loss)
-  kelly.py          # Kelly Criterion position sizing (Half-Kelly default)
+  kelly.py          # Kelly Criterion position sizing (config-driven; default 0.25)
   scanner.py        # Market scanner with filtering & anomaly detection
   base_strategy.py  # Abstract base class for all strategies
   notifier.py       # Telegram / Discord notifications
@@ -113,7 +143,7 @@ config.yaml         # Strategy parameters & risk settings
 - `max_position_pct`: Max % of portfolio per market (default 10%)
 - `max_daily_loss`: Daily stop-loss threshold (default 5%)
 - `max_open_positions`: Concurrent position limit (default 20)
-- `kelly_fraction`: Kelly sizing fraction (default 0.5 = Half-Kelly)
+- `kelly_fraction`: Kelly sizing fraction (default 0.25 = Quarter-Kelly)
 
 ### Tests
 
@@ -207,11 +237,29 @@ npm run dev
 # 선택: 네이티브 날씨 커널 빌드
 clang++ -O3 -march=native -std=c++17 -o native/s02_weather_signal_engine native/s02_weather_signal_engine.cpp
 
-# s02 전략만 실행 (config.yaml의 paper/live 모드 따름)
+# s02 전략을 계속 실행 (config.yaml의 paper/live 모드 따름)
 python3 main.py run --strategy s02_weather_noaa
+
+# E2E 검증용으로 s02를 1회만 실행
+python3 main.py run --strategy s02_weather_noaa --dry-run --once --scan-limit 500
 
 # 12. 종료된 날씨 시장 포렌식 분석 (공개 데이터 기반 역추적)
 python3 tools/weather_market_forensics.py --max-rows 12000 --max-markets 120 --min-trades 5 --report-path logs/weather_forensics_report.json
+
+# 13. 업그레이드된 S02 엔진으로 실시간 날씨 셋업 랭킹
+python3 tools/weather_market_watch.py --limit 300 --top 20
+
+# 14. 배치 CLOB 가격 + WebSocket 감시 기반 빠른 실전 러너
+python3 tools/weather_live_runner.py --max-markets 800 --top 10 --watch-seconds 20
+
+# 15. 활성 날씨 시장 전체를 도시/국가/지역별 카탈로그로 저장
+python3 tools/weather_market_catalog.py --max-markets 5000 --out logs/weather_market_catalog.json
+
+# 16. 저장된 카탈로그 기준으로 특정 도시만 실행
+python3 tools/weather_live_runner.py --catalog-path logs/weather_market_catalog.json --city atlanta --top 10
+
+# 17. 전체 고정 유니버스를 계속 화면에 띄우면서 자동 paper 진입
+python3 tools/weather_live_runner.py --mode paper --catalog-path logs/weather_market_catalog.json --catalog-only --supported-only --loop --screen --execute --refresh-seconds 5 --watch-seconds 2
 ```
 
 ### 설정
@@ -224,7 +272,7 @@ python3 tools/weather_market_forensics.py --max-rows 12000 --max-markets 120 --m
 - `max_position_pct`: 마켓당 최대 포트폴리오 비율 (기본 10%)
 - `max_daily_loss`: 일일 손실 한도 (기본 5%)
 - `max_open_positions`: 동시 포지션 한도 (기본 20개)
-- `kelly_fraction`: 켈리 비율 (기본 0.5 = Half-Kelly)
+- `kelly_fraction`: 켈리 비율 (기본 0.25 = Quarter-Kelly)
 
 ### 테스트
 

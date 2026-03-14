@@ -1,6 +1,6 @@
 # core/base_strategy.py
 from abc import ABC, abstractmethod
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 from core.models import Market, Opportunity, Signal, Order
 from core.kelly import KellyCriterion
 
@@ -24,6 +24,17 @@ class BaseStrategy(ABC):
     @abstractmethod
     def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
         ...
+
+    def build_manual_plan(
+        self,
+        signal: Signal,
+        client=None,
+        size: Optional[float] = None,
+    ) -> Optional[Dict[str, Any]]:
+        plan = signal.metadata.get("manual_plan")
+        if isinstance(plan, dict):
+            return plan
+        return None
 
     def set_data_registry(self, registry) -> None:
         """Inject the data registry. Called by main.py during initialization."""

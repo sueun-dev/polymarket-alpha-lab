@@ -43,5 +43,8 @@ class Notifier:
     def opportunity_alert(self, strategy: str, market: str, edge: float) -> None:
         self.send(f"\U0001f4ca *Opportunity*: {strategy} | Edge: {edge:.1%} | {market}")
 
+    def manual_trade_alert(self, strategy: str, market: str, instruction: str) -> None:
+        self.send(f"\U0001f6a7 *Manual*: {strategy} | {market}\n{instruction}")
+
     def error_alert(self, message: str) -> None:
         self.send(f"\u274c *Error*: {message}", level="error")

@@ -4,6 +4,8 @@ from __future__ import annotations
 import datetime as dt
 import json
 import math
+import shutil
+import subprocess
 import time
 import urllib.error
 import urllib.request
@@ -31,6 +33,40 @@ def http_get_json(url: str, retries: int = 3, timeout: int = 20) -> object:
             if attempt >= retries:
                 break
             time.sleep(0.4 * (attempt + 1))
+    raise RuntimeError(f"request failed: {url} ({last_err})")
+
+
+def http_get_text(url: str, retries: int = 3, timeout: int = 20) -> str:
+    """HTTP GET that returns decoded text, falling back to ``curl`` when TLS stacks disagree."""
+    last_err: Optional[Exception] = None
+    for attempt in range(retries + 1):
+        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                raw = resp.read()
+            encoding = getattr(resp, "headers", {}).get_content_charset("utf-8") if hasattr(resp, "headers") else "utf-8"
+            return raw.decode(encoding or "utf-8", errors="replace")
+        except (
+            urllib.error.URLError,
+            urllib.error.HTTPError,
+            TimeoutError,
+            UnicodeDecodeError,
+        ) as err:
+            last_err = err
+            if attempt >= retries:
+                break
+            time.sleep(0.4 * (attempt + 1))
+
+    curl_path = shutil.which("curl")
+    if curl_path:
+        try:
+            return subprocess.check_output(
+                [curl_path, "-L", "-s", "--max-time", str(timeout), url],
+                text=True,
+                timeout=timeout + 2,
+            )
+        except Exception as err:
+            last_err = err
     raise RuntimeError(f"request failed: {url} ({last_err})")
 
 

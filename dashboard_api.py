@@ -22,12 +22,16 @@ from backtest.report import BacktestReport
 from core.client import PolymarketClient
 from core.models import Market
 from data import DataRegistry
+from data.ai_judge import AIJudgeProvider
 from data.base_rates import BaseRateProvider
 from data.feature_engine import LiveFeatureBuilder
 from data.historical_fetcher import HistoricalFetcher
 from data.kalshi_client import KalshiDataProvider
 from data.news_client import NewsDataProvider
-from data.noaa import NOAAWeatherProvider
+from data.aviationweather import AviationWeatherProvider
+from data.global_climate import GlobalClimateProvider
+from data.nws_climate import NWSClimateProvider
+from data.weather_router import WeatherRouterProvider
 from strategies import StrategyRegistry
 
 logger = logging.getLogger("dashboard_api")
@@ -77,8 +81,12 @@ class Runtime:
         providers = [
             HistoricalFetcher(),
             LiveFeatureBuilder(),
+            AIJudgeProvider(),
             BaseRateProvider(),
-            NOAAWeatherProvider(),
+            WeatherRouterProvider(),
+            AviationWeatherProvider(),
+            NWSClimateProvider(),
+            GlobalClimateProvider(),
             KalshiDataProvider(),
             NewsDataProvider(),
         ]
@@ -352,6 +360,7 @@ def run_live_scan(
     markets = runtime.client.get_markets(limit=max_markets, active_only=True)
     filtered_markets = [m for m in markets if m.active and m.volume >= min_volume]
     market_map = {m.condition_id: m for m in filtered_markets}
+    bankroll = runtime.client.get_balance()
 
     if strategy_names:
         strategies = [runtime.strategy_registry.get(name) for name in strategy_names]
@@ -389,11 +398,22 @@ def run_live_scan(
                 continue
 
             yes_price, no_price = yes_no_prices(market)
+            suggested_size = None
+            try:
+                suggested_size = strategy.size_position(signal, bankroll=bankroll)
+            except Exception:
+                suggested_size = None
+            manual_plan = strategy.build_manual_plan(signal, client=runtime.client, size=suggested_size)
+            if isinstance(manual_plan, dict):
+                manual_plan["size_basis_bankroll_usd"] = round(bankroll, 2)
+            market_url = f"https://polymarket.com/event/{market.slug}" if market.slug else None
 
             signals.append(
                 {
                     "marketId": signal.market_id,
                     "question": opportunity.question,
+                    "slug": market.slug,
+                    "marketUrl": market_url,
                     "category": market.category or opportunity.category or "unknown",
                     "volume": market.volume,
                     "liquidity": market.liquidity,
@@ -407,6 +427,7 @@ def run_live_scan(
                     "edge": edge,
                     "yesPrice": yes_price,
                     "noPrice": no_price,
+                    "manualPlan": manual_plan,
                 }
             )
 

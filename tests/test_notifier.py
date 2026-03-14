@@ -18,3 +18,10 @@ def test_error_alert():
     with patch.object(n, 'send') as mock_send:
         n.error_alert("something broke")
         mock_send.assert_called_once_with("\u274c *Error*: something broke", level="error")
+
+
+def test_manual_trade_alert():
+    n = Notifier()
+    with patch.object(n, 'send') as mock_send:
+        n.manual_trade_alert("s01", "Test market", "NO <= 0.47")
+        mock_send.assert_called_once()
