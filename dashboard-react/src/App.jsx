@@ -106,6 +106,17 @@ const I18N = {
       edge: 'Edge',
       confidence: 'Confidence',
       expires: 'End Date',
+      plan: 'Plan',
+      openMarket: 'Open market',
+      manualOnly: 'Manual-only',
+      waitForEntry: 'Wait for entry',
+      enterNow: 'Enter now',
+      skipChase: 'Skip chase',
+      trigger: 'Trigger',
+      limitPrice: 'Limit',
+      maxChase: 'Max chase',
+      takeProfit: 'Take profit',
+      reviewBelow: 'Review below',
       emptyTitle: 'No opportunities at this threshold',
       emptyBody: 'Lower min volume or edge to widen scan results.',
     },
@@ -232,6 +243,17 @@ const I18N = {
       edge: '엣지',
       confidence: '신뢰도',
       expires: '종료일',
+      plan: '실행 플랜',
+      openMarket: '마켓 열기',
+      manualOnly: '수동 전용',
+      waitForEntry: '대기',
+      enterNow: '지금 진입',
+      skipChase: '추격 금지',
+      trigger: '트리거',
+      limitPrice: '지정가',
+      maxChase: '상단 한도',
+      takeProfit: '익절 검토',
+      reviewBelow: '재검토 구간',
       emptyTitle: '현재 조건에서 기회가 없습니다',
       emptyBody: '최소 거래량 또는 엣지 조건을 낮춰보세요.',
     },
@@ -279,6 +301,13 @@ function fmtPct(value) {
   return PCT.format(value || 0)
 }
 
+function fmtPrice(value) {
+  if (value === null || value === undefined || Number.isNaN(Number(value))) {
+    return '-'
+  }
+  return Number(value).toFixed(3)
+}
+
 function fmtCompact(value) {
   return new Intl.NumberFormat('en-US', {
     notation: 'compact',
@@ -306,6 +335,31 @@ function detailByLang(item, lang, field) {
     return item[krField]
   }
   return item[field] || ''
+}
+
+function planStatusLabel(plan, text) {
+  switch (plan?.status) {
+    case 'enter_now':
+      return text.scan.enterNow
+    case 'skip_chase':
+      return text.scan.skipChase
+    default:
+      return text.scan.waitForEntry
+  }
+}
+
+function compactManualSummary(plan, text) {
+  if (!plan) {
+    return '-'
+  }
+  const limit = fmtPrice(plan.recommended_limit_no_price || plan.suggested_limit_no_price)
+  if (plan.status === 'wait') {
+    return `${text.scan.waitForEntry}: YES >= ${fmtPrice(plan.trigger_yes_price_gte)} / NO <= ${fmtPrice(plan.trigger_no_price_lte)}`
+  }
+  if (plan.status === 'skip_chase') {
+    return `${text.scan.skipChase}: NO > ${fmtPrice(plan.do_not_chase_above_no_price)}`
+  }
+  return `NO <= ${limit}`
 }
 
 async function fetchJson(path) {
@@ -540,6 +594,7 @@ function OverviewView({ text, data, loading, error, onRefresh }) {
                   <th>Price</th>
                   <th>Edge</th>
                   <th>Confidence</th>
+                  <th>{text.scan.plan}</th>
                   <th>Volume</th>
                 </tr>
               </thead>
@@ -549,9 +604,22 @@ function OverviewView({ text, data, loading, error, onRefresh }) {
                     <td>{signal.strategy}</td>
                     <td>{signal.question}</td>
                     <td>{signal.side}</td>
-                    <td>{Number(signal.marketPrice || 0).toFixed(3)}</td>
+                    <td>{fmtPrice(signal.marketPrice)}</td>
                     <td className={priceColor(signal.edge)}>{fmtPct(signal.edge)}</td>
                     <td>{fmtPct(signal.confidence)}</td>
+                    <td className="plan-cell">
+                      <div className="plan-cell-wrap">
+                        <span className={`plan-pill plan-${signal.manualPlan?.status || 'wait'}`}>
+                          {planStatusLabel(signal.manualPlan, text)}
+                        </span>
+                        <span>{compactManualSummary(signal.manualPlan, text)}</span>
+                        {signal.marketUrl && (
+                          <a href={signal.marketUrl} target="_blank" rel="noreferrer" className="market-link">
+                            {text.scan.openMarket}
+                          </a>
+                        )}
+                      </div>
+                    </td>
                     <td>{fmtMoney(signal.volume || 0)}</td>
                   </tr>
                 ))}
@@ -907,7 +975,14 @@ function MarketsView({ text, rows, loading, error, minVolume, minEdge, onMinVolu
       {!loading && !error && rows.map((market, index) => (
         <article key={`${market.marketId}-${market.strategy}-${index}`} className="glass section market-card">
           <div className="section-head">
-            <h3>{market.question}</h3>
+            <div className="market-headline">
+              <h3>{market.question}</h3>
+              {market.marketUrl && (
+                <a href={market.marketUrl} target="_blank" rel="noreferrer" className="market-link">
+                  {text.scan.openMarket}
+                </a>
+              )}
+            </div>
             <span>{market.category}</span>
           </div>
           <div className="market-grid">
@@ -925,7 +1000,7 @@ function MarketsView({ text, rows, loading, error, minVolume, minEdge, onMinVolu
             </div>
             <div>
               <p>{text.scan.marketPrice}</p>
-              <strong>{Number(market.marketPrice || 0).toFixed(3)}</strong>
+              <strong>{fmtPrice(market.marketPrice)}</strong>
             </div>
             <div>
               <p>{text.scan.edge}</p>
@@ -940,6 +1015,46 @@ function MarketsView({ text, rows, loading, error, minVolume, minEdge, onMinVolu
               <strong>{market.endDateIso || '-'}</strong>
             </div>
           </div>
+          {market.manualPlan && (
+            <div className="manual-plan">
+              <div className="manual-plan-head">
+                <div>
+                  <p>{text.scan.plan}</p>
+                  <strong>{text.scan.manualOnly}</strong>
+                </div>
+                <span className={`plan-pill plan-${market.manualPlan.status || 'wait'}`}>
+                  {planStatusLabel(market.manualPlan, text)}
+                </span>
+              </div>
+              <div className="manual-grid">
+                <div>
+                  <p>{text.scan.trigger}</p>
+                  <strong>YES &gt;= {fmtPrice(market.manualPlan.trigger_yes_price_gte)}</strong>
+                  <span>NO &lt;= {fmtPrice(market.manualPlan.trigger_no_price_lte)}</span>
+                </div>
+                <div>
+                  <p>{text.scan.limitPrice}</p>
+                  <strong>NO &lt;= {fmtPrice(market.manualPlan.recommended_limit_no_price || market.manualPlan.suggested_limit_no_price)}</strong>
+                  <span>
+                    ask {fmtPrice(market.manualPlan.best_ask_no_price || market.manualPlan.reference_no_entry_price)}
+                    {market.manualPlan.size ? ` · size ${fmtPrice(market.manualPlan.size)}` : ''}
+                    {market.manualPlan.size_basis_bankroll_usd ? ` · basis ${fmtMoney(market.manualPlan.size_basis_bankroll_usd)}` : ''}
+                  </span>
+                </div>
+                <div>
+                  <p>{text.scan.maxChase}</p>
+                  <strong>{fmtPrice(market.manualPlan.do_not_chase_above_no_price)}</strong>
+                  <span>{market.manualPlan.quote_source === 'clob_orderbook' ? 'live orderbook' : 'market snapshot'}</span>
+                </div>
+                <div>
+                  <p>{text.scan.takeProfit}</p>
+                  <strong>{fmtPrice(market.manualPlan.take_profit_no_price_gte)}</strong>
+                  <span>{text.scan.reviewBelow}: {fmtPrice(market.manualPlan.review_if_no_price_lte)}</span>
+                </div>
+              </div>
+              <p className="manual-instruction">{market.manualPlan.instruction_kr}</p>
+            </div>
+          )}
         </article>
       ))}
     </div>

@@ -547,6 +547,22 @@ class TestCategorizeQuestion:
         result = provider.categorize_question("Will the game be played?")
         assert result != "unknown"
 
+    def test_categorize_text_uses_description(self):
+        provider = BaseRateProvider()
+        result = provider.categorize_text(
+            "Trump out as President before GTA VI?",
+            "This market resolves Yes if Donald Trump ceases to be the President of the U.S. before GTA VI releases.",
+        )
+        assert result == "politics"
+
+    def test_categorize_text_avoids_substring_false_positive(self):
+        provider = BaseRateProvider()
+        result = provider.categorize_text(
+            "Will the Golden State Warriors win the 2026 NBA Finals?",
+            "Sports market about the Warriors winning the NBA Finals.",
+        )
+        assert result == "sports"
+
 
 # ---------------------------------------------------------------------------
 # fetch (entry point)

@@ -481,6 +481,16 @@ tbody td {
   color: #244665;
   border-bottom: 1px solid rgba(132, 167, 202, 0.2);
   padding: 0.62rem 0.45rem;
+  vertical-align: top;
+}
+
+.plan-cell {
+  min-width: 220px;
+}
+
+.plan-cell-wrap {
+  display: grid;
+  gap: 0.28rem;
 }
 
 .strategy-row,
@@ -714,6 +724,13 @@ tbody td {
   font-size: 1rem;
 }
 
+.market-headline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+}
+
 .market-grid {
   display: grid;
   margin-top: 0.8rem;
@@ -733,6 +750,102 @@ tbody td {
   display: block;
   margin-top: 0.24rem;
   color: #173756;
+}
+
+.market-grid span,
+.manual-grid span,
+.plan-cell-wrap span,
+.manual-plan-head p,
+.manual-instruction {
+  color: #5d7897;
+  font-size: 0.78rem;
+}
+
+.market-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.24rem 0.56rem;
+  text-decoration: none;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #1f5d94;
+  background: rgba(116, 180, 241, 0.18);
+  border: 1px solid rgba(116, 180, 241, 0.4);
+}
+
+.plan-pill {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border-radius: 999px;
+  padding: 0.16rem 0.5rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.plan-enter_now {
+  color: #1f8758;
+  background: rgba(111, 235, 172, 0.2);
+}
+
+.plan-wait {
+  color: #8d6b20;
+  background: rgba(255, 221, 136, 0.34);
+}
+
+.plan-skip_chase {
+  color: #b44a54;
+  background: rgba(255, 181, 192, 0.24);
+}
+
+.manual-plan {
+  margin-top: 0.9rem;
+  padding: 0.82rem 0.9rem;
+  border-radius: 16px;
+  border: 1px solid rgba(129, 165, 201, 0.28);
+  background: rgba(255, 255, 255, 0.42);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.manual-plan-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 0.75rem;
+}
+
+.manual-plan-head p {
+  margin: 0;
+}
+
+.manual-plan-head strong {
+  display: block;
+  margin-top: 0.16rem;
+  color: #173756;
+}
+
+.manual-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.manual-grid p {
+  margin: 0;
+}
+
+.manual-grid strong {
+  display: block;
+  margin-top: 0.22rem;
+  color: #173756;
+}
+
+.manual-instruction {
+  margin: 0;
+  line-height: 1.45;
 }
 
 .summary-grid {
@@ -883,7 +996,8 @@ tbody td {
   }
 
   .view-grid,
-  .market-grid {
+  .market-grid,
+  .manual-grid {
     grid-template-columns: 1fr;
   }
 

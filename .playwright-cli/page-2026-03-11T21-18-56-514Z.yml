@@ -1,0 +1,230 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - navigation [ref=e5]:
+        - generic [ref=e6]:
+          - link "Polymarket Logo" [ref=e8] [cursor=pointer]:
+            - /url: /
+            - img "Polymarket" [ref=e9]
+          - generic [ref=e12]:
+            - generic [ref=e14]:
+              - img [ref=e16]
+              - textbox "Search polymarkets..." [ref=e19]
+            - button "How it works" [ref=e20] [cursor=pointer]:
+              - img
+              - generic [ref=e21]: How it works
+          - generic [ref=e23]:
+            - generic [ref=e25]:
+              - button "Log In" [ref=e26] [cursor=pointer]:
+                - generic [ref=e27]: Log In
+              - button "Sign Up" [ref=e28] [cursor=pointer]:
+                - generic [ref=e29]: Sign Up
+            - button "Open user menu" [ref=e31] [cursor=pointer]:
+              - img [ref=e33]
+        - generic [ref=e39]:
+          - link "Trending" [ref=e40] [cursor=pointer]:
+            - /url: /
+            - img [ref=e41]
+            - generic [ref=e44]: Trending
+          - link "Breaking" [ref=e45] [cursor=pointer]:
+            - /url: /breaking
+          - link "New" [ref=e46] [cursor=pointer]:
+            - /url: /new
+          - link "Politics" [ref=e48] [cursor=pointer]:
+            - /url: /politics
+          - link "Sports" [ref=e49] [cursor=pointer]:
+            - /url: /sports/live
+          - link "Crypto" [ref=e50] [cursor=pointer]:
+            - /url: /crypto
+          - link "Iran" [ref=e51] [cursor=pointer]:
+            - /url: /iran
+          - link "Finance" [ref=e52] [cursor=pointer]:
+            - /url: /finance
+          - link "Geopolitics" [ref=e53] [cursor=pointer]:
+            - /url: /geopolitics
+          - link "Tech" [ref=e54] [cursor=pointer]:
+            - /url: /tech
+          - link "Culture" [ref=e55] [cursor=pointer]:
+            - /url: /pop-culture
+          - link "Economy" [ref=e56] [cursor=pointer]:
+            - /url: /economy
+          - link "Mentions" [ref=e57] [cursor=pointer]:
+            - /url: /mentions
+          - link "Elections" [ref=e58] [cursor=pointer]:
+            - /url: /dashboards/global-elections
+          - button "Open more navigation links" [ref=e59] [cursor=pointer]:
+            - text: More
+            - img [ref=e60]
+      - generic [ref=e62]:
+        - main [ref=e65]:
+          - generic [ref=e67]:
+            - img [ref=e69]
+            - paragraph [ref=e74]: Oops...we didn't forecast this
+            - paragraph [ref=e75]:
+              - text: If reloading doesn't fix it, let us know via
+              - generic [ref=e76]:
+                - text: Intercom or
+                - link "Discord" [ref=e77] [cursor=pointer]:
+                  - /url: https://discord.gg/hGYPGru
+                - text: .
+            - link "Go to home" [ref=e78] [cursor=pointer]:
+              - /url: /
+              - button "Go to home" [ref=e79]
+        - contentinfo [ref=e80]:
+          - generic [ref=e82]:
+            - generic [ref=e83]:
+              - link "Polymarket" [ref=e84] [cursor=pointer]:
+                - /url: /
+                - img "Polymarket" [ref=e85]
+              - paragraph [ref=e86]: The World's Largest Prediction Market™
+            - generic [ref=e87]:
+              - generic [ref=e88]:
+                - heading "Markets by category and topics" [level=3] [ref=e89]
+                - generic [ref=e90]:
+                  - link "Midterms Predictions" [ref=e91] [cursor=pointer]:
+                    - /url: /predictions/midterms
+                    - text: Midterms
+                    - generic [ref=e92]: Predictions
+                  - link "Epstein Predictions" [ref=e93] [cursor=pointer]:
+                    - /url: /predictions/epstein
+                    - text: Epstein
+                    - generic [ref=e94]: Predictions
+                  - link "Primaries Predictions" [ref=e95] [cursor=pointer]:
+                    - /url: /predictions/primaries
+                    - text: Primaries
+                    - generic [ref=e96]: Predictions
+                  - link "Tweet Markets Predictions" [ref=e97] [cursor=pointer]:
+                    - /url: /predictions/tweets-markets
+                    - text: Tweet Markets
+                    - generic [ref=e98]: Predictions
+                  - link "Daily Temperature Predictions" [ref=e99] [cursor=pointer]:
+                    - /url: /predictions/temperature
+                    - text: Daily Temperature
+                    - generic [ref=e100]: Predictions
+                  - link "Global Elections Predictions" [ref=e101] [cursor=pointer]:
+                    - /url: /predictions/global-elections
+                    - text: Global Elections
+                    - generic [ref=e102]: Predictions
+                  - link "Lebanon Predictions" [ref=e103] [cursor=pointer]:
+                    - /url: /predictions/lebanon
+                    - text: Lebanon
+                    - generic [ref=e104]: Predictions
+                  - link "Tariffs Predictions" [ref=e105] [cursor=pointer]:
+                    - /url: /predictions/tariffs
+                    - text: Tariffs
+                    - generic [ref=e106]: Predictions
+                  - link "Reza Pahlavi Predictions" [ref=e107] [cursor=pointer]:
+                    - /url: /predictions/reza-pahlavi
+                    - text: Reza Pahlavi
+                    - generic [ref=e108]: Predictions
+                  - link "Texas Senate Predictions" [ref=e109] [cursor=pointer]:
+                    - /url: /predictions/texas-senate
+                    - text: Texas Senate
+                    - generic [ref=e110]: Predictions
+                  - link "Gov Shutdown Predictions" [ref=e111] [cursor=pointer]:
+                    - /url: /predictions/gov-shutdown
+                    - text: Gov Shutdown
+                    - generic [ref=e112]: Predictions
+                  - link "AI Predictions" [ref=e113] [cursor=pointer]:
+                    - /url: /predictions/ai
+                    - text: AI
+                    - generic [ref=e114]: Predictions
+                  - link "Derivatives Predictions" [ref=e115] [cursor=pointer]:
+                    - /url: /predictions/derivatives
+                    - text: Derivatives
+                    - generic [ref=e116]: Predictions
+                  - link "Equities Predictions" [ref=e117] [cursor=pointer]:
+                    - /url: /predictions/equities
+                    - text: Equities
+                    - generic [ref=e118]: Predictions
+                  - button "View more" [ref=e119] [cursor=pointer]:
+                    - generic [ref=e120]: View more
+                    - img [ref=e121]
+              - generic [ref=e123]:
+                - heading "Support & Social" [level=3] [ref=e124]
+                - generic [ref=e125]:
+                  - link "Learn" [ref=e126] [cursor=pointer]:
+                    - /url: https://docs.polymarket.com/concepts
+                  - link "𝕏 (Twitter)" [ref=e127] [cursor=pointer]:
+                    - /url: https://x.com/Polymarket
+                  - link "Instagram" [ref=e128] [cursor=pointer]:
+                    - /url: https://www.instagram.com/polymarket
+                  - link "Discord" [ref=e129] [cursor=pointer]:
+                    - /url: https://discord.gg/Polymarket
+                  - link "TikTok" [ref=e130] [cursor=pointer]:
+                    - /url: https://www.tiktok.com/@polymarket
+                  - link "News" [ref=e131] [cursor=pointer]:
+                    - /url: https://news.polymarket.com
+                  - link "Contact us" [ref=e132] [cursor=pointer]:
+                    - /url: mailto:hello@polymarket.com
+              - generic [ref=e133]:
+                - heading "Polymarket" [level=3] [ref=e134]
+                - generic [ref=e135]:
+                  - link "Rewards" [ref=e136] [cursor=pointer]:
+                    - /url: /rewards
+                  - link "APIs" [ref=e137] [cursor=pointer]:
+                    - /url: https://docs.polymarket.com/api-reference
+                  - link "Leaderboard" [ref=e138] [cursor=pointer]:
+                    - /url: /leaderboard
+                  - link "Accuracy" [ref=e139] [cursor=pointer]:
+                    - /url: /accuracy
+                  - link "Brand" [ref=e140] [cursor=pointer]:
+                    - /url: /brand
+                  - link "Activity" [ref=e141] [cursor=pointer]:
+                    - /url: /activity
+                  - link "Careers" [ref=e142] [cursor=pointer]:
+                    - /url: /careers
+                  - link "Press" [ref=e143] [cursor=pointer]:
+                    - /url: mailto:press@polymarket.com
+            - generic [ref=e144]:
+              - generic [ref=e145]:
+                - generic [ref=e146]:
+                  - link "Email" [ref=e147] [cursor=pointer]:
+                    - /url: mailto:hello@polymarket.com
+                    - img [ref=e148]
+                  - link "X (Twitter)" [ref=e152] [cursor=pointer]:
+                    - /url: https://x.com/Polymarket
+                    - img [ref=e153]
+                  - link "Instagram" [ref=e155] [cursor=pointer]:
+                    - /url: https://www.instagram.com/polymarket
+                    - img [ref=e156]
+                  - link "Discord" [ref=e161] [cursor=pointer]:
+                    - /url: https://discord.gg/Polymarket
+                    - img [ref=e162]
+                  - link "TikTok" [ref=e164] [cursor=pointer]:
+                    - /url: https://www.tiktok.com/@polymarket
+                    - img [ref=e165]
+                - generic [ref=e167]:
+                  - generic [ref=e168]: Adventure One QSS Inc. © 2026
+                  - generic [ref=e169]: ·
+                  - link "Privacy" [ref=e170] [cursor=pointer]:
+                    - /url: /privacy
+                  - generic [ref=e171]: ·
+                  - link "Terms of Use" [ref=e172] [cursor=pointer]:
+                    - /url: https://polymarket.com/tos
+                  - generic [ref=e173]: ·
+                  - link "Help Center" [ref=e174] [cursor=pointer]:
+                    - /url: https://help.polymarket.com
+                  - generic [ref=e175]: ·
+                  - link "Docs" [ref=e176] [cursor=pointer]:
+                    - /url: https://docs.polymarket.com
+                - button "English" [ref=e177] [cursor=pointer]:
+                  - img [ref=e178]
+                  - generic [ref=e181]: English
+                  - img [ref=e182]
+              - paragraph [ref=e184]:
+                - text: Polymarket operates globally through separate legal entities.
+                - link "Polymarket US" [ref=e185] [cursor=pointer]:
+                  - /url: https://polymarket.us/
+                - text: is operated by QCX LLC d/b/a Polymarket US, a CFTC-regulated Designated Contract Market. This international platform is not regulated by the CFTC and operates independently. Trading involves substantial risk of loss. See our
+                - link "Terms of Service" [ref=e186] [cursor=pointer]:
+                  - /url: https://polymarket.com/tos
+                - text: "&"
+                - link "Privacy Policy" [ref=e187] [cursor=pointer]:
+                  - /url: https://polymarket.com/privacy
+                - text: .
+    - region "Notifications (F8)":
+      - list
+  - alert [ref=e188]
+  - iframe [ref=e189]:
+    

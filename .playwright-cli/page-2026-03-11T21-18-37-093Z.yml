@@ -1,0 +1,1560 @@
+- generic [ref=e8]:
+  - complementary [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic [ref=e12]: PM
+        - generic [ref=e13]:
+          - heading "Polymarket Lab" [level=1] [ref=e14]
+          - paragraph [ref=e15]: 실시간 리서치 콘솔
+      - group "언어" [ref=e1744]:
+        - generic [ref=e17]: 언어
+        - button "EN" [ref=e18]
+        - button "KR" [ref=e19]
+      - navigation "Dashboard sections" [ref=e20]:
+        - button "개요" [ref=e1745]
+        - button "베팅 가이드" [ref=e1746]
+        - button "전략" [ref=e1747]
+        - button "마켓" [ref=e1748]
+        - button "백테스트" [ref=e1749]
+    - generic [ref=e26]:
+      - paragraph [ref=e27]: 모드
+      - strong [ref=e28]: 실시간 데이터 피드
+      - generic [ref=e29]: "상태: 실시간"
+  - main [ref=e30]:
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - paragraph [ref=e33]: React + Live API
+        - heading "실시간 기회 스캐너" [level=2] [ref=e1750]
+        - paragraph [ref=e35]: 실시간 시장 + 실전략 로직 결과를 필터링합니다.
+      - generic [ref=e36]:
+        - generic [ref=e37]: UTC 21:18
+        - generic [ref=e38]: "시그널: 49"
+        - generic [ref=e39]: 실행 중
+    - generic [ref=e269]:
+      - generic [ref=e270]:
+        - generic [ref=e271]:
+          - generic [ref=e272]: "최소 거래량: 5K"
+          - 'slider "최소 거래량: 5K" [ref=e1751]': "5000"
+        - generic [ref=e274]:
+          - generic [ref=e275]: "최소 엣지: 3.0%"
+          - 'slider "최소 엣지: 3.0%" [ref=e1752]': "0.03"
+        - generic [ref=e277]:
+          - button "스캔 실행" [ref=e1753]
+          - generic [ref=e279]: "마지막 스캔: 05:18 PM"
+      - article [ref=e1803]:
+        - generic [ref=e1804]:
+          - generic [ref=e1805]:
+            - heading "Trump out as President before GTA VI?" [level=3] [ref=e1806]
+            - link "마켓 열기" [active] [ref=e1807] [cursor=pointer]:
+              - /url: https://polymarket.com/event/trump-out-as-president-before-gta-vi-846
+          - generic [ref=e1808]: politics
+        - generic [ref=e1809]:
+          - generic [ref=e1810]:
+            - paragraph [ref=e1811]: 전략
+            - strong [ref=e1812]: s01_reversing_stupidity
+          - generic [ref=e1813]:
+            - paragraph [ref=e1814]: 거래량
+            - strong [ref=e1815]: $534,730.74
+          - generic [ref=e1816]:
+            - paragraph [ref=e1817]: 방향
+            - strong [ref=e1818]: buy
+          - generic [ref=e1819]:
+            - paragraph [ref=e1820]: 시장 가격
+            - strong [ref=e1821]: "0.475"
+          - generic [ref=e1822]:
+            - paragraph [ref=e1823]: 엣지
+            - strong [ref=e1824]: 47.5%
+          - generic [ref=e1825]:
+            - paragraph [ref=e1826]: 신뢰도
+            - strong [ref=e1827]: 70.0%
+          - generic [ref=e1828]:
+            - paragraph [ref=e1829]: 종료일
+            - strong [ref=e1830]: 2026-07-31T12:00:00Z
+        - generic [ref=e1831]:
+          - generic [ref=e1832]:
+            - generic [ref=e1833]:
+              - paragraph [ref=e1834]: 실행 플랜
+              - strong [ref=e1835]: 수동 전용
+            - generic [ref=e1836]: 지금 진입
+          - generic [ref=e1837]:
+            - generic [ref=e1838]:
+              - paragraph [ref=e1839]: 트리거
+              - strong [ref=e1840]: YES >= 0.180
+              - generic [ref=e1841]: NO <= 0.820
+            - generic [ref=e1842]:
+              - paragraph [ref=e1843]: 지정가
+              - strong [ref=e1844]: NO <= 0.495
+              - generic [ref=e1845]: ask 0.480 · size 600.000 · basis $10,000.00
+            - generic [ref=e1846]:
+              - paragraph [ref=e1847]: 상단 한도
+              - strong [ref=e1848]: "0.505"
+              - text: live orderbook
+            - generic [ref=e1849]:
+              - paragraph [ref=e1850]: 익절 검토
+              - strong [ref=e1851]: "0.784"
+              - generic [ref=e1852]: "재검토 구간: 0.425"
+          - paragraph [ref=e1853]: 지금 Polymarket에서 NO를 선택하고 0.4950 이하 지정가로 매수하세요. 추천 계약 수량 600.0000 기준, 현재 NO 호가는 0.4800입니다. NO가 0.7837 이상이면 이익실현 검토, 0.4250 이하로 밀리면 재검토하세요.
+      - article [ref=e1854]:
+        - generic [ref=e1855]:
+          - generic [ref=e1856]:
+            - heading "Russia-Ukraine Ceasefire before GTA VI?" [level=3] [ref=e1857]
+            - link "마켓 열기" [ref=e1858] [cursor=pointer]:
+              - /url: https://polymarket.com/event/russia-ukraine-ceasefire-before-gta-vi-554
+          - generic [ref=e1859]: geopolitical
+        - generic [ref=e1860]:
+          - generic [ref=e1861]:
+            - paragraph [ref=e1862]: 전략
+            - strong [ref=e1863]: s01_reversing_stupidity
+          - generic [ref=e1864]:
+            - paragraph [ref=e1865]: 거래량
+            - strong [ref=e1866]: $1,367,826.81
+          - generic [ref=e1867]:
+            - paragraph [ref=e1868]: 방향
+            - strong [ref=e1869]: buy
+          - generic [ref=e1870]:
+            - paragraph [ref=e1871]: 시장 가격
+            - strong [ref=e1872]: "0.420"
+          - generic [ref=e1873]:
+            - paragraph [ref=e1874]: 엣지
+            - strong [ref=e1875]: 43.0%
+          - generic [ref=e1876]:
+            - paragraph [ref=e1877]: 신뢰도
+            - strong [ref=e1878]: 70.0%
+          - generic [ref=e1879]:
+            - paragraph [ref=e1880]: 종료일
+            - strong [ref=e1881]: 2026-07-31T12:00:00Z
+        - generic [ref=e1882]:
+          - generic [ref=e1883]:
+            - generic [ref=e1884]:
+              - paragraph [ref=e1885]: 실행 플랜
+              - strong [ref=e1886]: 수동 전용
+            - generic [ref=e1887]: 지금 진입
+          - generic [ref=e1888]:
+            - generic [ref=e1889]:
+              - paragraph [ref=e1890]: 트리거
+              - strong [ref=e1891]: YES >= 0.280
+              - generic [ref=e1892]: NO <= 0.720
+            - generic [ref=e1893]:
+              - paragraph [ref=e1894]: 지정가
+              - strong [ref=e1895]: NO <= 0.440
+              - generic [ref=e1896]: ask 0.430 · size 600.000 · basis $10,000.00
+            - generic [ref=e1897]:
+              - paragraph [ref=e1898]: 상단 한도
+              - strong [ref=e1899]: "0.450"
+              - text: live orderbook
+            - generic [ref=e1900]:
+              - paragraph [ref=e1901]: 익절 검토
+              - strong [ref=e1902]: "0.700"
+              - generic [ref=e1903]: "재검토 구간: 0.370"
+          - paragraph [ref=e1904]: 지금 Polymarket에서 NO를 선택하고 0.4400 이하 지정가로 매수하세요. 추천 계약 수량 600.0000 기준, 현재 NO 호가는 0.4300입니다. NO가 0.6995 이상이면 이익실현 검토, 0.3700 이하로 밀리면 재검토하세요.
+      - article [ref=e1905]:
+        - generic [ref=e1906]:
+          - generic [ref=e1907]:
+            - heading "Russia-Ukraine Ceasefire before GTA VI?" [level=3] [ref=e1908]
+            - link "마켓 열기" [ref=e1909] [cursor=pointer]:
+              - /url: https://polymarket.com/event/russia-ukraine-ceasefire-before-gta-vi-554
+          - generic [ref=e1910]: unknown
+        - generic [ref=e1911]:
+          - generic [ref=e1912]:
+            - paragraph [ref=e1913]: 전략
+            - strong [ref=e1914]: s03_nothing_ever_happens
+          - generic [ref=e1915]:
+            - paragraph [ref=e1916]: 거래량
+            - strong [ref=e1917]: $1,367,826.81
+          - generic [ref=e1918]:
+            - paragraph [ref=e1919]: 방향
+            - strong [ref=e1920]: buy
+          - generic [ref=e1921]:
+            - paragraph [ref=e1922]: 시장 가격
+            - strong [ref=e1923]: "0.420"
+          - generic [ref=e1924]:
+            - paragraph [ref=e1925]: 엣지
+            - strong [ref=e1926]: 43.0%
+          - generic [ref=e1927]:
+            - paragraph [ref=e1928]: 신뢰도
+            - strong [ref=e1929]: 65.0%
+          - generic [ref=e1930]:
+            - paragraph [ref=e1931]: 종료일
+            - strong [ref=e1932]: 2026-07-31T12:00:00Z
+      - article [ref=e1933]:
+        - generic [ref=e1934]:
+          - generic [ref=e1935]:
+            - heading "Will China invades Taiwan before GTA VI?" [level=3] [ref=e1936]
+            - link "마켓 열기" [ref=e1937] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-china-invades-taiwan-before-gta-vi-716
+          - generic [ref=e1938]: geopolitical
+        - generic [ref=e1939]:
+          - generic [ref=e1940]:
+            - paragraph [ref=e1941]: 전략
+            - strong [ref=e1942]: s01_reversing_stupidity
+          - generic [ref=e1943]:
+            - paragraph [ref=e1944]: 거래량
+            - strong [ref=e1945]: $1,464,230.69
+          - generic [ref=e1946]:
+            - paragraph [ref=e1947]: 방향
+            - strong [ref=e1948]: buy
+          - generic [ref=e1949]:
+            - paragraph [ref=e1950]: 시장 가격
+            - strong [ref=e1951]: "0.485"
+          - generic [ref=e1952]:
+            - paragraph [ref=e1953]: 엣지
+            - strong [ref=e1954]: 36.5%
+          - generic [ref=e1955]:
+            - paragraph [ref=e1956]: 신뢰도
+            - strong [ref=e1957]: 70.0%
+          - generic [ref=e1958]:
+            - paragraph [ref=e1959]: 종료일
+            - strong [ref=e1960]: 2026-07-31T12:00:00Z
+        - generic [ref=e1961]:
+          - generic [ref=e1962]:
+            - generic [ref=e1963]:
+              - paragraph [ref=e1964]: 실행 플랜
+              - strong [ref=e1965]: 수동 전용
+            - generic [ref=e1966]: 지금 진입
+          - generic [ref=e1967]:
+            - generic [ref=e1968]:
+              - paragraph [ref=e1969]: 트리거
+              - strong [ref=e1970]: YES >= 0.280
+              - generic [ref=e1971]: NO <= 0.720
+            - generic [ref=e1972]:
+              - paragraph [ref=e1973]: 지정가
+              - strong [ref=e1974]: NO <= 0.505
+              - generic [ref=e1975]: ask 0.490 · size 600.000 · basis $10,000.00
+            - generic [ref=e1976]:
+              - paragraph [ref=e1977]: 상단 한도
+              - strong [ref=e1978]: "0.515"
+              - text: live orderbook
+            - generic [ref=e1979]:
+              - paragraph [ref=e1980]: 익절 검토
+              - strong [ref=e1981]: "0.722"
+              - generic [ref=e1982]: "재검토 구간: 0.435"
+          - paragraph [ref=e1983]: 지금 Polymarket에서 NO를 선택하고 0.5050 이하 지정가로 매수하세요. 추천 계약 수량 600.0000 기준, 현재 NO 호가는 0.4900입니다. NO가 0.7222 이상이면 이익실현 검토, 0.4350 이하로 밀리면 재검토하세요.
+      - article [ref=e1984]:
+        - generic [ref=e1985]:
+          - generic [ref=e1986]:
+            - heading "Will China invades Taiwan before GTA VI?" [level=3] [ref=e1987]
+            - link "마켓 열기" [ref=e1988] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-china-invades-taiwan-before-gta-vi-716
+          - generic [ref=e1989]: unknown
+        - generic [ref=e1990]:
+          - generic [ref=e1991]:
+            - paragraph [ref=e1992]: 전략
+            - strong [ref=e1993]: s03_nothing_ever_happens
+          - generic [ref=e1994]:
+            - paragraph [ref=e1995]: 거래량
+            - strong [ref=e1996]: $1,464,230.69
+          - generic [ref=e1997]:
+            - paragraph [ref=e1998]: 방향
+            - strong [ref=e1999]: buy
+          - generic [ref=e2000]:
+            - paragraph [ref=e2001]: 시장 가격
+            - strong [ref=e2002]: "0.485"
+          - generic [ref=e2003]:
+            - paragraph [ref=e2004]: 엣지
+            - strong [ref=e2005]: 36.5%
+          - generic [ref=e2006]:
+            - paragraph [ref=e2007]: 신뢰도
+            - strong [ref=e2008]: 65.0%
+          - generic [ref=e2009]:
+            - paragraph [ref=e2010]: 종료일
+            - strong [ref=e2011]: 2026-07-31T12:00:00Z
+      - article [ref=e2012]:
+        - generic [ref=e2013]:
+          - generic [ref=e2014]:
+            - heading "New Rihanna Album before GTA VI?" [level=3] [ref=e2015]
+            - link "마켓 열기" [ref=e2016] [cursor=pointer]:
+              - /url: https://polymarket.com/event/new-rhianna-album-before-gta-vi-926
+          - generic [ref=e2017]: unknown
+        - generic [ref=e2018]:
+          - generic [ref=e2019]:
+            - paragraph [ref=e2020]: 전략
+            - strong [ref=e2021]: s10_yes_bias
+          - generic [ref=e2022]:
+            - paragraph [ref=e2023]: 거래량
+            - strong [ref=e2024]: $651,302.89
+          - generic [ref=e2025]:
+            - paragraph [ref=e2026]: 방향
+            - strong [ref=e2027]: buy
+          - generic [ref=e2028]:
+            - paragraph [ref=e2029]: 시장 가격
+            - strong [ref=e2030]: "0.395"
+          - generic [ref=e2031]:
+            - paragraph [ref=e2032]: 엣지
+            - strong [ref=e2033]: 30.5%
+          - generic [ref=e2034]:
+            - paragraph [ref=e2035]: 신뢰도
+            - strong [ref=e2036]: 60.0%
+          - generic [ref=e2037]:
+            - paragraph [ref=e2038]: 종료일
+            - strong [ref=e2039]: 2026-07-31T12:00:00Z
+      - article [ref=e2040]:
+        - generic [ref=e2041]:
+          - generic [ref=e2042]:
+            - heading "Will MegaETH perform an airdrop by June 30?" [level=3] [ref=e2043]
+            - link "마켓 열기" [ref=e2044] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-megaeth-perform-an-airdrop-by-june-30-143-229-513-574-212-254
+          - generic [ref=e2045]: unknown
+        - generic [ref=e2046]:
+          - generic [ref=e2047]:
+            - paragraph [ref=e2048]: 전략
+            - strong [ref=e2049]: s10_yes_bias
+          - generic [ref=e2050]:
+            - paragraph [ref=e2051]: 거래량
+            - strong [ref=e2052]: $886,091.69
+          - generic [ref=e2053]:
+            - paragraph [ref=e2054]: 방향
+            - strong [ref=e2055]: buy
+          - generic [ref=e2056]:
+            - paragraph [ref=e2057]: 시장 가격
+            - strong [ref=e2058]: "0.398"
+          - generic [ref=e2059]:
+            - paragraph [ref=e2060]: 엣지
+            - strong [ref=e2061]: 30.2%
+          - generic [ref=e2062]:
+            - paragraph [ref=e2063]: 신뢰도
+            - strong [ref=e2064]: 60.0%
+          - generic [ref=e2065]:
+            - paragraph [ref=e2066]: 종료일
+            - strong [ref=e2067]: 2026-02-01T05:00:00Z
+      - article [ref=e2068]:
+        - generic [ref=e2069]:
+          - generic [ref=e2070]:
+            - heading "Will Italy qualify for the 2026 FIFA World Cup?" [level=3] [ref=e2071]
+            - link "마켓 열기" [ref=e2072] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-italy-qualify-for-the-2026-fifa-world-cup
+          - generic [ref=e2073]: unknown
+        - generic [ref=e2074]:
+          - generic [ref=e2075]:
+            - paragraph [ref=e2076]: 전략
+            - strong [ref=e2077]: s10_yes_bias
+          - generic [ref=e2078]:
+            - paragraph [ref=e2079]: 거래량
+            - strong [ref=e2080]: $213,983.60
+          - generic [ref=e2081]:
+            - paragraph [ref=e2082]: 방향
+            - strong [ref=e2083]: buy
+          - generic [ref=e2084]:
+            - paragraph [ref=e2085]: 시장 가격
+            - strong [ref=e2086]: "0.405"
+          - generic [ref=e2087]:
+            - paragraph [ref=e2088]: 엣지
+            - strong [ref=e2089]: 29.5%
+          - generic [ref=e2090]:
+            - paragraph [ref=e2091]: 신뢰도
+            - strong [ref=e2092]: 60.0%
+          - generic [ref=e2093]:
+            - paragraph [ref=e2094]: 종료일
+            - strong [ref=e2095]: 2026-04-12T00:00:00Z
+      - article [ref=e2096]:
+        - generic [ref=e2097]:
+          - generic [ref=e2098]:
+            - heading "Russia-Ukraine Ceasefire before GTA VI?" [level=3] [ref=e2099]
+            - link "마켓 열기" [ref=e2100] [cursor=pointer]:
+              - /url: https://polymarket.com/event/russia-ukraine-ceasefire-before-gta-vi-554
+          - generic [ref=e2101]: unknown
+        - generic [ref=e2102]:
+          - generic [ref=e2103]:
+            - paragraph [ref=e2104]: 전략
+            - strong [ref=e2105]: s10_yes_bias
+          - generic [ref=e2106]:
+            - paragraph [ref=e2107]: 거래량
+            - strong [ref=e2108]: $1,367,826.81
+          - generic [ref=e2109]:
+            - paragraph [ref=e2110]: 방향
+            - strong [ref=e2111]: buy
+          - generic [ref=e2112]:
+            - paragraph [ref=e2113]: 시장 가격
+            - strong [ref=e2114]: "0.420"
+          - generic [ref=e2115]:
+            - paragraph [ref=e2116]: 엣지
+            - strong [ref=e2117]: 28.0%
+          - generic [ref=e2118]:
+            - paragraph [ref=e2119]: 신뢰도
+            - strong [ref=e2120]: 60.0%
+          - generic [ref=e2121]:
+            - paragraph [ref=e2122]: 종료일
+            - strong [ref=e2123]: 2026-07-31T12:00:00Z
+      - article [ref=e2124]:
+        - generic [ref=e2125]:
+          - generic [ref=e2126]:
+            - heading "New Playboi Carti Album before GTA VI?" [level=3] [ref=e2127]
+            - link "마켓 열기" [ref=e2128] [cursor=pointer]:
+              - /url: https://polymarket.com/event/new-playboi-carti-album-before-gta-vi-421
+          - generic [ref=e2129]: unknown
+        - generic [ref=e2130]:
+          - generic [ref=e2131]:
+            - paragraph [ref=e2132]: 전략
+            - strong [ref=e2133]: s10_yes_bias
+          - generic [ref=e2134]:
+            - paragraph [ref=e2135]: 거래량
+            - strong [ref=e2136]: $681,293.41
+          - generic [ref=e2137]:
+            - paragraph [ref=e2138]: 방향
+            - strong [ref=e2139]: buy
+          - generic [ref=e2140]:
+            - paragraph [ref=e2141]: 시장 가격
+            - strong [ref=e2142]: "0.475"
+          - generic [ref=e2143]:
+            - paragraph [ref=e2144]: 엣지
+            - strong [ref=e2145]: 22.5%
+          - generic [ref=e2146]:
+            - paragraph [ref=e2147]: 신뢰도
+            - strong [ref=e2148]: 60.0%
+          - generic [ref=e2149]:
+            - paragraph [ref=e2150]: 종료일
+            - strong [ref=e2151]: 2026-07-31T12:00:00Z
+      - article [ref=e2152]:
+        - generic [ref=e2153]:
+          - generic [ref=e2154]:
+            - heading "Trump out as President before GTA VI?" [level=3] [ref=e2155]
+            - link "마켓 열기" [ref=e2156] [cursor=pointer]:
+              - /url: https://polymarket.com/event/trump-out-as-president-before-gta-vi-846
+          - generic [ref=e2157]: unknown
+        - generic [ref=e2158]:
+          - generic [ref=e2159]:
+            - paragraph [ref=e2160]: 전략
+            - strong [ref=e2161]: s10_yes_bias
+          - generic [ref=e2162]:
+            - paragraph [ref=e2163]: 거래량
+            - strong [ref=e2164]: $534,730.74
+          - generic [ref=e2165]:
+            - paragraph [ref=e2166]: 방향
+            - strong [ref=e2167]: buy
+          - generic [ref=e2168]:
+            - paragraph [ref=e2169]: 시장 가격
+            - strong [ref=e2170]: "0.475"
+          - generic [ref=e2171]:
+            - paragraph [ref=e2172]: 엣지
+            - strong [ref=e2173]: 22.5%
+          - generic [ref=e2174]:
+            - paragraph [ref=e2175]: 신뢰도
+            - strong [ref=e2176]: 60.0%
+          - generic [ref=e2177]:
+            - paragraph [ref=e2178]: 종료일
+            - strong [ref=e2179]: 2026-07-31T12:00:00Z
+      - article [ref=e2180]:
+        - generic [ref=e2181]:
+          - generic [ref=e2182]:
+            - heading "Will Harvey Weinstein be sentenced to no prison time?" [level=3] [ref=e2183]
+            - link "마켓 열기" [ref=e2184] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-harvey-weinstein-be-sentenced-to-no-prison-time
+          - generic [ref=e2185]: unknown
+        - generic [ref=e2186]:
+          - generic [ref=e2187]:
+            - paragraph [ref=e2188]: 전략
+            - strong [ref=e2189]: s10_yes_bias
+          - generic [ref=e2190]:
+            - paragraph [ref=e2191]: 거래량
+            - strong [ref=e2192]: $53,200.18
+          - generic [ref=e2193]:
+            - paragraph [ref=e2194]: 방향
+            - strong [ref=e2195]: buy
+          - generic [ref=e2196]:
+            - paragraph [ref=e2197]: 시장 가격
+            - strong [ref=e2198]: "0.475"
+          - generic [ref=e2199]:
+            - paragraph [ref=e2200]: 엣지
+            - strong [ref=e2201]: 22.5%
+          - generic [ref=e2202]:
+            - paragraph [ref=e2203]: 신뢰도
+            - strong [ref=e2204]: 60.0%
+          - generic [ref=e2205]:
+            - paragraph [ref=e2206]: 종료일
+            - strong [ref=e2207]: 2025-12-31T12:00:00Z
+      - article [ref=e2208]:
+        - generic [ref=e2209]:
+          - generic [ref=e2210]:
+            - heading "Will China invades Taiwan before GTA VI?" [level=3] [ref=e2211]
+            - link "마켓 열기" [ref=e2212] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-china-invades-taiwan-before-gta-vi-716
+          - generic [ref=e2213]: unknown
+        - generic [ref=e2214]:
+          - generic [ref=e2215]:
+            - paragraph [ref=e2216]: 전략
+            - strong [ref=e2217]: s10_yes_bias
+          - generic [ref=e2218]:
+            - paragraph [ref=e2219]: 거래량
+            - strong [ref=e2220]: $1,464,230.69
+          - generic [ref=e2221]:
+            - paragraph [ref=e2222]: 방향
+            - strong [ref=e2223]: buy
+          - generic [ref=e2224]:
+            - paragraph [ref=e2225]: 시장 가격
+            - strong [ref=e2226]: "0.485"
+          - generic [ref=e2227]:
+            - paragraph [ref=e2228]: 엣지
+            - strong [ref=e2229]: 21.5%
+          - generic [ref=e2230]:
+            - paragraph [ref=e2231]: 신뢰도
+            - strong [ref=e2232]: 60.0%
+          - generic [ref=e2233]:
+            - paragraph [ref=e2234]: 종료일
+            - strong [ref=e2235]: 2026-07-31T12:00:00Z
+      - article [ref=e2236]:
+        - generic [ref=e2237]:
+          - generic [ref=e2238]:
+            - heading "Will bitcoin hit $1m before GTA VI?" [level=3] [ref=e2239]
+            - link "마켓 열기" [ref=e2240] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-bitcoin-hit-1m-before-gta-vi-872
+          - generic [ref=e2241]: crypto
+        - generic [ref=e2242]:
+          - generic [ref=e2243]:
+            - paragraph [ref=e2244]: 전략
+            - strong [ref=e2245]: s01_reversing_stupidity
+          - generic [ref=e2246]:
+            - paragraph [ref=e2247]: 거래량
+            - strong [ref=e2248]: $3,526,095.29
+          - generic [ref=e2249]:
+            - paragraph [ref=e2250]: 방향
+            - strong [ref=e2251]: buy
+          - generic [ref=e2252]:
+            - paragraph [ref=e2253]: 시장 가격
+            - strong [ref=e2254]: "0.512"
+          - generic [ref=e2255]:
+            - paragraph [ref=e2256]: 엣지
+            - strong [ref=e2257]: 18.8%
+          - generic [ref=e2258]:
+            - paragraph [ref=e2259]: 신뢰도
+            - strong [ref=e2260]: 70.0%
+          - generic [ref=e2261]:
+            - paragraph [ref=e2262]: 종료일
+            - strong [ref=e2263]: 2026-07-31T12:00:00Z
+        - generic [ref=e2264]:
+          - generic [ref=e2265]:
+            - generic [ref=e2266]:
+              - paragraph [ref=e2267]: 실행 플랜
+              - strong [ref=e2268]: 수동 전용
+            - generic [ref=e2269]: 지금 진입
+          - generic [ref=e2270]:
+            - generic [ref=e2271]:
+              - paragraph [ref=e2272]: 트리거
+              - strong [ref=e2273]: YES >= 0.400
+              - generic [ref=e2274]: NO <= 0.600
+            - generic [ref=e2275]:
+              - paragraph [ref=e2276]: 지정가
+              - strong [ref=e2277]: NO <= 0.532
+              - generic [ref=e2278]: ask 0.513 · size 600.000 · basis $10,000.00
+            - generic [ref=e2279]:
+              - paragraph [ref=e2280]: 상단 한도
+              - strong [ref=e2281]: "0.542"
+              - text: live orderbook
+            - generic [ref=e2282]:
+              - paragraph [ref=e2283]: 익절 검토
+              - strong [ref=e2284]: "0.634"
+              - generic [ref=e2285]: "재검토 구간: 0.462"
+          - paragraph [ref=e2286]: 지금 Polymarket에서 NO를 선택하고 0.5320 이하 지정가로 매수하세요. 추천 계약 수량 600.0000 기준, 현재 NO 호가는 0.5130입니다. NO가 0.6342 이상이면 이익실현 검토, 0.4620 이하로 밀리면 재검토하세요.
+      - article [ref=e2287]:
+        - generic [ref=e2288]:
+          - generic [ref=e2289]:
+            - heading "Will bitcoin hit $1m before GTA VI?" [level=3] [ref=e2290]
+            - link "마켓 열기" [ref=e2291] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-bitcoin-hit-1m-before-gta-vi-872
+          - generic [ref=e2292]: unknown
+        - generic [ref=e2293]:
+          - generic [ref=e2294]:
+            - paragraph [ref=e2295]: 전략
+            - strong [ref=e2296]: s10_yes_bias
+          - generic [ref=e2297]:
+            - paragraph [ref=e2298]: 거래량
+            - strong [ref=e2299]: $3,526,095.29
+          - generic [ref=e2300]:
+            - paragraph [ref=e2301]: 방향
+            - strong [ref=e2302]: buy
+          - generic [ref=e2303]:
+            - paragraph [ref=e2304]: 시장 가격
+            - strong [ref=e2305]: "0.512"
+          - generic [ref=e2306]:
+            - paragraph [ref=e2307]: 엣지
+            - strong [ref=e2308]: 18.8%
+          - generic [ref=e2309]:
+            - paragraph [ref=e2310]: 신뢰도
+            - strong [ref=e2311]: 60.0%
+          - generic [ref=e2312]:
+            - paragraph [ref=e2313]: 종료일
+            - strong [ref=e2314]: 2026-07-31T12:00:00Z
+      - article [ref=e2315]:
+        - generic [ref=e2316]:
+          - generic [ref=e2317]:
+            - heading "Will Jesus Christ return before GTA VI?" [level=3] [ref=e2318]
+            - link "마켓 열기" [ref=e2319] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-jesus-christ-return-before-gta-vi-665
+          - generic [ref=e2320]: unknown
+        - generic [ref=e2321]:
+          - generic [ref=e2322]:
+            - paragraph [ref=e2323]: 전략
+            - strong [ref=e2324]: s10_yes_bias
+          - generic [ref=e2325]:
+            - paragraph [ref=e2326]: 거래량
+            - strong [ref=e2327]: $9,967,089.51
+          - generic [ref=e2328]:
+            - paragraph [ref=e2329]: 방향
+            - strong [ref=e2330]: buy
+          - generic [ref=e2331]:
+            - paragraph [ref=e2332]: 시장 가격
+            - strong [ref=e2333]: "0.515"
+          - generic [ref=e2334]:
+            - paragraph [ref=e2335]: 엣지
+            - strong [ref=e2336]: 18.5%
+          - generic [ref=e2337]:
+            - paragraph [ref=e2338]: 신뢰도
+            - strong [ref=e2339]: 60.0%
+          - generic [ref=e2340]:
+            - paragraph [ref=e2341]: 종료일
+            - strong [ref=e2342]: 2026-07-31T12:00:00Z
+      - article [ref=e2343]:
+        - generic [ref=e2344]:
+          - generic [ref=e2345]:
+            - heading "Will Poland qualify for the 2026 FIFA World Cup?" [level=3] [ref=e2346]
+            - link "마켓 열기" [ref=e2347] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-poland-qualify-for-the-2026-fifa-world-cup
+          - generic [ref=e2348]: unknown
+        - generic [ref=e2349]:
+          - generic [ref=e2350]:
+            - paragraph [ref=e2351]: 전략
+            - strong [ref=e2352]: s10_yes_bias
+          - generic [ref=e2353]:
+            - paragraph [ref=e2354]: 거래량
+            - strong [ref=e2355]: $458,513.32
+          - generic [ref=e2356]:
+            - paragraph [ref=e2357]: 방향
+            - strong [ref=e2358]: buy
+          - generic [ref=e2359]:
+            - paragraph [ref=e2360]: 시장 가격
+            - strong [ref=e2361]: "0.625"
+          - generic [ref=e2362]:
+            - paragraph [ref=e2363]: 엣지
+            - strong [ref=e2364]: 7.5%
+          - generic [ref=e2365]:
+            - paragraph [ref=e2366]: 신뢰도
+            - strong [ref=e2367]: 60.0%
+          - generic [ref=e2368]:
+            - paragraph [ref=e2369]: 종료일
+            - strong [ref=e2370]: 2026-04-12T00:00:00Z
+      - article [ref=e2371]:
+        - generic [ref=e2372]:
+          - generic [ref=e2373]:
+            - heading "Will the Oklahoma City Thunder win the 2026 NBA Finals?" [level=3] [ref=e2374]
+            - link "마켓 열기" [ref=e2375] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-oklahoma-city-thunder-win-the-2026-nba-finals
+          - generic [ref=e2376]: unknown
+        - generic [ref=e2377]:
+          - generic [ref=e2378]:
+            - paragraph [ref=e2379]: 전략
+            - strong [ref=e2380]: s10_yes_bias
+          - generic [ref=e2381]:
+            - paragraph [ref=e2382]: 거래량
+            - strong [ref=e2383]: $4,911,866.10
+          - generic [ref=e2384]:
+            - paragraph [ref=e2385]: 방향
+            - strong [ref=e2386]: buy
+          - generic [ref=e2387]:
+            - paragraph [ref=e2388]: 시장 가격
+            - strong [ref=e2389]: "0.645"
+          - generic [ref=e2390]:
+            - paragraph [ref=e2391]: 엣지
+            - strong [ref=e2392]: 5.5%
+          - generic [ref=e2393]:
+            - paragraph [ref=e2394]: 신뢰도
+            - strong [ref=e2395]: 60.0%
+          - generic [ref=e2396]:
+            - paragraph [ref=e2397]: 종료일
+            - strong [ref=e2398]: 2026-07-01T00:00:00Z
+      - article [ref=e2399]:
+        - generic [ref=e2400]:
+          - generic [ref=e2401]:
+            - heading "Will Gavin Newsom win the 2028 Democratic presidential nomination?" [level=3] [ref=e2402]
+            - link "마켓 열기" [ref=e2403] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568
+          - generic [ref=e2404]: unknown
+        - generic [ref=e2405]:
+          - generic [ref=e2406]:
+            - paragraph [ref=e2407]: 전략
+            - strong [ref=e2408]: s39_volume_momentum
+          - generic [ref=e2409]:
+            - paragraph [ref=e2410]: 거래량
+            - strong [ref=e2411]: $11,796,191.98
+          - generic [ref=e2412]:
+            - paragraph [ref=e2413]: 방향
+            - strong [ref=e2414]: buy
+          - generic [ref=e2415]:
+            - paragraph [ref=e2416]: 시장 가격
+            - strong [ref=e2417]: "0.747"
+          - generic [ref=e2418]:
+            - paragraph [ref=e2419]: 엣지
+            - strong [ref=e2420]: 5.0%
+          - generic [ref=e2421]:
+            - paragraph [ref=e2422]: 신뢰도
+            - strong [ref=e2423]: 55.0%
+          - generic [ref=e2424]:
+            - paragraph [ref=e2425]: 종료일
+            - strong [ref=e2426]: 2028-11-07T00:00:00Z
+      - article [ref=e2427]:
+        - generic [ref=e2428]:
+          - generic [ref=e2429]:
+            - heading "Will the Colorado Avalanche win the 2026 NHL Stanley Cup?" [level=3] [ref=e2430]
+            - link "마켓 열기" [ref=e2431] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-colorado-avalanche-win-the-2026-nhl-stanley-cup
+          - generic [ref=e2432]: unknown
+        - generic [ref=e2433]:
+          - generic [ref=e2434]:
+            - paragraph [ref=e2435]: 전략
+            - strong [ref=e2436]: s39_volume_momentum
+          - generic [ref=e2437]:
+            - paragraph [ref=e2438]: 거래량
+            - strong [ref=e2439]: $11,385,673.59
+          - generic [ref=e2440]:
+            - paragraph [ref=e2441]: 방향
+            - strong [ref=e2442]: buy
+          - generic [ref=e2443]:
+            - paragraph [ref=e2444]: 시장 가격
+            - strong [ref=e2445]: "0.784"
+          - generic [ref=e2446]:
+            - paragraph [ref=e2447]: 엣지
+            - strong [ref=e2448]: 5.0%
+          - generic [ref=e2449]:
+            - paragraph [ref=e2450]: 신뢰도
+            - strong [ref=e2451]: 55.0%
+          - generic [ref=e2452]:
+            - paragraph [ref=e2453]: 종료일
+            - strong [ref=e2454]: 2026-06-30T00:00:00Z
+      - article [ref=e2455]:
+        - generic [ref=e2456]:
+          - generic [ref=e2457]:
+            - heading "Will JD Vance win the 2028 US Presidential Election?" [level=3] [ref=e2458]
+            - link "마켓 열기" [ref=e2459] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-jd-vance-win-the-2028-us-presidential-election
+          - generic [ref=e2460]: unknown
+        - generic [ref=e2461]:
+          - generic [ref=e2462]:
+            - paragraph [ref=e2463]: 전략
+            - strong [ref=e2464]: s39_volume_momentum
+          - generic [ref=e2465]:
+            - paragraph [ref=e2466]: 거래량
+            - strong [ref=e2467]: $7,943,505.79
+          - generic [ref=e2468]:
+            - paragraph [ref=e2469]: 방향
+            - strong [ref=e2470]: buy
+          - generic [ref=e2471]:
+            - paragraph [ref=e2472]: 시장 가격
+            - strong [ref=e2473]: "0.791"
+          - generic [ref=e2474]:
+            - paragraph [ref=e2475]: 엣지
+            - strong [ref=e2476]: 5.0%
+          - generic [ref=e2477]:
+            - paragraph [ref=e2478]: 신뢰도
+            - strong [ref=e2479]: 55.0%
+          - generic [ref=e2480]:
+            - paragraph [ref=e2481]: 종료일
+            - strong [ref=e2482]: 2028-11-07T00:00:00Z
+      - article [ref=e2483]:
+        - generic [ref=e2484]:
+          - generic [ref=e2485]:
+            - heading "MegaETH market cap (FDV) >$2B one day after launch?" [level=3] [ref=e2486]
+            - link "마켓 열기" [ref=e2487] [cursor=pointer]:
+              - /url: https://polymarket.com/event/megaeth-market-cap-fdv-2b-one-day-after-launch-738-867-649-272-765-733
+          - generic [ref=e2488]: unknown
+        - generic [ref=e2489]:
+          - generic [ref=e2490]:
+            - paragraph [ref=e2491]: 전략
+            - strong [ref=e2492]: s39_volume_momentum
+          - generic [ref=e2493]:
+            - paragraph [ref=e2494]: 거래량
+            - strong [ref=e2495]: $5,481,651.25
+          - generic [ref=e2496]:
+            - paragraph [ref=e2497]: 방향
+            - strong [ref=e2498]: buy
+          - generic [ref=e2499]:
+            - paragraph [ref=e2500]: 시장 가격
+            - strong [ref=e2501]: "0.835"
+          - generic [ref=e2502]:
+            - paragraph [ref=e2503]: 엣지
+            - strong [ref=e2504]: 5.0%
+          - generic [ref=e2505]:
+            - paragraph [ref=e2506]: 신뢰도
+            - strong [ref=e2507]: 55.0%
+          - generic [ref=e2508]:
+            - paragraph [ref=e2509]: 종료일
+            - strong [ref=e2510]: 2025-12-31T00:00:00Z
+      - article [ref=e2511]:
+        - generic [ref=e2512]:
+          - generic [ref=e2513]:
+            - heading "Will Gavin Newsom win the 2028 US Presidential Election?" [level=3] [ref=e2514]
+            - link "마켓 열기" [ref=e2515] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-gavin-newsom-win-the-2028-us-presidential-election
+          - generic [ref=e2516]: unknown
+        - generic [ref=e2517]:
+          - generic [ref=e2518]:
+            - paragraph [ref=e2519]: 전략
+            - strong [ref=e2520]: s39_volume_momentum
+          - generic [ref=e2521]:
+            - paragraph [ref=e2522]: 거래량
+            - strong [ref=e2523]: $5,449,259.24
+          - generic [ref=e2524]:
+            - paragraph [ref=e2525]: 방향
+            - strong [ref=e2526]: buy
+          - generic [ref=e2527]:
+            - paragraph [ref=e2528]: 시장 가격
+            - strong [ref=e2529]: "0.828"
+          - generic [ref=e2530]:
+            - paragraph [ref=e2531]: 엣지
+            - strong [ref=e2532]: 5.0%
+          - generic [ref=e2533]:
+            - paragraph [ref=e2534]: 신뢰도
+            - strong [ref=e2535]: 55.0%
+          - generic [ref=e2536]:
+            - paragraph [ref=e2537]: 종료일
+            - strong [ref=e2538]: 2028-11-07T00:00:00Z
+      - article [ref=e2539]:
+        - generic [ref=e2540]:
+          - generic [ref=e2541]:
+            - heading "Will the San Antonio Spurs win the 2026 NBA Finals?" [level=3] [ref=e2542]
+            - link "마켓 열기" [ref=e2543] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-san-antonio-spurs-win-the-2026-nba-finals
+          - generic [ref=e2544]: unknown
+        - generic [ref=e2545]:
+          - generic [ref=e2546]:
+            - paragraph [ref=e2547]: 전략
+            - strong [ref=e2548]: s39_volume_momentum
+          - generic [ref=e2549]:
+            - paragraph [ref=e2550]: 거래량
+            - strong [ref=e2551]: $5,120,520.45
+          - generic [ref=e2552]:
+            - paragraph [ref=e2553]: 방향
+            - strong [ref=e2554]: buy
+          - generic [ref=e2555]:
+            - paragraph [ref=e2556]: 시장 가격
+            - strong [ref=e2557]: "0.867"
+          - generic [ref=e2558]:
+            - paragraph [ref=e2559]: 엣지
+            - strong [ref=e2560]: 5.0%
+          - generic [ref=e2561]:
+            - paragraph [ref=e2562]: 신뢰도
+            - strong [ref=e2563]: 55.0%
+          - generic [ref=e2564]:
+            - paragraph [ref=e2565]: 종료일
+            - strong [ref=e2566]: 2026-07-01T00:00:00Z
+      - article [ref=e2567]:
+        - generic [ref=e2568]:
+          - generic [ref=e2569]:
+            - heading "Will the Oklahoma City Thunder win the 2026 NBA Finals?" [level=3] [ref=e2570]
+            - link "마켓 열기" [ref=e2571] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-oklahoma-city-thunder-win-the-2026-nba-finals
+          - generic [ref=e2572]: unknown
+        - generic [ref=e2573]:
+          - generic [ref=e2574]:
+            - paragraph [ref=e2575]: 전략
+            - strong [ref=e2576]: s39_volume_momentum
+          - generic [ref=e2577]:
+            - paragraph [ref=e2578]: 거래량
+            - strong [ref=e2579]: $4,911,866.10
+          - generic [ref=e2580]:
+            - paragraph [ref=e2581]: 방향
+            - strong [ref=e2582]: buy
+          - generic [ref=e2583]:
+            - paragraph [ref=e2584]: 시장 가격
+            - strong [ref=e2585]: "0.645"
+          - generic [ref=e2586]:
+            - paragraph [ref=e2587]: 엣지
+            - strong [ref=e2588]: 5.0%
+          - generic [ref=e2589]:
+            - paragraph [ref=e2590]: 신뢰도
+            - strong [ref=e2591]: 55.0%
+          - generic [ref=e2592]:
+            - paragraph [ref=e2593]: 종료일
+            - strong [ref=e2594]: 2026-07-01T00:00:00Z
+      - article [ref=e2595]:
+        - generic [ref=e2596]:
+          - generic [ref=e2597]:
+            - heading "Will the Boston Celtics win the 2026 NBA Finals?" [level=3] [ref=e2598]
+            - link "마켓 열기" [ref=e2599] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-boston-celtics-win-the-2026-nba-finals
+          - generic [ref=e2600]: unknown
+        - generic [ref=e2601]:
+          - generic [ref=e2602]:
+            - paragraph [ref=e2603]: 전략
+            - strong [ref=e2604]: s39_volume_momentum
+          - generic [ref=e2605]:
+            - paragraph [ref=e2606]: 거래량
+            - strong [ref=e2607]: $4,859,698.51
+          - generic [ref=e2608]:
+            - paragraph [ref=e2609]: 방향
+            - strong [ref=e2610]: buy
+          - generic [ref=e2611]:
+            - paragraph [ref=e2612]: 시장 가격
+            - strong [ref=e2613]: "0.877"
+          - generic [ref=e2614]:
+            - paragraph [ref=e2615]: 엣지
+            - strong [ref=e2616]: 5.0%
+          - generic [ref=e2617]:
+            - paragraph [ref=e2618]: 신뢰도
+            - strong [ref=e2619]: 55.0%
+          - generic [ref=e2620]:
+            - paragraph [ref=e2621]: 종료일
+            - strong [ref=e2622]: 2026-07-01T00:00:00Z
+      - article [ref=e2623]:
+        - generic [ref=e2624]:
+          - generic [ref=e2625]:
+            - heading "Will Marco Rubio win the 2028 US Presidential Election?" [level=3] [ref=e2626]
+            - link "마켓 열기" [ref=e2627] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-marco-rubio-win-the-2028-us-presidential-election
+          - generic [ref=e2628]: unknown
+        - generic [ref=e2629]:
+          - generic [ref=e2630]:
+            - paragraph [ref=e2631]: 전략
+            - strong [ref=e2632]: s39_volume_momentum
+          - generic [ref=e2633]:
+            - paragraph [ref=e2634]: 거래량
+            - strong [ref=e2635]: $4,432,543.17
+          - generic [ref=e2636]:
+            - paragraph [ref=e2637]: 방향
+            - strong [ref=e2638]: buy
+          - generic [ref=e2639]:
+            - paragraph [ref=e2640]: 시장 가격
+            - strong [ref=e2641]: "0.836"
+          - generic [ref=e2642]:
+            - paragraph [ref=e2643]: 엣지
+            - strong [ref=e2644]: 5.0%
+          - generic [ref=e2645]:
+            - paragraph [ref=e2646]: 신뢰도
+            - strong [ref=e2647]: 55.0%
+          - generic [ref=e2648]:
+            - paragraph [ref=e2649]: 종료일
+            - strong [ref=e2650]: 2028-11-07T00:00:00Z
+      - article [ref=e2651]:
+        - generic [ref=e2652]:
+          - generic [ref=e2653]:
+            - heading "Will Argentina win the 2026 FIFA World Cup?" [level=3] [ref=e2654]
+            - link "마켓 열기" [ref=e2655] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-argentina-win-the-2026-fifa-world-cup-245
+          - generic [ref=e2656]: unknown
+        - generic [ref=e2657]:
+          - generic [ref=e2658]:
+            - paragraph [ref=e2659]: 전략
+            - strong [ref=e2660]: s39_volume_momentum
+          - generic [ref=e2661]:
+            - paragraph [ref=e2662]: 거래량
+            - strong [ref=e2663]: $3,664,432.24
+          - generic [ref=e2664]:
+            - paragraph [ref=e2665]: 방향
+            - strong [ref=e2666]: buy
+          - generic [ref=e2667]:
+            - paragraph [ref=e2668]: 시장 가격
+            - strong [ref=e2669]: "0.886"
+          - generic [ref=e2670]:
+            - paragraph [ref=e2671]: 엣지
+            - strong [ref=e2672]: 5.0%
+          - generic [ref=e2673]:
+            - paragraph [ref=e2674]: 신뢰도
+            - strong [ref=e2675]: 55.0%
+          - generic [ref=e2676]:
+            - paragraph [ref=e2677]: 종료일
+            - strong [ref=e2678]: 2026-07-20T00:00:00Z
+      - article [ref=e2679]:
+        - generic [ref=e2680]:
+          - generic [ref=e2681]:
+            - heading "Will Spain win the 2026 FIFA World Cup?" [level=3] [ref=e2682]
+            - link "마켓 열기" [ref=e2683] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-spain-win-the-2026-fifa-world-cup-963
+          - generic [ref=e2684]: unknown
+        - generic [ref=e2685]:
+          - generic [ref=e2686]:
+            - paragraph [ref=e2687]: 전략
+            - strong [ref=e2688]: s39_volume_momentum
+          - generic [ref=e2689]:
+            - paragraph [ref=e2690]: 거래량
+            - strong [ref=e2691]: $3,516,707.41
+          - generic [ref=e2692]:
+            - paragraph [ref=e2693]: 방향
+            - strong [ref=e2694]: buy
+          - generic [ref=e2695]:
+            - paragraph [ref=e2696]: 시장 가격
+            - strong [ref=e2697]: "0.846"
+          - generic [ref=e2698]:
+            - paragraph [ref=e2699]: 엣지
+            - strong [ref=e2700]: 5.0%
+          - generic [ref=e2701]:
+            - paragraph [ref=e2702]: 신뢰도
+            - strong [ref=e2703]: 55.0%
+          - generic [ref=e2704]:
+            - paragraph [ref=e2705]: 종료일
+            - strong [ref=e2706]: 2026-07-20T00:00:00Z
+      - article [ref=e2707]:
+        - generic [ref=e2708]:
+          - generic [ref=e2709]:
+            - heading "Will France win the 2026 FIFA World Cup?" [level=3] [ref=e2710]
+            - link "마켓 열기" [ref=e2711] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-france-win-the-2026-fifa-world-cup-924
+          - generic [ref=e2712]: unknown
+        - generic [ref=e2713]:
+          - generic [ref=e2714]:
+            - paragraph [ref=e2715]: 전략
+            - strong [ref=e2716]: s39_volume_momentum
+          - generic [ref=e2717]:
+            - paragraph [ref=e2718]: 거래량
+            - strong [ref=e2719]: $3,050,391.88
+          - generic [ref=e2720]:
+            - paragraph [ref=e2721]: 방향
+            - strong [ref=e2722]: buy
+          - generic [ref=e2723]:
+            - paragraph [ref=e2724]: 시장 가격
+            - strong [ref=e2725]: "0.891"
+          - generic [ref=e2726]:
+            - paragraph [ref=e2727]: 엣지
+            - strong [ref=e2728]: 5.0%
+          - generic [ref=e2729]:
+            - paragraph [ref=e2730]: 신뢰도
+            - strong [ref=e2731]: 55.0%
+          - generic [ref=e2732]:
+            - paragraph [ref=e2733]: 종료일
+            - strong [ref=e2734]: 2026-07-20T00:00:00Z
+      - article [ref=e2735]:
+        - generic [ref=e2736]:
+          - generic [ref=e2737]:
+            - heading "Will England win the 2026 FIFA World Cup?" [level=3] [ref=e2738]
+            - link "마켓 열기" [ref=e2739] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-england-win-the-2026-fifa-world-cup-937
+          - generic [ref=e2740]: unknown
+        - generic [ref=e2741]:
+          - generic [ref=e2742]:
+            - paragraph [ref=e2743]: 전략
+            - strong [ref=e2744]: s39_volume_momentum
+          - generic [ref=e2745]:
+            - paragraph [ref=e2746]: 거래량
+            - strong [ref=e2747]: $2,853,299.27
+          - generic [ref=e2748]:
+            - paragraph [ref=e2749]: 방향
+            - strong [ref=e2750]: buy
+          - generic [ref=e2751]:
+            - paragraph [ref=e2752]: 시장 가격
+            - strong [ref=e2753]: "0.867"
+          - generic [ref=e2754]:
+            - paragraph [ref=e2755]: 엣지
+            - strong [ref=e2756]: 5.0%
+          - generic [ref=e2757]:
+            - paragraph [ref=e2758]: 신뢰도
+            - strong [ref=e2759]: 55.0%
+          - generic [ref=e2760]:
+            - paragraph [ref=e2761]: 종료일
+            - strong [ref=e2762]: 2026-07-20T00:00:00Z
+      - article [ref=e2763]:
+        - generic [ref=e2764]:
+          - generic [ref=e2765]:
+            - heading "Putin out as President of Russia by end of 2026?" [level=3] [ref=e2766]
+            - link "마켓 열기" [ref=e2767] [cursor=pointer]:
+              - /url: https://polymarket.com/event/putin-out-before-2027
+          - generic [ref=e2768]: unknown
+        - generic [ref=e2769]:
+          - generic [ref=e2770]:
+            - paragraph [ref=e2771]: 전략
+            - strong [ref=e2772]: s39_volume_momentum
+          - generic [ref=e2773]:
+            - paragraph [ref=e2774]: 거래량
+            - strong [ref=e2775]: $2,667,742.95
+          - generic [ref=e2776]:
+            - paragraph [ref=e2777]: 방향
+            - strong [ref=e2778]: buy
+          - generic [ref=e2779]:
+            - paragraph [ref=e2780]: 시장 가격
+            - strong [ref=e2781]: "0.885"
+          - generic [ref=e2782]:
+            - paragraph [ref=e2783]: 엣지
+            - strong [ref=e2784]: 5.0%
+          - generic [ref=e2785]:
+            - paragraph [ref=e2786]: 신뢰도
+            - strong [ref=e2787]: 55.0%
+          - generic [ref=e2788]:
+            - paragraph [ref=e2789]: 종료일
+            - strong [ref=e2790]: 2026-12-31T18:30:00Z
+      - article [ref=e2791]:
+        - generic [ref=e2792]:
+          - generic [ref=e2793]:
+            - heading "Russia-Ukraine Ceasefire before GTA VI?" [level=3] [ref=e2794]
+            - link "마켓 열기" [ref=e2795] [cursor=pointer]:
+              - /url: https://polymarket.com/event/russia-ukraine-ceasefire-before-gta-vi-554
+          - generic [ref=e2796]: unknown
+        - generic [ref=e2797]:
+          - generic [ref=e2798]:
+            - paragraph [ref=e2799]: 전략
+            - strong [ref=e2800]: s39_volume_momentum
+          - generic [ref=e2801]:
+            - paragraph [ref=e2802]: 거래량
+            - strong [ref=e2803]: $1,367,826.81
+          - generic [ref=e2804]:
+            - paragraph [ref=e2805]: 방향
+            - strong [ref=e2806]: buy
+          - generic [ref=e2807]:
+            - paragraph [ref=e2808]: 시장 가격
+            - strong [ref=e2809]: "0.580"
+          - generic [ref=e2810]:
+            - paragraph [ref=e2811]: 엣지
+            - strong [ref=e2812]: 5.0%
+          - generic [ref=e2813]:
+            - paragraph [ref=e2814]: 신뢰도
+            - strong [ref=e2815]: 55.0%
+          - generic [ref=e2816]:
+            - paragraph [ref=e2817]: 종료일
+            - strong [ref=e2818]: 2026-07-31T12:00:00Z
+      - article [ref=e2819]:
+        - generic [ref=e2820]:
+          - generic [ref=e2821]:
+            - heading "Will MegaETH perform an airdrop by June 30?" [level=3] [ref=e2822]
+            - link "마켓 열기" [ref=e2823] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-megaeth-perform-an-airdrop-by-june-30-143-229-513-574-212-254
+          - generic [ref=e2824]: unknown
+        - generic [ref=e2825]:
+          - generic [ref=e2826]:
+            - paragraph [ref=e2827]: 전략
+            - strong [ref=e2828]: s39_volume_momentum
+          - generic [ref=e2829]:
+            - paragraph [ref=e2830]: 거래량
+            - strong [ref=e2831]: $886,091.69
+          - generic [ref=e2832]:
+            - paragraph [ref=e2833]: 방향
+            - strong [ref=e2834]: buy
+          - generic [ref=e2835]:
+            - paragraph [ref=e2836]: 시장 가격
+            - strong [ref=e2837]: "0.602"
+          - generic [ref=e2838]:
+            - paragraph [ref=e2839]: 엣지
+            - strong [ref=e2840]: 5.0%
+          - generic [ref=e2841]:
+            - paragraph [ref=e2842]: 신뢰도
+            - strong [ref=e2843]: 55.0%
+          - generic [ref=e2844]:
+            - paragraph [ref=e2845]: 종료일
+            - strong [ref=e2846]: 2026-02-01T05:00:00Z
+      - article [ref=e2847]:
+        - generic [ref=e2848]:
+          - generic [ref=e2849]:
+            - heading "New Rihanna Album before GTA VI?" [level=3] [ref=e2850]
+            - link "마켓 열기" [ref=e2851] [cursor=pointer]:
+              - /url: https://polymarket.com/event/new-rhianna-album-before-gta-vi-926
+          - generic [ref=e2852]: unknown
+        - generic [ref=e2853]:
+          - generic [ref=e2854]:
+            - paragraph [ref=e2855]: 전략
+            - strong [ref=e2856]: s39_volume_momentum
+          - generic [ref=e2857]:
+            - paragraph [ref=e2858]: 거래량
+            - strong [ref=e2859]: $651,302.89
+          - generic [ref=e2860]:
+            - paragraph [ref=e2861]: 방향
+            - strong [ref=e2862]: buy
+          - generic [ref=e2863]:
+            - paragraph [ref=e2864]: 시장 가격
+            - strong [ref=e2865]: "0.605"
+          - generic [ref=e2866]:
+            - paragraph [ref=e2867]: 엣지
+            - strong [ref=e2868]: 5.0%
+          - generic [ref=e2869]:
+            - paragraph [ref=e2870]: 신뢰도
+            - strong [ref=e2871]: 55.0%
+          - generic [ref=e2872]:
+            - paragraph [ref=e2873]: 종료일
+            - strong [ref=e2874]: 2026-07-31T12:00:00Z
+      - article [ref=e2875]:
+        - generic [ref=e2876]:
+          - generic [ref=e2877]:
+            - heading "Will Poland qualify for the 2026 FIFA World Cup?" [level=3] [ref=e2878]
+            - link "마켓 열기" [ref=e2879] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-poland-qualify-for-the-2026-fifa-world-cup
+          - generic [ref=e2880]: unknown
+        - generic [ref=e2881]:
+          - generic [ref=e2882]:
+            - paragraph [ref=e2883]: 전략
+            - strong [ref=e2884]: s39_volume_momentum
+          - generic [ref=e2885]:
+            - paragraph [ref=e2886]: 거래량
+            - strong [ref=e2887]: $458,513.32
+          - generic [ref=e2888]:
+            - paragraph [ref=e2889]: 방향
+            - strong [ref=e2890]: buy
+          - generic [ref=e2891]:
+            - paragraph [ref=e2892]: 시장 가격
+            - strong [ref=e2893]: "0.625"
+          - generic [ref=e2894]:
+            - paragraph [ref=e2895]: 엣지
+            - strong [ref=e2896]: 5.0%
+          - generic [ref=e2897]:
+            - paragraph [ref=e2898]: 신뢰도
+            - strong [ref=e2899]: 55.0%
+          - generic [ref=e2900]:
+            - paragraph [ref=e2901]: 종료일
+            - strong [ref=e2902]: 2026-04-12T00:00:00Z
+      - article [ref=e2903]:
+        - generic [ref=e2904]:
+          - generic [ref=e2905]:
+            - heading "Will the Tampa Bay Lightning win the 2026 NHL Stanley Cup?" [level=3] [ref=e2906]
+            - link "마켓 열기" [ref=e2907] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-tampa-bay-lightning-win-the-2026-nhl-stanley-cup
+          - generic [ref=e2908]: unknown
+        - generic [ref=e2909]:
+          - generic [ref=e2910]:
+            - paragraph [ref=e2911]: 전략
+            - strong [ref=e2912]: s39_volume_momentum
+          - generic [ref=e2913]:
+            - paragraph [ref=e2914]: 거래량
+            - strong [ref=e2915]: $223,772.64
+          - generic [ref=e2916]:
+            - paragraph [ref=e2917]: 방향
+            - strong [ref=e2918]: buy
+          - generic [ref=e2919]:
+            - paragraph [ref=e2920]: 시장 가격
+            - strong [ref=e2921]: "0.852"
+          - generic [ref=e2922]:
+            - paragraph [ref=e2923]: 엣지
+            - strong [ref=e2924]: 5.0%
+          - generic [ref=e2925]:
+            - paragraph [ref=e2926]: 신뢰도
+            - strong [ref=e2927]: 55.0%
+          - generic [ref=e2928]:
+            - paragraph [ref=e2929]: 종료일
+            - strong [ref=e2930]: 2026-06-30T00:00:00Z
+      - article [ref=e2931]:
+        - generic [ref=e2932]:
+          - generic [ref=e2933]:
+            - heading "Will Italy qualify for the 2026 FIFA World Cup?" [level=3] [ref=e2934]
+            - link "마켓 열기" [ref=e2935] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-italy-qualify-for-the-2026-fifa-world-cup
+          - generic [ref=e2936]: unknown
+        - generic [ref=e2937]:
+          - generic [ref=e2938]:
+            - paragraph [ref=e2939]: 전략
+            - strong [ref=e2940]: s39_volume_momentum
+          - generic [ref=e2941]:
+            - paragraph [ref=e2942]: 거래량
+            - strong [ref=e2943]: $213,983.60
+          - generic [ref=e2944]:
+            - paragraph [ref=e2945]: 방향
+            - strong [ref=e2946]: buy
+          - generic [ref=e2947]:
+            - paragraph [ref=e2948]: 시장 가격
+            - strong [ref=e2949]: "0.595"
+          - generic [ref=e2950]:
+            - paragraph [ref=e2951]: 엣지
+            - strong [ref=e2952]: 5.0%
+          - generic [ref=e2953]:
+            - paragraph [ref=e2954]: 신뢰도
+            - strong [ref=e2955]: 55.0%
+          - generic [ref=e2956]:
+            - paragraph [ref=e2957]: 종료일
+            - strong [ref=e2958]: 2026-04-12T00:00:00Z
+      - article [ref=e2959]:
+        - generic [ref=e2960]:
+          - generic [ref=e2961]:
+            - heading "Will the Carolina Hurricanes win the 2026 NHL Stanley Cup?" [level=3] [ref=e2962]
+            - link "마켓 열기" [ref=e2963] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-carolina-hurricanes-win-the-2026-nhl-stanley-cup
+          - generic [ref=e2964]: unknown
+        - generic [ref=e2965]:
+          - generic [ref=e2966]:
+            - paragraph [ref=e2967]: 전략
+            - strong [ref=e2968]: s39_volume_momentum
+          - generic [ref=e2969]:
+            - paragraph [ref=e2970]: 거래량
+            - strong [ref=e2971]: $181,076.36
+          - generic [ref=e2972]:
+            - paragraph [ref=e2973]: 방향
+            - strong [ref=e2974]: buy
+          - generic [ref=e2975]:
+            - paragraph [ref=e2976]: 시장 가격
+            - strong [ref=e2977]: "0.895"
+          - generic [ref=e2978]:
+            - paragraph [ref=e2979]: 엣지
+            - strong [ref=e2980]: 5.0%
+          - generic [ref=e2981]:
+            - paragraph [ref=e2982]: 신뢰도
+            - strong [ref=e2983]: 55.0%
+          - generic [ref=e2984]:
+            - paragraph [ref=e2985]: 종료일
+            - strong [ref=e2986]: 2026-06-30T00:00:00Z
+      - article [ref=e2987]:
+        - generic [ref=e2988]:
+          - generic [ref=e2989]:
+            - heading "Will Ukraine qualify for the 2026 FIFA World Cup?" [level=3] [ref=e2990]
+            - link "마켓 열기" [ref=e2991] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-ukraine-qualify-for-the-2026-fifa-world-cup
+          - generic [ref=e2992]: unknown
+        - generic [ref=e2993]:
+          - generic [ref=e2994]:
+            - paragraph [ref=e2995]: 전략
+            - strong [ref=e2996]: s39_volume_momentum
+          - generic [ref=e2997]:
+            - paragraph [ref=e2998]: 거래량
+            - strong [ref=e2999]: $138,659.14
+          - generic [ref=e3000]:
+            - paragraph [ref=e3001]: 방향
+            - strong [ref=e3002]: buy
+          - generic [ref=e3003]:
+            - paragraph [ref=e3004]: 시장 가격
+            - strong [ref=e3005]: "0.730"
+          - generic [ref=e3006]:
+            - paragraph [ref=e3007]: 엣지
+            - strong [ref=e3008]: 5.0%
+          - generic [ref=e3009]:
+            - paragraph [ref=e3010]: 신뢰도
+            - strong [ref=e3011]: 55.0%
+          - generic [ref=e3012]:
+            - paragraph [ref=e3013]: 종료일
+            - strong [ref=e3014]: 2026-04-12T00:00:00Z
+      - article [ref=e3015]:
+        - generic [ref=e3016]:
+          - generic [ref=e3017]:
+            - heading "Will Harvey Weinstein be sentenced to between 20 and 30 years in prison?" [level=3] [ref=e3018]
+            - link "마켓 열기" [ref=e3019] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-harvey-weinstein-be-sentenced-to-between-20-and-30-years-in-prison
+          - generic [ref=e3020]: unknown
+        - generic [ref=e3021]:
+          - generic [ref=e3022]:
+            - paragraph [ref=e3023]: 전략
+            - strong [ref=e3024]: s39_volume_momentum
+          - generic [ref=e3025]:
+            - paragraph [ref=e3026]: 거래량
+            - strong [ref=e3027]: $132,285.85
+          - generic [ref=e3028]:
+            - paragraph [ref=e3029]: 방향
+            - strong [ref=e3030]: buy
+          - generic [ref=e3031]:
+            - paragraph [ref=e3032]: 시장 가격
+            - strong [ref=e3033]: "0.826"
+          - generic [ref=e3034]:
+            - paragraph [ref=e3035]: 엣지
+            - strong [ref=e3036]: 5.0%
+          - generic [ref=e3037]:
+            - paragraph [ref=e3038]: 신뢰도
+            - strong [ref=e3039]: 55.0%
+          - generic [ref=e3040]:
+            - paragraph [ref=e3041]: 종료일
+            - strong [ref=e3042]: 2025-12-31T12:00:00Z
+      - article [ref=e3043]:
+        - generic [ref=e3044]:
+          - generic [ref=e3045]:
+            - heading "Will Harvey Weinstein be sentenced to between 10 and 20 years in prison?" [level=3] [ref=e3046]
+            - link "마켓 열기" [ref=e3047] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-harvey-weinstein-be-sentenced-to-between-10-and-20-years-in-prison
+          - generic [ref=e3048]: unknown
+        - generic [ref=e3049]:
+          - generic [ref=e3050]:
+            - paragraph [ref=e3051]: 전략
+            - strong [ref=e3052]: s39_volume_momentum
+          - generic [ref=e3053]:
+            - paragraph [ref=e3054]: 거래량
+            - strong [ref=e3055]: $108,000.01
+          - generic [ref=e3056]:
+            - paragraph [ref=e3057]: 방향
+            - strong [ref=e3058]: buy
+          - generic [ref=e3059]:
+            - paragraph [ref=e3060]: 시장 가격
+            - strong [ref=e3061]: "0.818"
+          - generic [ref=e3062]:
+            - paragraph [ref=e3063]: 엣지
+            - strong [ref=e3064]: 5.0%
+          - generic [ref=e3065]:
+            - paragraph [ref=e3066]: 신뢰도
+            - strong [ref=e3067]: 55.0%
+          - generic [ref=e3068]:
+            - paragraph [ref=e3069]: 종료일
+            - strong [ref=e3070]: 2025-12-31T12:00:00Z
+      - article [ref=e3071]:
+        - generic [ref=e3072]:
+          - generic [ref=e3073]:
+            - heading "Will Sweden qualify for the 2026 FIFA World Cup?" [level=3] [ref=e3074]
+            - link "마켓 열기" [ref=e3075] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-sweden-qualify-for-the-2026-fifa-world-cup
+          - generic [ref=e3076]: unknown
+        - generic [ref=e3077]:
+          - generic [ref=e3078]:
+            - paragraph [ref=e3079]: 전략
+            - strong [ref=e3080]: s39_volume_momentum
+          - generic [ref=e3081]:
+            - paragraph [ref=e3082]: 거래량
+            - strong [ref=e3083]: $104,778.14
+          - generic [ref=e3084]:
+            - paragraph [ref=e3085]: 방향
+            - strong [ref=e3086]: buy
+          - generic [ref=e3087]:
+            - paragraph [ref=e3088]: 시장 가격
+            - strong [ref=e3089]: "0.705"
+          - generic [ref=e3090]:
+            - paragraph [ref=e3091]: 엣지
+            - strong [ref=e3092]: 5.0%
+          - generic [ref=e3093]:
+            - paragraph [ref=e3094]: 신뢰도
+            - strong [ref=e3095]: 55.0%
+          - generic [ref=e3096]:
+            - paragraph [ref=e3097]: 종료일
+            - strong [ref=e3098]: 2026-04-12T00:00:00Z
+      - article [ref=e3099]:
+        - generic [ref=e3100]:
+          - generic [ref=e3101]:
+            - heading "BitBoy convicted?" [level=3] [ref=e3102]
+            - link "마켓 열기" [ref=e3103] [cursor=pointer]:
+              - /url: https://polymarket.com/event/bitboy-convicted
+          - generic [ref=e3104]: unknown
+        - generic [ref=e3105]:
+          - generic [ref=e3106]:
+            - paragraph [ref=e3107]: 전략
+            - strong [ref=e3108]: s39_volume_momentum
+          - generic [ref=e3109]:
+            - paragraph [ref=e3110]: 거래량
+            - strong [ref=e3111]: $80,526.47
+          - generic [ref=e3112]:
+            - paragraph [ref=e3113]: 방향
+            - strong [ref=e3114]: buy
+          - generic [ref=e3115]:
+            - paragraph [ref=e3116]: 시장 가격
+            - strong [ref=e3117]: "0.720"
+          - generic [ref=e3118]:
+            - paragraph [ref=e3119]: 엣지
+            - strong [ref=e3120]: 5.0%
+          - generic [ref=e3121]:
+            - paragraph [ref=e3122]: 신뢰도
+            - strong [ref=e3123]: 55.0%
+          - generic [ref=e3124]:
+            - paragraph [ref=e3125]: 종료일
+            - strong [ref=e3126]: 2026-03-31T12:00:00Z
+      - article [ref=e3127]:
+        - generic [ref=e3128]:
+          - generic [ref=e3129]:
+            - heading "Will the Denver Nuggets win the 2026 NBA Finals?" [level=3] [ref=e3130]
+            - link "마켓 열기" [ref=e3131] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-denver-nuggets-win-the-2026-nba-finals
+          - generic [ref=e3132]: unknown
+        - generic [ref=e3133]:
+          - generic [ref=e3134]:
+            - paragraph [ref=e3135]: 전략
+            - strong [ref=e3136]: s39_volume_momentum
+          - generic [ref=e3137]:
+            - paragraph [ref=e3138]: 거래량
+            - strong [ref=e3139]: $2,857,467.74
+          - generic [ref=e3140]:
+            - paragraph [ref=e3141]: 방향
+            - strong [ref=e3142]: buy
+          - generic [ref=e3143]:
+            - paragraph [ref=e3144]: 시장 가격
+            - strong [ref=e3145]: "0.905"
+          - generic [ref=e3146]:
+            - paragraph [ref=e3147]: 엣지
+            - strong [ref=e3148]: 4.5%
+          - generic [ref=e3149]:
+            - paragraph [ref=e3150]: 신뢰도
+            - strong [ref=e3151]: 55.0%
+          - generic [ref=e3152]:
+            - paragraph [ref=e3153]: 종료일
+            - strong [ref=e3154]: 2026-07-01T00:00:00Z
+      - article [ref=e3155]:
+        - generic [ref=e3156]:
+          - generic [ref=e3157]:
+            - heading "Will the Edmonton Oilers win the 2026 NHL Stanley Cup?" [level=3] [ref=e3158]
+            - link "마켓 열기" [ref=e3159] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-edmonton-oilers-win-the-2026-nhl-stanley-cup
+          - generic [ref=e3160]: unknown
+        - generic [ref=e3161]:
+          - generic [ref=e3162]:
+            - paragraph [ref=e3163]: 전략
+            - strong [ref=e3164]: s39_volume_momentum
+          - generic [ref=e3165]:
+            - paragraph [ref=e3166]: 거래량
+            - strong [ref=e3167]: $348,676.40
+          - generic [ref=e3168]:
+            - paragraph [ref=e3169]: 방향
+            - strong [ref=e3170]: buy
+          - generic [ref=e3171]:
+            - paragraph [ref=e3172]: 시장 가격
+            - strong [ref=e3173]: "0.905"
+          - generic [ref=e3174]:
+            - paragraph [ref=e3175]: 엣지
+            - strong [ref=e3176]: 4.5%
+          - generic [ref=e3177]:
+            - paragraph [ref=e3178]: 신뢰도
+            - strong [ref=e3179]: 55.0%
+          - generic [ref=e3180]:
+            - paragraph [ref=e3181]: 종료일
+            - strong [ref=e3182]: 2026-06-30T00:00:00Z
+      - article [ref=e3183]:
+        - generic [ref=e3184]:
+          - generic [ref=e3185]:
+            - heading "Will Alexandria Ocasio-Cortez win the 2028 Democratic presidential nomination?" [level=3] [ref=e3186]
+            - link "마켓 열기" [ref=e3187] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-alexandria-ocasio-cortez-win-the-2028-democratic-presidential-nomination-653
+          - generic [ref=e3188]: unknown
+        - generic [ref=e3189]:
+          - generic [ref=e3190]:
+            - paragraph [ref=e3191]: 전략
+            - strong [ref=e3192]: s39_volume_momentum
+          - generic [ref=e3193]:
+            - paragraph [ref=e3194]: 거래량
+            - strong [ref=e3195]: $5,489,240.04
+          - generic [ref=e3196]:
+            - paragraph [ref=e3197]: 방향
+            - strong [ref=e3198]: buy
+          - generic [ref=e3199]:
+            - paragraph [ref=e3200]: 시장 가격
+            - strong [ref=e3201]: "0.913"
+          - generic [ref=e3202]:
+            - paragraph [ref=e3203]: 엣지
+            - strong [ref=e3204]: 3.7%
+          - generic [ref=e3205]:
+            - paragraph [ref=e3206]: 신뢰도
+            - strong [ref=e3207]: 55.0%
+          - generic [ref=e3208]:
+            - paragraph [ref=e3209]: 종료일
+            - strong [ref=e3210]: 2028-11-07T00:00:00Z
+      - article [ref=e3211]:
+        - generic [ref=e3212]:
+          - generic [ref=e3213]:
+            - heading "Xi Jinping out before 2027?" [level=3] [ref=e3214]
+            - link "마켓 열기" [ref=e3215] [cursor=pointer]:
+              - /url: https://polymarket.com/event/xi-jinping-out-before-2027
+          - generic [ref=e3216]: unknown
+        - generic [ref=e3217]:
+          - generic [ref=e3218]:
+            - paragraph [ref=e3219]: 전략
+            - strong [ref=e3220]: s39_volume_momentum
+          - generic [ref=e3221]:
+            - paragraph [ref=e3222]: 거래량
+            - strong [ref=e3223]: $7,119,213.90
+          - generic [ref=e3224]:
+            - paragraph [ref=e3225]: 방향
+            - strong [ref=e3226]: buy
+          - generic [ref=e3227]:
+            - paragraph [ref=e3228]: 시장 가격
+            - strong [ref=e3229]: "0.914"
+          - generic [ref=e3230]:
+            - paragraph [ref=e3231]: 엣지
+            - strong [ref=e3232]: 3.5%
+          - generic [ref=e3233]:
+            - paragraph [ref=e3234]: 신뢰도
+            - strong [ref=e3235]: 55.0%
+          - generic [ref=e3236]:
+            - paragraph [ref=e3237]: 종료일
+            - strong [ref=e3238]: 2026-12-31T00:00:00Z
+      - article [ref=e3239]:
+        - generic [ref=e3240]:
+          - generic [ref=e3241]:
+            - heading "Will Brazil win the 2026 FIFA World Cup?" [level=3] [ref=e3242]
+            - link "마켓 열기" [ref=e3243] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-brazil-win-the-2026-fifa-world-cup-183
+          - generic [ref=e3244]: unknown
+        - generic [ref=e3245]:
+          - generic [ref=e3246]:
+            - paragraph [ref=e3247]: 전략
+            - strong [ref=e3248]: s39_volume_momentum
+          - generic [ref=e3249]:
+            - paragraph [ref=e3250]: 거래량
+            - strong [ref=e3251]: $3,437,403.05
+          - generic [ref=e3252]:
+            - paragraph [ref=e3253]: 방향
+            - strong [ref=e3254]: buy
+          - generic [ref=e3255]:
+            - paragraph [ref=e3256]: 시장 가격
+            - strong [ref=e3257]: "0.914"
+          - generic [ref=e3258]:
+            - paragraph [ref=e3259]: 엣지
+            - strong [ref=e3260]: 3.5%
+          - generic [ref=e3261]:
+            - paragraph [ref=e3262]: 신뢰도
+            - strong [ref=e3263]: 55.0%
+          - generic [ref=e3264]:
+            - paragraph [ref=e3265]: 종료일
+            - strong [ref=e3266]: 2026-07-20T00:00:00Z

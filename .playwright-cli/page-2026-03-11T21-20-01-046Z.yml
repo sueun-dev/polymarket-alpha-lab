@@ -1,0 +1,71 @@
+- generic [ref=e8]:
+  - complementary [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic [ref=e12]: PM
+        - generic [ref=e13]:
+          - heading "Polymarket Lab" [level=1] [ref=e14]
+          - paragraph [ref=e15]: Live Research Console
+      - group "Language" [ref=e16]:
+        - generic [ref=e17]: Language
+        - button "EN" [ref=e18]
+        - button "KR" [ref=e19]
+      - navigation "Dashboard sections" [ref=e20]:
+        - button "Overview" [ref=e21]
+        - button "Where to Bet" [ref=e22]
+        - button "Strategies" [ref=e23]
+        - button "Markets" [ref=e24]
+        - button "Backtest" [ref=e25]
+    - generic [ref=e26]:
+      - paragraph [ref=e27]: Mode
+      - strong [ref=e28]: Live Data Feed
+      - generic [ref=e29]: "Health: Live"
+  - main [ref=e30]:
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - paragraph [ref=e33]: React + Live API
+        - heading "Live Market Overview" [level=2] [ref=e34]
+        - paragraph [ref=e35]: Real-time data from Polymarket API and strategy runtime scans.
+      - generic [ref=e36]:
+        - generic [ref=e37]: UTC 21:19
+        - generic [ref=e38]: "Signals: 0"
+        - generic [ref=e39]: Live
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - paragraph [ref=e43]: Live Pulse
+          - heading "No mock data. Everything is pulled from live sources." [level=2] [ref=e44]
+          - paragraph [ref=e45]: Overview and scanner are sourced from live market data and strategy scans at request time.
+        - generic [ref=e46]:
+          - generic [ref=e47]: "Source: gamma-api.polymarket.com"
+          - generic [ref=e48]: "Signals: strategy runtime scan"
+          - generic [ref=e49]: "Backtest: historical API fetch"
+          - button "Refresh" [ref=e50]
+      - generic [ref=e51]:
+        - article [ref=e52]:
+          - paragraph [ref=e53]: Active Markets
+          - strong [ref=e54]: "0"
+        - article [ref=e55]:
+          - paragraph [ref=e56]: Total Volume
+          - strong [ref=e57]: $0.00
+        - article [ref=e58]:
+          - paragraph [ref=e59]: Avg Liquidity
+          - strong [ref=e60]: $0.00
+        - article [ref=e61]:
+          - paragraph [ref=e62]: Live Signals
+          - strong [ref=e63]: "0"
+      - generic [ref=e64]:
+        - generic [ref=e65]:
+          - heading "Volume Curve (Top Markets)" [level=3] [ref=e66]
+          - generic [ref=e67]: Live market volume distribution
+        - img [ref=e68]
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - heading "Signal Allocation by Strategy" [level=3] [ref=e71]
+          - generic [ref=e72]: Derived from live scan results
+        - paragraph [ref=e73]: No signal allocation yet.
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - heading "Top Live Signals" [level=3] [ref=e76]
+          - generic [ref=e77]: From live strategy analyze() output
+        - paragraph [ref=e78]: Loading live data...

@@ -1,12 +1,13 @@
 """Category base-rate database for Polymarket prediction markets.
 
-Most prediction-market questions resolve NO (status-quo bias).  This module
+Most prediction-market questions resolve NO (status-quo bias). This module
 provides default and empirically-calibrated per-category NO resolution rates
 that downstream strategies use as Bayesian priors.
 """
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -74,6 +75,13 @@ class BaseRateProvider(BaseDataProvider):
             "oscar", "grammy", "emmy", "movie", "film", "album", "show",
             "netflix", "disney",
         ],
+    }
+
+    WEAK_KEYWORDS: Dict[str, set[str]] = {
+        "sports": {"game", "match"},
+        "economics": {"market"},
+        "technology": {"launch", "release"},
+        "entertainment": {"show"},
     }
 
     # Minimum number of samples required for a category to be considered
@@ -184,15 +192,44 @@ class BaseRateProvider(BaseDataProvider):
     # Question categorisation
     # ------------------------------------------------------------------
 
-    def categorize_question(self, question: str) -> str:
-        """Classify a market question into a category using keyword matching.
+    def categorize_text(self, *parts: str) -> str:
+        """Classify free text into a category using whole-word keyword matching.
 
-        Returns the first category whose keyword list has a match in the
-        lowercased *question*.  Returns ``"unknown"`` when nothing matches.
+        Accepts one or more text fragments such as a question and description,
+        concatenates them, and returns the first matching category. Returns
+        ``"unknown"`` when nothing matches.
         """
-        q_lower = question.lower()
+        if not parts:
+            return "unknown"
+
+        # Question/title is usually cleaner than the resolution description.
+        primary = str(parts[0] or "")
+        category = self._categorize_fragment(primary, allow_weak_keywords=True)
+        if category != "unknown":
+            return category
+
+        for fragment in parts[1:]:
+            category = self._categorize_fragment(str(fragment or ""), allow_weak_keywords=False)
+            if category != "unknown":
+                return category
+        return "unknown"
+
+    def _categorize_fragment(self, text: str, allow_weak_keywords: bool) -> str:
+        lowered = text.lower()
+        words = set(re.findall(r"[a-z0-9&']+", lowered))
         for category, keywords in self.CATEGORY_KEYWORDS.items():
             for kw in keywords:
-                if kw in q_lower:
+                kw_lower = kw.lower()
+                if not allow_weak_keywords and kw_lower in self.WEAK_KEYWORDS.get(category, set()):
+                    continue
+                if " " in kw_lower:
+                    if kw_lower in lowered:
+                        return category
+                    continue
+                if kw_lower in words:
                     return category
         return "unknown"
+
+    def categorize_question(self, question: str) -> str:
+        """Backward-compatible wrapper around :meth:`categorize_text`."""
+        return self.categorize_text(question)

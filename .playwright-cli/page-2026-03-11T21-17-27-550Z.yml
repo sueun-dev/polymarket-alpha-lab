@@ -1,0 +1,263 @@
+- generic [ref=e8]:
+  - complementary [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic [ref=e12]: PM
+        - generic [ref=e13]:
+          - heading "Polymarket Lab" [level=1] [ref=e14]
+          - paragraph [ref=e15]: Live Research Console
+      - group "Language" [ref=e16]:
+        - generic [ref=e17]: Language
+        - button "EN" [ref=e18]
+        - button "KR" [ref=e19]
+      - navigation "Dashboard sections" [ref=e20]:
+        - button "Overview" [ref=e21]
+        - button "Where to Bet" [ref=e22]
+        - button "Strategies" [ref=e23]
+        - button "Markets" [ref=e24]
+        - button "Backtest" [ref=e25]
+    - generic [ref=e26]:
+      - paragraph [ref=e27]: Mode
+      - strong [ref=e28]: Live Data Feed
+      - generic [ref=e29]: "Health: Live"
+  - main [ref=e30]:
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - paragraph [ref=e33]: React + Live API
+        - heading "Live Market Overview" [level=2] [ref=e34]
+        - paragraph [ref=e35]: Real-time data from Polymarket API and strategy runtime scans.
+      - generic [ref=e36]:
+        - generic [ref=e37]: UTC 21:17
+        - generic [ref=e38]: "Signals: 49"
+        - generic [ref=e39]: Live
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - paragraph [ref=e43]: Live Pulse
+          - heading "No mock data. Everything is pulled from live sources." [level=2] [ref=e44]
+          - paragraph [ref=e45]: Overview and scanner are sourced from live market data and strategy scans at request time.
+        - generic [ref=e46]:
+          - generic [ref=e47]: "Source: gamma-api.polymarket.com"
+          - generic [ref=e48]: "Signals: strategy runtime scan"
+          - generic [ref=e49]: "Backtest: historical API fetch"
+          - button "Refresh" [ref=e50]
+      - generic [ref=e51]:
+        - article [ref=e52]:
+          - paragraph [ref=e53]: Active Markets
+          - strong [ref=e54]: "160"
+        - article [ref=e55]:
+          - paragraph [ref=e56]: Total Volume
+          - strong [ref=e57]: $1,279,302,117.49
+        - article [ref=e58]:
+          - paragraph [ref=e59]: Avg Liquidity
+          - strong [ref=e60]: $646,511.63
+        - article [ref=e61]:
+          - paragraph [ref=e62]: Live Signals
+          - strong [ref=e63]: "12"
+      - generic [ref=e64]:
+        - generic [ref=e65]:
+          - heading "Volume Curve (Top Markets)" [level=3] [ref=e66]
+          - generic [ref=e67]: Live market volume distribution
+        - img [ref=e68]
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - heading "Signal Allocation by Strategy" [level=3] [ref=e71]
+          - generic [ref=e72]: Derived from live scan results
+        - generic [ref=e81]:
+          - generic [ref=e83]:
+            - paragraph [ref=e84]: Active
+            - strong [ref=e85]: "3"
+          - generic [ref=e86]:
+            - generic [ref=e87]:
+              - generic [ref=e89]: s10_yes_bias
+              - strong [ref=e90]: 58%
+            - generic [ref=e91]:
+              - generic [ref=e93]: s01_reversing_stupidity
+              - strong [ref=e94]: 25%
+            - generic [ref=e95]:
+              - generic [ref=e97]: s03_nothing_ever_happens
+              - strong [ref=e98]: 17%
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - heading "Top Live Signals" [level=3] [ref=e76]
+          - generic [ref=e77]: From live strategy analyze() output
+        - table [ref=e100]:
+          - rowgroup [ref=e101]:
+            - row "Strategy Question Side Price Edge Confidence Plan Volume" [ref=e102]:
+              - columnheader "Strategy" [ref=e103]
+              - columnheader "Question" [ref=e104]
+              - columnheader "Side" [ref=e105]
+              - columnheader "Price" [ref=e106]
+              - columnheader "Edge" [ref=e107]
+              - columnheader "Confidence" [ref=e108]
+              - columnheader "Plan" [ref=e109]
+              - columnheader "Volume" [ref=e110]
+          - rowgroup [ref=e111]:
+            - row "s01_reversing_stupidity Trump out as President before GTA VI? buy 0.475 47.5% 70.0% Enter now NO <= 0.495 Open market $534,730.74" [ref=e112]:
+              - cell "s01_reversing_stupidity" [ref=e113]
+              - cell "Trump out as President before GTA VI?" [ref=e114]
+              - cell "buy" [ref=e115]
+              - cell "0.475" [ref=e116]
+              - cell "47.5%" [ref=e117]
+              - cell "70.0%" [ref=e118]
+              - cell "Enter now NO <= 0.495 Open market" [ref=e119]:
+                - generic [ref=e120]:
+                  - generic [ref=e121]: Enter now
+                  - generic [ref=e122]: NO <= 0.495
+                  - link "Open market" [ref=e123] [cursor=pointer]:
+                    - /url: https://polymarket.com/event/trump-out-as-president-before-gta-vi-846
+              - cell "$534,730.74" [ref=e124]
+            - row "s01_reversing_stupidity Russia-Ukraine Ceasefire before GTA VI? buy 0.420 43.0% 70.0% Enter now NO <= 0.440 Open market $1,367,826.81" [ref=e125]:
+              - cell "s01_reversing_stupidity" [ref=e126]
+              - cell "Russia-Ukraine Ceasefire before GTA VI?" [ref=e127]
+              - cell "buy" [ref=e128]
+              - cell "0.420" [ref=e129]
+              - cell "43.0%" [ref=e130]
+              - cell "70.0%" [ref=e131]
+              - cell "Enter now NO <= 0.440 Open market" [ref=e132]:
+                - generic [ref=e133]:
+                  - generic [ref=e134]: Enter now
+                  - generic [ref=e135]: NO <= 0.440
+                  - link "Open market" [ref=e136] [cursor=pointer]:
+                    - /url: https://polymarket.com/event/russia-ukraine-ceasefire-before-gta-vi-554
+              - cell "$1,367,826.81" [ref=e137]
+            - row "s03_nothing_ever_happens Russia-Ukraine Ceasefire before GTA VI? buy 0.420 43.0% 65.0% Wait for entry - Open market $1,367,826.81" [ref=e138]:
+              - cell "s03_nothing_ever_happens" [ref=e139]
+              - cell "Russia-Ukraine Ceasefire before GTA VI?" [ref=e140]
+              - cell "buy" [ref=e141]
+              - cell "0.420" [ref=e142]
+              - cell "43.0%" [ref=e143]
+              - cell "65.0%" [ref=e144]
+              - cell "Wait for entry - Open market" [ref=e145]:
+                - generic [ref=e146]:
+                  - generic [ref=e147]: Wait for entry
+                  - generic [ref=e148]: "-"
+                  - link "Open market" [ref=e149] [cursor=pointer]:
+                    - /url: https://polymarket.com/event/russia-ukraine-ceasefire-before-gta-vi-554
+              - cell "$1,367,826.81" [ref=e150]
+            - row "s01_reversing_stupidity Will China invades Taiwan before GTA VI? buy 0.485 36.5% 70.0% Enter now NO <= 0.505 Open market $1,464,230.69" [ref=e151]:
+              - cell "s01_reversing_stupidity" [ref=e152]
+              - cell "Will China invades Taiwan before GTA VI?" [ref=e153]
+              - cell "buy" [ref=e154]
+              - cell "0.485" [ref=e155]
+              - cell "36.5%" [ref=e156]
+              - cell "70.0%" [ref=e157]
+              - cell "Enter now NO <= 0.505 Open market" [ref=e158]:
+                - generic [ref=e159]:
+                  - generic [ref=e160]: Enter now
+                  - generic [ref=e161]: NO <= 0.505
+                  - link "Open market" [ref=e162] [cursor=pointer]:
+                    - /url: https://polymarket.com/event/will-china-invades-taiwan-before-gta-vi-716
+              - cell "$1,464,230.69" [ref=e163]
+            - row "s03_nothing_ever_happens Will China invades Taiwan before GTA VI? buy 0.485 36.5% 65.0% Wait for entry - Open market $1,464,230.69" [ref=e164]:
+              - cell "s03_nothing_ever_happens" [ref=e165]
+              - cell "Will China invades Taiwan before GTA VI?" [ref=e166]
+              - cell "buy" [ref=e167]
+              - cell "0.485" [ref=e168]
+              - cell "36.5%" [ref=e169]
+              - cell "65.0%" [ref=e170]
+              - cell "Wait for entry - Open market" [ref=e171]:
+                - generic [ref=e172]:
+                  - generic [ref=e173]: Wait for entry
+                  - generic [ref=e174]: "-"
+                  - link "Open market" [ref=e175] [cursor=pointer]:
+                    - /url: https://polymarket.com/event/will-china-invades-taiwan-before-gta-vi-716
+              - cell "$1,464,230.69" [ref=e176]
+            - row "s10_yes_bias New Rihanna Album before GTA VI? buy 0.395 30.5% 60.0% Wait for entry - Open market $651,302.89" [ref=e177]:
+              - cell "s10_yes_bias" [ref=e178]
+              - cell "New Rihanna Album before GTA VI?" [ref=e179]
+              - cell "buy" [ref=e180]
+              - cell "0.395" [ref=e181]
+              - cell "30.5%" [ref=e182]
+              - cell "60.0%" [ref=e183]
+              - cell "Wait for entry - Open market" [ref=e184]:
+                - generic [ref=e185]:
+                  - generic [ref=e186]: Wait for entry
+                  - generic [ref=e187]: "-"
+                  - link "Open market" [ref=e188] [cursor=pointer]:
+                    - /url: https://polymarket.com/event/new-rhianna-album-before-gta-vi-926
+              - cell "$651,302.89" [ref=e189]
+            - row "s10_yes_bias Will MegaETH perform an airdrop by June 30? buy 0.398 30.2% 60.0% Wait for entry - Open market $886,091.69" [ref=e190]:
+              - cell "s10_yes_bias" [ref=e191]
+              - cell "Will MegaETH perform an airdrop by June 30?" [ref=e192]
+              - cell "buy" [ref=e193]
+              - cell "0.398" [ref=e194]
+              - cell "30.2%" [ref=e195]
+              - cell "60.0%" [ref=e196]
+              - cell "Wait for entry - Open market" [ref=e197]:
+                - generic [ref=e198]:
+                  - generic [ref=e199]: Wait for entry
+                  - generic [ref=e200]: "-"
+                  - link "Open market" [ref=e201] [cursor=pointer]:
+                    - /url: https://polymarket.com/event/will-megaeth-perform-an-airdrop-by-june-30-143-229-513-574-212-254
+              - cell "$886,091.69" [ref=e202]
+            - row "s10_yes_bias Will Italy qualify for the 2026 FIFA World Cup? buy 0.405 29.5% 60.0% Wait for entry - Open market $213,983.60" [ref=e203]:
+              - cell "s10_yes_bias" [ref=e204]
+              - cell "Will Italy qualify for the 2026 FIFA World Cup?" [ref=e205]
+              - cell "buy" [ref=e206]
+              - cell "0.405" [ref=e207]
+              - cell "29.5%" [ref=e208]
+              - cell "60.0%" [ref=e209]
+              - cell "Wait for entry - Open market" [ref=e210]:
+                - generic [ref=e211]:
+                  - generic [ref=e212]: Wait for entry
+                  - generic [ref=e213]: "-"
+                  - link "Open market" [ref=e214] [cursor=pointer]:
+                    - /url: https://polymarket.com/event/will-italy-qualify-for-the-2026-fifa-world-cup
+              - cell "$213,983.60" [ref=e215]
+            - row "s10_yes_bias Russia-Ukraine Ceasefire before GTA VI? buy 0.420 28.0% 60.0% Wait for entry - Open market $1,367,826.81" [ref=e216]:
+              - cell "s10_yes_bias" [ref=e217]
+              - cell "Russia-Ukraine Ceasefire before GTA VI?" [ref=e218]
+              - cell "buy" [ref=e219]
+              - cell "0.420" [ref=e220]
+              - cell "28.0%" [ref=e221]
+              - cell "60.0%" [ref=e222]
+              - cell "Wait for entry - Open market" [ref=e223]:
+                - generic [ref=e224]:
+                  - generic [ref=e225]: Wait for entry
+                  - generic [ref=e226]: "-"
+                  - link "Open market" [ref=e227] [cursor=pointer]:
+                    - /url: https://polymarket.com/event/russia-ukraine-ceasefire-before-gta-vi-554
+              - cell "$1,367,826.81" [ref=e228]
+            - row "s10_yes_bias New Playboi Carti Album before GTA VI? buy 0.475 22.5% 60.0% Wait for entry - Open market $681,293.41" [ref=e229]:
+              - cell "s10_yes_bias" [ref=e230]
+              - cell "New Playboi Carti Album before GTA VI?" [ref=e231]
+              - cell "buy" [ref=e232]
+              - cell "0.475" [ref=e233]
+              - cell "22.5%" [ref=e234]
+              - cell "60.0%" [ref=e235]
+              - cell "Wait for entry - Open market" [ref=e236]:
+                - generic [ref=e237]:
+                  - generic [ref=e238]: Wait for entry
+                  - generic [ref=e239]: "-"
+                  - link "Open market" [ref=e240] [cursor=pointer]:
+                    - /url: https://polymarket.com/event/new-playboi-carti-album-before-gta-vi-421
+              - cell "$681,293.41" [ref=e241]
+            - row "s10_yes_bias Trump out as President before GTA VI? buy 0.475 22.5% 60.0% Wait for entry - Open market $534,730.74" [ref=e242]:
+              - cell "s10_yes_bias" [ref=e243]
+              - cell "Trump out as President before GTA VI?" [ref=e244]
+              - cell "buy" [ref=e245]
+              - cell "0.475" [ref=e246]
+              - cell "22.5%" [ref=e247]
+              - cell "60.0%" [ref=e248]
+              - cell "Wait for entry - Open market" [ref=e249]:
+                - generic [ref=e250]:
+                  - generic [ref=e251]: Wait for entry
+                  - generic [ref=e252]: "-"
+                  - link "Open market" [ref=e253] [cursor=pointer]:
+                    - /url: https://polymarket.com/event/trump-out-as-president-before-gta-vi-846
+              - cell "$534,730.74" [ref=e254]
+            - row "s10_yes_bias Will Harvey Weinstein be sentenced to no prison time? buy 0.475 22.5% 60.0% Wait for entry - Open market $53,200.18" [ref=e255]:
+              - cell "s10_yes_bias" [ref=e256]
+              - cell "Will Harvey Weinstein be sentenced to no prison time?" [ref=e257]
+              - cell "buy" [ref=e258]
+              - cell "0.475" [ref=e259]
+              - cell "22.5%" [ref=e260]
+              - cell "60.0%" [ref=e261]
+              - cell "Wait for entry - Open market" [ref=e262]:
+                - generic [ref=e263]:
+                  - generic [ref=e264]: Wait for entry
+                  - generic [ref=e265]: "-"
+                  - link "Open market" [ref=e266] [cursor=pointer]:
+                    - /url: https://polymarket.com/event/will-harvey-weinstein-be-sentenced-to-no-prison-time
+              - cell "$53,200.18" [ref=e267]

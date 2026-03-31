@@ -1,0 +1,1560 @@
+- generic [ref=e8]:
+  - complementary [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic [ref=e12]: PM
+        - generic [ref=e13]:
+          - heading "Polymarket Lab" [level=1] [ref=e14]
+          - paragraph [ref=e15]: Live Research Console
+      - group "Language" [ref=e16]:
+        - generic [ref=e17]: Language
+        - button "EN" [ref=e18]
+        - button "KR" [ref=e19]
+      - navigation "Dashboard sections" [ref=e20]:
+        - button "Overview" [ref=e21]
+        - button "Where to Bet" [ref=e22]
+        - button "Strategies" [ref=e23]
+        - button "Markets" [active] [ref=e24]
+        - button "Backtest" [ref=e25]
+    - generic [ref=e26]:
+      - paragraph [ref=e27]: Mode
+      - strong [ref=e28]: Live Data Feed
+      - generic [ref=e29]: "Health: Live"
+  - main [ref=e30]:
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - paragraph [ref=e33]: React + Live API
+        - heading "Live Opportunity Scanner" [level=2] [ref=e79]
+        - paragraph [ref=e35]: Signal filters over live markets and live strategy logic.
+      - generic [ref=e36]:
+        - generic [ref=e37]: UTC 21:20
+        - generic [ref=e38]: "Signals: 49"
+        - generic [ref=e39]: Live
+    - generic [ref=e80]:
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - generic [ref=e83]: "Min Volume: 5K"
+          - 'slider "Min Volume: 5K" [ref=e84]': "5000"
+        - generic [ref=e85]:
+          - generic [ref=e86]: "Min Edge: 3.0%"
+          - 'slider "Min Edge: 3.0%" [ref=e87]': "0.03"
+        - generic [ref=e88]:
+          - button "Run Scan" [ref=e89]
+          - generic [ref=e90]: "Last scan: 05:20 PM"
+      - article [ref=e91]:
+        - generic [ref=e92]:
+          - generic [ref=e93]:
+            - heading "Trump out as President before GTA VI?" [level=3] [ref=e94]
+            - link "Open market" [ref=e95] [cursor=pointer]:
+              - /url: https://polymarket.com/event/trump-out-as-president-before-gta-vi-846
+          - generic [ref=e96]: politics
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - paragraph [ref=e99]: Strategy
+            - strong [ref=e100]: s01_reversing_stupidity
+          - generic [ref=e101]:
+            - paragraph [ref=e102]: Volume
+            - strong [ref=e103]: $534,730.74
+          - generic [ref=e104]:
+            - paragraph [ref=e105]: Side
+            - strong [ref=e106]: buy
+          - generic [ref=e107]:
+            - paragraph [ref=e108]: Market Price
+            - strong [ref=e109]: "0.475"
+          - generic [ref=e110]:
+            - paragraph [ref=e111]: Edge
+            - strong [ref=e112]: 47.5%
+          - generic [ref=e113]:
+            - paragraph [ref=e114]: Confidence
+            - strong [ref=e115]: 70.0%
+          - generic [ref=e116]:
+            - paragraph [ref=e117]: End Date
+            - strong [ref=e118]: 2026-07-31T12:00:00Z
+        - generic [ref=e119]:
+          - generic [ref=e120]:
+            - generic [ref=e121]:
+              - paragraph [ref=e122]: Plan
+              - strong [ref=e123]: Manual-only
+            - generic [ref=e124]: Enter now
+          - generic [ref=e125]:
+            - generic [ref=e126]:
+              - paragraph [ref=e127]: Trigger
+              - strong [ref=e128]: YES >= 0.180
+              - generic [ref=e129]: NO <= 0.820
+            - generic [ref=e130]:
+              - paragraph [ref=e131]: Limit
+              - strong [ref=e132]: NO <= 0.495
+              - generic [ref=e133]: ask 0.480 · size 600.000 · basis $10,000.00
+            - generic [ref=e134]:
+              - paragraph [ref=e135]: Max chase
+              - strong [ref=e136]: "0.505"
+              - text: live orderbook
+            - generic [ref=e137]:
+              - paragraph [ref=e138]: Take profit
+              - strong [ref=e139]: "0.784"
+              - generic [ref=e140]: "Review below: 0.425"
+          - paragraph [ref=e141]: 지금 Polymarket에서 NO를 선택하고 0.4950 이하 지정가로 매수하세요. 추천 계약 수량 600.0000 기준, 현재 NO 호가는 0.4800입니다. NO가 0.7837 이상이면 이익실현 검토, 0.4250 이하로 밀리면 재검토하세요.
+      - article [ref=e142]:
+        - generic [ref=e143]:
+          - generic [ref=e144]:
+            - heading "Russia-Ukraine Ceasefire before GTA VI?" [level=3] [ref=e145]
+            - link "Open market" [ref=e146] [cursor=pointer]:
+              - /url: https://polymarket.com/event/russia-ukraine-ceasefire-before-gta-vi-554
+          - generic [ref=e147]: geopolitical
+        - generic [ref=e148]:
+          - generic [ref=e149]:
+            - paragraph [ref=e150]: Strategy
+            - strong [ref=e151]: s01_reversing_stupidity
+          - generic [ref=e152]:
+            - paragraph [ref=e153]: Volume
+            - strong [ref=e154]: $1,367,826.81
+          - generic [ref=e155]:
+            - paragraph [ref=e156]: Side
+            - strong [ref=e157]: buy
+          - generic [ref=e158]:
+            - paragraph [ref=e159]: Market Price
+            - strong [ref=e160]: "0.420"
+          - generic [ref=e161]:
+            - paragraph [ref=e162]: Edge
+            - strong [ref=e163]: 43.0%
+          - generic [ref=e164]:
+            - paragraph [ref=e165]: Confidence
+            - strong [ref=e166]: 70.0%
+          - generic [ref=e167]:
+            - paragraph [ref=e168]: End Date
+            - strong [ref=e169]: 2026-07-31T12:00:00Z
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - generic [ref=e172]:
+              - paragraph [ref=e173]: Plan
+              - strong [ref=e174]: Manual-only
+            - generic [ref=e175]: Enter now
+          - generic [ref=e176]:
+            - generic [ref=e177]:
+              - paragraph [ref=e178]: Trigger
+              - strong [ref=e179]: YES >= 0.280
+              - generic [ref=e180]: NO <= 0.720
+            - generic [ref=e181]:
+              - paragraph [ref=e182]: Limit
+              - strong [ref=e183]: NO <= 0.440
+              - generic [ref=e184]: ask 0.430 · size 600.000 · basis $10,000.00
+            - generic [ref=e185]:
+              - paragraph [ref=e186]: Max chase
+              - strong [ref=e187]: "0.450"
+              - text: live orderbook
+            - generic [ref=e188]:
+              - paragraph [ref=e189]: Take profit
+              - strong [ref=e190]: "0.700"
+              - generic [ref=e191]: "Review below: 0.370"
+          - paragraph [ref=e192]: 지금 Polymarket에서 NO를 선택하고 0.4400 이하 지정가로 매수하세요. 추천 계약 수량 600.0000 기준, 현재 NO 호가는 0.4300입니다. NO가 0.6995 이상이면 이익실현 검토, 0.3700 이하로 밀리면 재검토하세요.
+      - article [ref=e193]:
+        - generic [ref=e194]:
+          - generic [ref=e195]:
+            - heading "Russia-Ukraine Ceasefire before GTA VI?" [level=3] [ref=e196]
+            - link "Open market" [ref=e197] [cursor=pointer]:
+              - /url: https://polymarket.com/event/russia-ukraine-ceasefire-before-gta-vi-554
+          - generic [ref=e198]: unknown
+        - generic [ref=e199]:
+          - generic [ref=e200]:
+            - paragraph [ref=e201]: Strategy
+            - strong [ref=e202]: s03_nothing_ever_happens
+          - generic [ref=e203]:
+            - paragraph [ref=e204]: Volume
+            - strong [ref=e205]: $1,367,826.81
+          - generic [ref=e206]:
+            - paragraph [ref=e207]: Side
+            - strong [ref=e208]: buy
+          - generic [ref=e209]:
+            - paragraph [ref=e210]: Market Price
+            - strong [ref=e211]: "0.420"
+          - generic [ref=e212]:
+            - paragraph [ref=e213]: Edge
+            - strong [ref=e214]: 43.0%
+          - generic [ref=e215]:
+            - paragraph [ref=e216]: Confidence
+            - strong [ref=e217]: 65.0%
+          - generic [ref=e218]:
+            - paragraph [ref=e219]: End Date
+            - strong [ref=e220]: 2026-07-31T12:00:00Z
+      - article [ref=e221]:
+        - generic [ref=e222]:
+          - generic [ref=e223]:
+            - heading "Will China invades Taiwan before GTA VI?" [level=3] [ref=e224]
+            - link "Open market" [ref=e225] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-china-invades-taiwan-before-gta-vi-716
+          - generic [ref=e226]: geopolitical
+        - generic [ref=e227]:
+          - generic [ref=e228]:
+            - paragraph [ref=e229]: Strategy
+            - strong [ref=e230]: s01_reversing_stupidity
+          - generic [ref=e231]:
+            - paragraph [ref=e232]: Volume
+            - strong [ref=e233]: $1,464,230.69
+          - generic [ref=e234]:
+            - paragraph [ref=e235]: Side
+            - strong [ref=e236]: buy
+          - generic [ref=e237]:
+            - paragraph [ref=e238]: Market Price
+            - strong [ref=e239]: "0.485"
+          - generic [ref=e240]:
+            - paragraph [ref=e241]: Edge
+            - strong [ref=e242]: 36.5%
+          - generic [ref=e243]:
+            - paragraph [ref=e244]: Confidence
+            - strong [ref=e245]: 70.0%
+          - generic [ref=e246]:
+            - paragraph [ref=e247]: End Date
+            - strong [ref=e248]: 2026-07-31T12:00:00Z
+        - generic [ref=e249]:
+          - generic [ref=e250]:
+            - generic [ref=e251]:
+              - paragraph [ref=e252]: Plan
+              - strong [ref=e253]: Manual-only
+            - generic [ref=e254]: Enter now
+          - generic [ref=e255]:
+            - generic [ref=e256]:
+              - paragraph [ref=e257]: Trigger
+              - strong [ref=e258]: YES >= 0.280
+              - generic [ref=e259]: NO <= 0.720
+            - generic [ref=e260]:
+              - paragraph [ref=e261]: Limit
+              - strong [ref=e262]: NO <= 0.505
+              - generic [ref=e263]: ask 0.490 · size 600.000 · basis $10,000.00
+            - generic [ref=e264]:
+              - paragraph [ref=e265]: Max chase
+              - strong [ref=e266]: "0.515"
+              - text: live orderbook
+            - generic [ref=e267]:
+              - paragraph [ref=e268]: Take profit
+              - strong [ref=e269]: "0.722"
+              - generic [ref=e270]: "Review below: 0.435"
+          - paragraph [ref=e271]: 지금 Polymarket에서 NO를 선택하고 0.5050 이하 지정가로 매수하세요. 추천 계약 수량 600.0000 기준, 현재 NO 호가는 0.4900입니다. NO가 0.7222 이상이면 이익실현 검토, 0.4350 이하로 밀리면 재검토하세요.
+      - article [ref=e272]:
+        - generic [ref=e273]:
+          - generic [ref=e274]:
+            - heading "Will China invades Taiwan before GTA VI?" [level=3] [ref=e275]
+            - link "Open market" [ref=e276] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-china-invades-taiwan-before-gta-vi-716
+          - generic [ref=e277]: unknown
+        - generic [ref=e278]:
+          - generic [ref=e279]:
+            - paragraph [ref=e280]: Strategy
+            - strong [ref=e281]: s03_nothing_ever_happens
+          - generic [ref=e282]:
+            - paragraph [ref=e283]: Volume
+            - strong [ref=e284]: $1,464,230.69
+          - generic [ref=e285]:
+            - paragraph [ref=e286]: Side
+            - strong [ref=e287]: buy
+          - generic [ref=e288]:
+            - paragraph [ref=e289]: Market Price
+            - strong [ref=e290]: "0.485"
+          - generic [ref=e291]:
+            - paragraph [ref=e292]: Edge
+            - strong [ref=e293]: 36.5%
+          - generic [ref=e294]:
+            - paragraph [ref=e295]: Confidence
+            - strong [ref=e296]: 65.0%
+          - generic [ref=e297]:
+            - paragraph [ref=e298]: End Date
+            - strong [ref=e299]: 2026-07-31T12:00:00Z
+      - article [ref=e300]:
+        - generic [ref=e301]:
+          - generic [ref=e302]:
+            - heading "New Rihanna Album before GTA VI?" [level=3] [ref=e303]
+            - link "Open market" [ref=e304] [cursor=pointer]:
+              - /url: https://polymarket.com/event/new-rhianna-album-before-gta-vi-926
+          - generic [ref=e305]: unknown
+        - generic [ref=e306]:
+          - generic [ref=e307]:
+            - paragraph [ref=e308]: Strategy
+            - strong [ref=e309]: s10_yes_bias
+          - generic [ref=e310]:
+            - paragraph [ref=e311]: Volume
+            - strong [ref=e312]: $651,302.89
+          - generic [ref=e313]:
+            - paragraph [ref=e314]: Side
+            - strong [ref=e315]: buy
+          - generic [ref=e316]:
+            - paragraph [ref=e317]: Market Price
+            - strong [ref=e318]: "0.395"
+          - generic [ref=e319]:
+            - paragraph [ref=e320]: Edge
+            - strong [ref=e321]: 30.5%
+          - generic [ref=e322]:
+            - paragraph [ref=e323]: Confidence
+            - strong [ref=e324]: 60.0%
+          - generic [ref=e325]:
+            - paragraph [ref=e326]: End Date
+            - strong [ref=e327]: 2026-07-31T12:00:00Z
+      - article [ref=e328]:
+        - generic [ref=e329]:
+          - generic [ref=e330]:
+            - heading "Will MegaETH perform an airdrop by June 30?" [level=3] [ref=e331]
+            - link "Open market" [ref=e332] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-megaeth-perform-an-airdrop-by-june-30-143-229-513-574-212-254
+          - generic [ref=e333]: unknown
+        - generic [ref=e334]:
+          - generic [ref=e335]:
+            - paragraph [ref=e336]: Strategy
+            - strong [ref=e337]: s10_yes_bias
+          - generic [ref=e338]:
+            - paragraph [ref=e339]: Volume
+            - strong [ref=e340]: $886,091.69
+          - generic [ref=e341]:
+            - paragraph [ref=e342]: Side
+            - strong [ref=e343]: buy
+          - generic [ref=e344]:
+            - paragraph [ref=e345]: Market Price
+            - strong [ref=e346]: "0.398"
+          - generic [ref=e347]:
+            - paragraph [ref=e348]: Edge
+            - strong [ref=e349]: 30.2%
+          - generic [ref=e350]:
+            - paragraph [ref=e351]: Confidence
+            - strong [ref=e352]: 60.0%
+          - generic [ref=e353]:
+            - paragraph [ref=e354]: End Date
+            - strong [ref=e355]: 2026-02-01T05:00:00Z
+      - article [ref=e356]:
+        - generic [ref=e357]:
+          - generic [ref=e358]:
+            - heading "Will Italy qualify for the 2026 FIFA World Cup?" [level=3] [ref=e359]
+            - link "Open market" [ref=e360] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-italy-qualify-for-the-2026-fifa-world-cup
+          - generic [ref=e361]: unknown
+        - generic [ref=e362]:
+          - generic [ref=e363]:
+            - paragraph [ref=e364]: Strategy
+            - strong [ref=e365]: s10_yes_bias
+          - generic [ref=e366]:
+            - paragraph [ref=e367]: Volume
+            - strong [ref=e368]: $213,983.60
+          - generic [ref=e369]:
+            - paragraph [ref=e370]: Side
+            - strong [ref=e371]: buy
+          - generic [ref=e372]:
+            - paragraph [ref=e373]: Market Price
+            - strong [ref=e374]: "0.405"
+          - generic [ref=e375]:
+            - paragraph [ref=e376]: Edge
+            - strong [ref=e377]: 29.5%
+          - generic [ref=e378]:
+            - paragraph [ref=e379]: Confidence
+            - strong [ref=e380]: 60.0%
+          - generic [ref=e381]:
+            - paragraph [ref=e382]: End Date
+            - strong [ref=e383]: 2026-04-12T00:00:00Z
+      - article [ref=e384]:
+        - generic [ref=e385]:
+          - generic [ref=e386]:
+            - heading "Russia-Ukraine Ceasefire before GTA VI?" [level=3] [ref=e387]
+            - link "Open market" [ref=e388] [cursor=pointer]:
+              - /url: https://polymarket.com/event/russia-ukraine-ceasefire-before-gta-vi-554
+          - generic [ref=e389]: unknown
+        - generic [ref=e390]:
+          - generic [ref=e391]:
+            - paragraph [ref=e392]: Strategy
+            - strong [ref=e393]: s10_yes_bias
+          - generic [ref=e394]:
+            - paragraph [ref=e395]: Volume
+            - strong [ref=e396]: $1,367,826.81
+          - generic [ref=e397]:
+            - paragraph [ref=e398]: Side
+            - strong [ref=e399]: buy
+          - generic [ref=e400]:
+            - paragraph [ref=e401]: Market Price
+            - strong [ref=e402]: "0.420"
+          - generic [ref=e403]:
+            - paragraph [ref=e404]: Edge
+            - strong [ref=e405]: 28.0%
+          - generic [ref=e406]:
+            - paragraph [ref=e407]: Confidence
+            - strong [ref=e408]: 60.0%
+          - generic [ref=e409]:
+            - paragraph [ref=e410]: End Date
+            - strong [ref=e411]: 2026-07-31T12:00:00Z
+      - article [ref=e412]:
+        - generic [ref=e413]:
+          - generic [ref=e414]:
+            - heading "New Playboi Carti Album before GTA VI?" [level=3] [ref=e415]
+            - link "Open market" [ref=e416] [cursor=pointer]:
+              - /url: https://polymarket.com/event/new-playboi-carti-album-before-gta-vi-421
+          - generic [ref=e417]: unknown
+        - generic [ref=e418]:
+          - generic [ref=e419]:
+            - paragraph [ref=e420]: Strategy
+            - strong [ref=e421]: s10_yes_bias
+          - generic [ref=e422]:
+            - paragraph [ref=e423]: Volume
+            - strong [ref=e424]: $681,293.41
+          - generic [ref=e425]:
+            - paragraph [ref=e426]: Side
+            - strong [ref=e427]: buy
+          - generic [ref=e428]:
+            - paragraph [ref=e429]: Market Price
+            - strong [ref=e430]: "0.475"
+          - generic [ref=e431]:
+            - paragraph [ref=e432]: Edge
+            - strong [ref=e433]: 22.5%
+          - generic [ref=e434]:
+            - paragraph [ref=e435]: Confidence
+            - strong [ref=e436]: 60.0%
+          - generic [ref=e437]:
+            - paragraph [ref=e438]: End Date
+            - strong [ref=e439]: 2026-07-31T12:00:00Z
+      - article [ref=e440]:
+        - generic [ref=e441]:
+          - generic [ref=e442]:
+            - heading "Trump out as President before GTA VI?" [level=3] [ref=e443]
+            - link "Open market" [ref=e444] [cursor=pointer]:
+              - /url: https://polymarket.com/event/trump-out-as-president-before-gta-vi-846
+          - generic [ref=e445]: unknown
+        - generic [ref=e446]:
+          - generic [ref=e447]:
+            - paragraph [ref=e448]: Strategy
+            - strong [ref=e449]: s10_yes_bias
+          - generic [ref=e450]:
+            - paragraph [ref=e451]: Volume
+            - strong [ref=e452]: $534,730.74
+          - generic [ref=e453]:
+            - paragraph [ref=e454]: Side
+            - strong [ref=e455]: buy
+          - generic [ref=e456]:
+            - paragraph [ref=e457]: Market Price
+            - strong [ref=e458]: "0.475"
+          - generic [ref=e459]:
+            - paragraph [ref=e460]: Edge
+            - strong [ref=e461]: 22.5%
+          - generic [ref=e462]:
+            - paragraph [ref=e463]: Confidence
+            - strong [ref=e464]: 60.0%
+          - generic [ref=e465]:
+            - paragraph [ref=e466]: End Date
+            - strong [ref=e467]: 2026-07-31T12:00:00Z
+      - article [ref=e468]:
+        - generic [ref=e469]:
+          - generic [ref=e470]:
+            - heading "Will Harvey Weinstein be sentenced to no prison time?" [level=3] [ref=e471]
+            - link "Open market" [ref=e472] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-harvey-weinstein-be-sentenced-to-no-prison-time
+          - generic [ref=e473]: unknown
+        - generic [ref=e474]:
+          - generic [ref=e475]:
+            - paragraph [ref=e476]: Strategy
+            - strong [ref=e477]: s10_yes_bias
+          - generic [ref=e478]:
+            - paragraph [ref=e479]: Volume
+            - strong [ref=e480]: $53,200.18
+          - generic [ref=e481]:
+            - paragraph [ref=e482]: Side
+            - strong [ref=e483]: buy
+          - generic [ref=e484]:
+            - paragraph [ref=e485]: Market Price
+            - strong [ref=e486]: "0.475"
+          - generic [ref=e487]:
+            - paragraph [ref=e488]: Edge
+            - strong [ref=e489]: 22.5%
+          - generic [ref=e490]:
+            - paragraph [ref=e491]: Confidence
+            - strong [ref=e492]: 60.0%
+          - generic [ref=e493]:
+            - paragraph [ref=e494]: End Date
+            - strong [ref=e495]: 2025-12-31T12:00:00Z
+      - article [ref=e496]:
+        - generic [ref=e497]:
+          - generic [ref=e498]:
+            - heading "Will China invades Taiwan before GTA VI?" [level=3] [ref=e499]
+            - link "Open market" [ref=e500] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-china-invades-taiwan-before-gta-vi-716
+          - generic [ref=e501]: unknown
+        - generic [ref=e502]:
+          - generic [ref=e503]:
+            - paragraph [ref=e504]: Strategy
+            - strong [ref=e505]: s10_yes_bias
+          - generic [ref=e506]:
+            - paragraph [ref=e507]: Volume
+            - strong [ref=e508]: $1,464,230.69
+          - generic [ref=e509]:
+            - paragraph [ref=e510]: Side
+            - strong [ref=e511]: buy
+          - generic [ref=e512]:
+            - paragraph [ref=e513]: Market Price
+            - strong [ref=e514]: "0.485"
+          - generic [ref=e515]:
+            - paragraph [ref=e516]: Edge
+            - strong [ref=e517]: 21.5%
+          - generic [ref=e518]:
+            - paragraph [ref=e519]: Confidence
+            - strong [ref=e520]: 60.0%
+          - generic [ref=e521]:
+            - paragraph [ref=e522]: End Date
+            - strong [ref=e523]: 2026-07-31T12:00:00Z
+      - article [ref=e524]:
+        - generic [ref=e525]:
+          - generic [ref=e526]:
+            - heading "Will bitcoin hit $1m before GTA VI?" [level=3] [ref=e527]
+            - link "Open market" [ref=e528] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-bitcoin-hit-1m-before-gta-vi-872
+          - generic [ref=e529]: crypto
+        - generic [ref=e530]:
+          - generic [ref=e531]:
+            - paragraph [ref=e532]: Strategy
+            - strong [ref=e533]: s01_reversing_stupidity
+          - generic [ref=e534]:
+            - paragraph [ref=e535]: Volume
+            - strong [ref=e536]: $3,526,095.29
+          - generic [ref=e537]:
+            - paragraph [ref=e538]: Side
+            - strong [ref=e539]: buy
+          - generic [ref=e540]:
+            - paragraph [ref=e541]: Market Price
+            - strong [ref=e542]: "0.512"
+          - generic [ref=e543]:
+            - paragraph [ref=e544]: Edge
+            - strong [ref=e545]: 18.8%
+          - generic [ref=e546]:
+            - paragraph [ref=e547]: Confidence
+            - strong [ref=e548]: 70.0%
+          - generic [ref=e549]:
+            - paragraph [ref=e550]: End Date
+            - strong [ref=e551]: 2026-07-31T12:00:00Z
+        - generic [ref=e552]:
+          - generic [ref=e553]:
+            - generic [ref=e554]:
+              - paragraph [ref=e555]: Plan
+              - strong [ref=e556]: Manual-only
+            - generic [ref=e557]: Enter now
+          - generic [ref=e558]:
+            - generic [ref=e559]:
+              - paragraph [ref=e560]: Trigger
+              - strong [ref=e561]: YES >= 0.400
+              - generic [ref=e562]: NO <= 0.600
+            - generic [ref=e563]:
+              - paragraph [ref=e564]: Limit
+              - strong [ref=e565]: NO <= 0.532
+              - generic [ref=e566]: ask 0.513 · size 600.000 · basis $10,000.00
+            - generic [ref=e567]:
+              - paragraph [ref=e568]: Max chase
+              - strong [ref=e569]: "0.542"
+              - text: live orderbook
+            - generic [ref=e570]:
+              - paragraph [ref=e571]: Take profit
+              - strong [ref=e572]: "0.634"
+              - generic [ref=e573]: "Review below: 0.462"
+          - paragraph [ref=e574]: 지금 Polymarket에서 NO를 선택하고 0.5320 이하 지정가로 매수하세요. 추천 계약 수량 600.0000 기준, 현재 NO 호가는 0.5130입니다. NO가 0.6342 이상이면 이익실현 검토, 0.4620 이하로 밀리면 재검토하세요.
+      - article [ref=e575]:
+        - generic [ref=e576]:
+          - generic [ref=e577]:
+            - heading "Will bitcoin hit $1m before GTA VI?" [level=3] [ref=e578]
+            - link "Open market" [ref=e579] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-bitcoin-hit-1m-before-gta-vi-872
+          - generic [ref=e580]: unknown
+        - generic [ref=e581]:
+          - generic [ref=e582]:
+            - paragraph [ref=e583]: Strategy
+            - strong [ref=e584]: s10_yes_bias
+          - generic [ref=e585]:
+            - paragraph [ref=e586]: Volume
+            - strong [ref=e587]: $3,526,095.29
+          - generic [ref=e588]:
+            - paragraph [ref=e589]: Side
+            - strong [ref=e590]: buy
+          - generic [ref=e591]:
+            - paragraph [ref=e592]: Market Price
+            - strong [ref=e593]: "0.512"
+          - generic [ref=e594]:
+            - paragraph [ref=e595]: Edge
+            - strong [ref=e596]: 18.8%
+          - generic [ref=e597]:
+            - paragraph [ref=e598]: Confidence
+            - strong [ref=e599]: 60.0%
+          - generic [ref=e600]:
+            - paragraph [ref=e601]: End Date
+            - strong [ref=e602]: 2026-07-31T12:00:00Z
+      - article [ref=e603]:
+        - generic [ref=e604]:
+          - generic [ref=e605]:
+            - heading "Will Jesus Christ return before GTA VI?" [level=3] [ref=e606]
+            - link "Open market" [ref=e607] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-jesus-christ-return-before-gta-vi-665
+          - generic [ref=e608]: unknown
+        - generic [ref=e609]:
+          - generic [ref=e610]:
+            - paragraph [ref=e611]: Strategy
+            - strong [ref=e612]: s10_yes_bias
+          - generic [ref=e613]:
+            - paragraph [ref=e614]: Volume
+            - strong [ref=e615]: $9,967,089.51
+          - generic [ref=e616]:
+            - paragraph [ref=e617]: Side
+            - strong [ref=e618]: buy
+          - generic [ref=e619]:
+            - paragraph [ref=e620]: Market Price
+            - strong [ref=e621]: "0.515"
+          - generic [ref=e622]:
+            - paragraph [ref=e623]: Edge
+            - strong [ref=e624]: 18.5%
+          - generic [ref=e625]:
+            - paragraph [ref=e626]: Confidence
+            - strong [ref=e627]: 60.0%
+          - generic [ref=e628]:
+            - paragraph [ref=e629]: End Date
+            - strong [ref=e630]: 2026-07-31T12:00:00Z
+      - article [ref=e631]:
+        - generic [ref=e632]:
+          - generic [ref=e633]:
+            - heading "Will Poland qualify for the 2026 FIFA World Cup?" [level=3] [ref=e634]
+            - link "Open market" [ref=e635] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-poland-qualify-for-the-2026-fifa-world-cup
+          - generic [ref=e636]: unknown
+        - generic [ref=e637]:
+          - generic [ref=e638]:
+            - paragraph [ref=e639]: Strategy
+            - strong [ref=e640]: s10_yes_bias
+          - generic [ref=e641]:
+            - paragraph [ref=e642]: Volume
+            - strong [ref=e643]: $458,513.32
+          - generic [ref=e644]:
+            - paragraph [ref=e645]: Side
+            - strong [ref=e646]: buy
+          - generic [ref=e647]:
+            - paragraph [ref=e648]: Market Price
+            - strong [ref=e649]: "0.625"
+          - generic [ref=e650]:
+            - paragraph [ref=e651]: Edge
+            - strong [ref=e652]: 7.5%
+          - generic [ref=e653]:
+            - paragraph [ref=e654]: Confidence
+            - strong [ref=e655]: 60.0%
+          - generic [ref=e656]:
+            - paragraph [ref=e657]: End Date
+            - strong [ref=e658]: 2026-04-12T00:00:00Z
+      - article [ref=e659]:
+        - generic [ref=e660]:
+          - generic [ref=e661]:
+            - heading "Will the Oklahoma City Thunder win the 2026 NBA Finals?" [level=3] [ref=e662]
+            - link "Open market" [ref=e663] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-oklahoma-city-thunder-win-the-2026-nba-finals
+          - generic [ref=e664]: unknown
+        - generic [ref=e665]:
+          - generic [ref=e666]:
+            - paragraph [ref=e667]: Strategy
+            - strong [ref=e668]: s10_yes_bias
+          - generic [ref=e669]:
+            - paragraph [ref=e670]: Volume
+            - strong [ref=e671]: $4,911,866.10
+          - generic [ref=e672]:
+            - paragraph [ref=e673]: Side
+            - strong [ref=e674]: buy
+          - generic [ref=e675]:
+            - paragraph [ref=e676]: Market Price
+            - strong [ref=e677]: "0.645"
+          - generic [ref=e678]:
+            - paragraph [ref=e679]: Edge
+            - strong [ref=e680]: 5.5%
+          - generic [ref=e681]:
+            - paragraph [ref=e682]: Confidence
+            - strong [ref=e683]: 60.0%
+          - generic [ref=e684]:
+            - paragraph [ref=e685]: End Date
+            - strong [ref=e686]: 2026-07-01T00:00:00Z
+      - article [ref=e687]:
+        - generic [ref=e688]:
+          - generic [ref=e689]:
+            - heading "Will Gavin Newsom win the 2028 Democratic presidential nomination?" [level=3] [ref=e690]
+            - link "Open market" [ref=e691] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568
+          - generic [ref=e692]: unknown
+        - generic [ref=e693]:
+          - generic [ref=e694]:
+            - paragraph [ref=e695]: Strategy
+            - strong [ref=e696]: s39_volume_momentum
+          - generic [ref=e697]:
+            - paragraph [ref=e698]: Volume
+            - strong [ref=e699]: $11,796,191.98
+          - generic [ref=e700]:
+            - paragraph [ref=e701]: Side
+            - strong [ref=e702]: buy
+          - generic [ref=e703]:
+            - paragraph [ref=e704]: Market Price
+            - strong [ref=e705]: "0.747"
+          - generic [ref=e706]:
+            - paragraph [ref=e707]: Edge
+            - strong [ref=e708]: 5.0%
+          - generic [ref=e709]:
+            - paragraph [ref=e710]: Confidence
+            - strong [ref=e711]: 55.0%
+          - generic [ref=e712]:
+            - paragraph [ref=e713]: End Date
+            - strong [ref=e714]: 2028-11-07T00:00:00Z
+      - article [ref=e715]:
+        - generic [ref=e716]:
+          - generic [ref=e717]:
+            - heading "Will the Colorado Avalanche win the 2026 NHL Stanley Cup?" [level=3] [ref=e718]
+            - link "Open market" [ref=e719] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-colorado-avalanche-win-the-2026-nhl-stanley-cup
+          - generic [ref=e720]: unknown
+        - generic [ref=e721]:
+          - generic [ref=e722]:
+            - paragraph [ref=e723]: Strategy
+            - strong [ref=e724]: s39_volume_momentum
+          - generic [ref=e725]:
+            - paragraph [ref=e726]: Volume
+            - strong [ref=e727]: $11,385,673.59
+          - generic [ref=e728]:
+            - paragraph [ref=e729]: Side
+            - strong [ref=e730]: buy
+          - generic [ref=e731]:
+            - paragraph [ref=e732]: Market Price
+            - strong [ref=e733]: "0.784"
+          - generic [ref=e734]:
+            - paragraph [ref=e735]: Edge
+            - strong [ref=e736]: 5.0%
+          - generic [ref=e737]:
+            - paragraph [ref=e738]: Confidence
+            - strong [ref=e739]: 55.0%
+          - generic [ref=e740]:
+            - paragraph [ref=e741]: End Date
+            - strong [ref=e742]: 2026-06-30T00:00:00Z
+      - article [ref=e743]:
+        - generic [ref=e744]:
+          - generic [ref=e745]:
+            - heading "Will JD Vance win the 2028 US Presidential Election?" [level=3] [ref=e746]
+            - link "Open market" [ref=e747] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-jd-vance-win-the-2028-us-presidential-election
+          - generic [ref=e748]: unknown
+        - generic [ref=e749]:
+          - generic [ref=e750]:
+            - paragraph [ref=e751]: Strategy
+            - strong [ref=e752]: s39_volume_momentum
+          - generic [ref=e753]:
+            - paragraph [ref=e754]: Volume
+            - strong [ref=e755]: $7,943,505.79
+          - generic [ref=e756]:
+            - paragraph [ref=e757]: Side
+            - strong [ref=e758]: buy
+          - generic [ref=e759]:
+            - paragraph [ref=e760]: Market Price
+            - strong [ref=e761]: "0.791"
+          - generic [ref=e762]:
+            - paragraph [ref=e763]: Edge
+            - strong [ref=e764]: 5.0%
+          - generic [ref=e765]:
+            - paragraph [ref=e766]: Confidence
+            - strong [ref=e767]: 55.0%
+          - generic [ref=e768]:
+            - paragraph [ref=e769]: End Date
+            - strong [ref=e770]: 2028-11-07T00:00:00Z
+      - article [ref=e771]:
+        - generic [ref=e772]:
+          - generic [ref=e773]:
+            - heading "MegaETH market cap (FDV) >$2B one day after launch?" [level=3] [ref=e774]
+            - link "Open market" [ref=e775] [cursor=pointer]:
+              - /url: https://polymarket.com/event/megaeth-market-cap-fdv-2b-one-day-after-launch-738-867-649-272-765-733
+          - generic [ref=e776]: unknown
+        - generic [ref=e777]:
+          - generic [ref=e778]:
+            - paragraph [ref=e779]: Strategy
+            - strong [ref=e780]: s39_volume_momentum
+          - generic [ref=e781]:
+            - paragraph [ref=e782]: Volume
+            - strong [ref=e783]: $5,481,651.25
+          - generic [ref=e784]:
+            - paragraph [ref=e785]: Side
+            - strong [ref=e786]: buy
+          - generic [ref=e787]:
+            - paragraph [ref=e788]: Market Price
+            - strong [ref=e789]: "0.835"
+          - generic [ref=e790]:
+            - paragraph [ref=e791]: Edge
+            - strong [ref=e792]: 5.0%
+          - generic [ref=e793]:
+            - paragraph [ref=e794]: Confidence
+            - strong [ref=e795]: 55.0%
+          - generic [ref=e796]:
+            - paragraph [ref=e797]: End Date
+            - strong [ref=e798]: 2025-12-31T00:00:00Z
+      - article [ref=e799]:
+        - generic [ref=e800]:
+          - generic [ref=e801]:
+            - heading "Will Gavin Newsom win the 2028 US Presidential Election?" [level=3] [ref=e802]
+            - link "Open market" [ref=e803] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-gavin-newsom-win-the-2028-us-presidential-election
+          - generic [ref=e804]: unknown
+        - generic [ref=e805]:
+          - generic [ref=e806]:
+            - paragraph [ref=e807]: Strategy
+            - strong [ref=e808]: s39_volume_momentum
+          - generic [ref=e809]:
+            - paragraph [ref=e810]: Volume
+            - strong [ref=e811]: $5,449,259.24
+          - generic [ref=e812]:
+            - paragraph [ref=e813]: Side
+            - strong [ref=e814]: buy
+          - generic [ref=e815]:
+            - paragraph [ref=e816]: Market Price
+            - strong [ref=e817]: "0.828"
+          - generic [ref=e818]:
+            - paragraph [ref=e819]: Edge
+            - strong [ref=e820]: 5.0%
+          - generic [ref=e821]:
+            - paragraph [ref=e822]: Confidence
+            - strong [ref=e823]: 55.0%
+          - generic [ref=e824]:
+            - paragraph [ref=e825]: End Date
+            - strong [ref=e826]: 2028-11-07T00:00:00Z
+      - article [ref=e827]:
+        - generic [ref=e828]:
+          - generic [ref=e829]:
+            - heading "Will the San Antonio Spurs win the 2026 NBA Finals?" [level=3] [ref=e830]
+            - link "Open market" [ref=e831] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-san-antonio-spurs-win-the-2026-nba-finals
+          - generic [ref=e832]: unknown
+        - generic [ref=e833]:
+          - generic [ref=e834]:
+            - paragraph [ref=e835]: Strategy
+            - strong [ref=e836]: s39_volume_momentum
+          - generic [ref=e837]:
+            - paragraph [ref=e838]: Volume
+            - strong [ref=e839]: $5,120,520.45
+          - generic [ref=e840]:
+            - paragraph [ref=e841]: Side
+            - strong [ref=e842]: buy
+          - generic [ref=e843]:
+            - paragraph [ref=e844]: Market Price
+            - strong [ref=e845]: "0.867"
+          - generic [ref=e846]:
+            - paragraph [ref=e847]: Edge
+            - strong [ref=e848]: 5.0%
+          - generic [ref=e849]:
+            - paragraph [ref=e850]: Confidence
+            - strong [ref=e851]: 55.0%
+          - generic [ref=e852]:
+            - paragraph [ref=e853]: End Date
+            - strong [ref=e854]: 2026-07-01T00:00:00Z
+      - article [ref=e855]:
+        - generic [ref=e856]:
+          - generic [ref=e857]:
+            - heading "Will the Oklahoma City Thunder win the 2026 NBA Finals?" [level=3] [ref=e858]
+            - link "Open market" [ref=e859] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-oklahoma-city-thunder-win-the-2026-nba-finals
+          - generic [ref=e860]: unknown
+        - generic [ref=e861]:
+          - generic [ref=e862]:
+            - paragraph [ref=e863]: Strategy
+            - strong [ref=e864]: s39_volume_momentum
+          - generic [ref=e865]:
+            - paragraph [ref=e866]: Volume
+            - strong [ref=e867]: $4,911,866.10
+          - generic [ref=e868]:
+            - paragraph [ref=e869]: Side
+            - strong [ref=e870]: buy
+          - generic [ref=e871]:
+            - paragraph [ref=e872]: Market Price
+            - strong [ref=e873]: "0.645"
+          - generic [ref=e874]:
+            - paragraph [ref=e875]: Edge
+            - strong [ref=e876]: 5.0%
+          - generic [ref=e877]:
+            - paragraph [ref=e878]: Confidence
+            - strong [ref=e879]: 55.0%
+          - generic [ref=e880]:
+            - paragraph [ref=e881]: End Date
+            - strong [ref=e882]: 2026-07-01T00:00:00Z
+      - article [ref=e883]:
+        - generic [ref=e884]:
+          - generic [ref=e885]:
+            - heading "Will the Boston Celtics win the 2026 NBA Finals?" [level=3] [ref=e886]
+            - link "Open market" [ref=e887] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-boston-celtics-win-the-2026-nba-finals
+          - generic [ref=e888]: unknown
+        - generic [ref=e889]:
+          - generic [ref=e890]:
+            - paragraph [ref=e891]: Strategy
+            - strong [ref=e892]: s39_volume_momentum
+          - generic [ref=e893]:
+            - paragraph [ref=e894]: Volume
+            - strong [ref=e895]: $4,859,698.51
+          - generic [ref=e896]:
+            - paragraph [ref=e897]: Side
+            - strong [ref=e898]: buy
+          - generic [ref=e899]:
+            - paragraph [ref=e900]: Market Price
+            - strong [ref=e901]: "0.877"
+          - generic [ref=e902]:
+            - paragraph [ref=e903]: Edge
+            - strong [ref=e904]: 5.0%
+          - generic [ref=e905]:
+            - paragraph [ref=e906]: Confidence
+            - strong [ref=e907]: 55.0%
+          - generic [ref=e908]:
+            - paragraph [ref=e909]: End Date
+            - strong [ref=e910]: 2026-07-01T00:00:00Z
+      - article [ref=e911]:
+        - generic [ref=e912]:
+          - generic [ref=e913]:
+            - heading "Will Marco Rubio win the 2028 US Presidential Election?" [level=3] [ref=e914]
+            - link "Open market" [ref=e915] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-marco-rubio-win-the-2028-us-presidential-election
+          - generic [ref=e916]: unknown
+        - generic [ref=e917]:
+          - generic [ref=e918]:
+            - paragraph [ref=e919]: Strategy
+            - strong [ref=e920]: s39_volume_momentum
+          - generic [ref=e921]:
+            - paragraph [ref=e922]: Volume
+            - strong [ref=e923]: $4,432,543.17
+          - generic [ref=e924]:
+            - paragraph [ref=e925]: Side
+            - strong [ref=e926]: buy
+          - generic [ref=e927]:
+            - paragraph [ref=e928]: Market Price
+            - strong [ref=e929]: "0.836"
+          - generic [ref=e930]:
+            - paragraph [ref=e931]: Edge
+            - strong [ref=e932]: 5.0%
+          - generic [ref=e933]:
+            - paragraph [ref=e934]: Confidence
+            - strong [ref=e935]: 55.0%
+          - generic [ref=e936]:
+            - paragraph [ref=e937]: End Date
+            - strong [ref=e938]: 2028-11-07T00:00:00Z
+      - article [ref=e939]:
+        - generic [ref=e940]:
+          - generic [ref=e941]:
+            - heading "Will Argentina win the 2026 FIFA World Cup?" [level=3] [ref=e942]
+            - link "Open market" [ref=e943] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-argentina-win-the-2026-fifa-world-cup-245
+          - generic [ref=e944]: unknown
+        - generic [ref=e945]:
+          - generic [ref=e946]:
+            - paragraph [ref=e947]: Strategy
+            - strong [ref=e948]: s39_volume_momentum
+          - generic [ref=e949]:
+            - paragraph [ref=e950]: Volume
+            - strong [ref=e951]: $3,664,432.24
+          - generic [ref=e952]:
+            - paragraph [ref=e953]: Side
+            - strong [ref=e954]: buy
+          - generic [ref=e955]:
+            - paragraph [ref=e956]: Market Price
+            - strong [ref=e957]: "0.886"
+          - generic [ref=e958]:
+            - paragraph [ref=e959]: Edge
+            - strong [ref=e960]: 5.0%
+          - generic [ref=e961]:
+            - paragraph [ref=e962]: Confidence
+            - strong [ref=e963]: 55.0%
+          - generic [ref=e964]:
+            - paragraph [ref=e965]: End Date
+            - strong [ref=e966]: 2026-07-20T00:00:00Z
+      - article [ref=e967]:
+        - generic [ref=e968]:
+          - generic [ref=e969]:
+            - heading "Will Spain win the 2026 FIFA World Cup?" [level=3] [ref=e970]
+            - link "Open market" [ref=e971] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-spain-win-the-2026-fifa-world-cup-963
+          - generic [ref=e972]: unknown
+        - generic [ref=e973]:
+          - generic [ref=e974]:
+            - paragraph [ref=e975]: Strategy
+            - strong [ref=e976]: s39_volume_momentum
+          - generic [ref=e977]:
+            - paragraph [ref=e978]: Volume
+            - strong [ref=e979]: $3,516,707.41
+          - generic [ref=e980]:
+            - paragraph [ref=e981]: Side
+            - strong [ref=e982]: buy
+          - generic [ref=e983]:
+            - paragraph [ref=e984]: Market Price
+            - strong [ref=e985]: "0.846"
+          - generic [ref=e986]:
+            - paragraph [ref=e987]: Edge
+            - strong [ref=e988]: 5.0%
+          - generic [ref=e989]:
+            - paragraph [ref=e990]: Confidence
+            - strong [ref=e991]: 55.0%
+          - generic [ref=e992]:
+            - paragraph [ref=e993]: End Date
+            - strong [ref=e994]: 2026-07-20T00:00:00Z
+      - article [ref=e995]:
+        - generic [ref=e996]:
+          - generic [ref=e997]:
+            - heading "Will France win the 2026 FIFA World Cup?" [level=3] [ref=e998]
+            - link "Open market" [ref=e999] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-france-win-the-2026-fifa-world-cup-924
+          - generic [ref=e1000]: unknown
+        - generic [ref=e1001]:
+          - generic [ref=e1002]:
+            - paragraph [ref=e1003]: Strategy
+            - strong [ref=e1004]: s39_volume_momentum
+          - generic [ref=e1005]:
+            - paragraph [ref=e1006]: Volume
+            - strong [ref=e1007]: $3,050,391.88
+          - generic [ref=e1008]:
+            - paragraph [ref=e1009]: Side
+            - strong [ref=e1010]: buy
+          - generic [ref=e1011]:
+            - paragraph [ref=e1012]: Market Price
+            - strong [ref=e1013]: "0.891"
+          - generic [ref=e1014]:
+            - paragraph [ref=e1015]: Edge
+            - strong [ref=e1016]: 5.0%
+          - generic [ref=e1017]:
+            - paragraph [ref=e1018]: Confidence
+            - strong [ref=e1019]: 55.0%
+          - generic [ref=e1020]:
+            - paragraph [ref=e1021]: End Date
+            - strong [ref=e1022]: 2026-07-20T00:00:00Z
+      - article [ref=e1023]:
+        - generic [ref=e1024]:
+          - generic [ref=e1025]:
+            - heading "Will England win the 2026 FIFA World Cup?" [level=3] [ref=e1026]
+            - link "Open market" [ref=e1027] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-england-win-the-2026-fifa-world-cup-937
+          - generic [ref=e1028]: unknown
+        - generic [ref=e1029]:
+          - generic [ref=e1030]:
+            - paragraph [ref=e1031]: Strategy
+            - strong [ref=e1032]: s39_volume_momentum
+          - generic [ref=e1033]:
+            - paragraph [ref=e1034]: Volume
+            - strong [ref=e1035]: $2,853,299.27
+          - generic [ref=e1036]:
+            - paragraph [ref=e1037]: Side
+            - strong [ref=e1038]: buy
+          - generic [ref=e1039]:
+            - paragraph [ref=e1040]: Market Price
+            - strong [ref=e1041]: "0.867"
+          - generic [ref=e1042]:
+            - paragraph [ref=e1043]: Edge
+            - strong [ref=e1044]: 5.0%
+          - generic [ref=e1045]:
+            - paragraph [ref=e1046]: Confidence
+            - strong [ref=e1047]: 55.0%
+          - generic [ref=e1048]:
+            - paragraph [ref=e1049]: End Date
+            - strong [ref=e1050]: 2026-07-20T00:00:00Z
+      - article [ref=e1051]:
+        - generic [ref=e1052]:
+          - generic [ref=e1053]:
+            - heading "Putin out as President of Russia by end of 2026?" [level=3] [ref=e1054]
+            - link "Open market" [ref=e1055] [cursor=pointer]:
+              - /url: https://polymarket.com/event/putin-out-before-2027
+          - generic [ref=e1056]: unknown
+        - generic [ref=e1057]:
+          - generic [ref=e1058]:
+            - paragraph [ref=e1059]: Strategy
+            - strong [ref=e1060]: s39_volume_momentum
+          - generic [ref=e1061]:
+            - paragraph [ref=e1062]: Volume
+            - strong [ref=e1063]: $2,667,742.95
+          - generic [ref=e1064]:
+            - paragraph [ref=e1065]: Side
+            - strong [ref=e1066]: buy
+          - generic [ref=e1067]:
+            - paragraph [ref=e1068]: Market Price
+            - strong [ref=e1069]: "0.885"
+          - generic [ref=e1070]:
+            - paragraph [ref=e1071]: Edge
+            - strong [ref=e1072]: 5.0%
+          - generic [ref=e1073]:
+            - paragraph [ref=e1074]: Confidence
+            - strong [ref=e1075]: 55.0%
+          - generic [ref=e1076]:
+            - paragraph [ref=e1077]: End Date
+            - strong [ref=e1078]: 2026-12-31T18:30:00Z
+      - article [ref=e1079]:
+        - generic [ref=e1080]:
+          - generic [ref=e1081]:
+            - heading "Russia-Ukraine Ceasefire before GTA VI?" [level=3] [ref=e1082]
+            - link "Open market" [ref=e1083] [cursor=pointer]:
+              - /url: https://polymarket.com/event/russia-ukraine-ceasefire-before-gta-vi-554
+          - generic [ref=e1084]: unknown
+        - generic [ref=e1085]:
+          - generic [ref=e1086]:
+            - paragraph [ref=e1087]: Strategy
+            - strong [ref=e1088]: s39_volume_momentum
+          - generic [ref=e1089]:
+            - paragraph [ref=e1090]: Volume
+            - strong [ref=e1091]: $1,367,826.81
+          - generic [ref=e1092]:
+            - paragraph [ref=e1093]: Side
+            - strong [ref=e1094]: buy
+          - generic [ref=e1095]:
+            - paragraph [ref=e1096]: Market Price
+            - strong [ref=e1097]: "0.580"
+          - generic [ref=e1098]:
+            - paragraph [ref=e1099]: Edge
+            - strong [ref=e1100]: 5.0%
+          - generic [ref=e1101]:
+            - paragraph [ref=e1102]: Confidence
+            - strong [ref=e1103]: 55.0%
+          - generic [ref=e1104]:
+            - paragraph [ref=e1105]: End Date
+            - strong [ref=e1106]: 2026-07-31T12:00:00Z
+      - article [ref=e1107]:
+        - generic [ref=e1108]:
+          - generic [ref=e1109]:
+            - heading "Will MegaETH perform an airdrop by June 30?" [level=3] [ref=e1110]
+            - link "Open market" [ref=e1111] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-megaeth-perform-an-airdrop-by-june-30-143-229-513-574-212-254
+          - generic [ref=e1112]: unknown
+        - generic [ref=e1113]:
+          - generic [ref=e1114]:
+            - paragraph [ref=e1115]: Strategy
+            - strong [ref=e1116]: s39_volume_momentum
+          - generic [ref=e1117]:
+            - paragraph [ref=e1118]: Volume
+            - strong [ref=e1119]: $886,091.69
+          - generic [ref=e1120]:
+            - paragraph [ref=e1121]: Side
+            - strong [ref=e1122]: buy
+          - generic [ref=e1123]:
+            - paragraph [ref=e1124]: Market Price
+            - strong [ref=e1125]: "0.602"
+          - generic [ref=e1126]:
+            - paragraph [ref=e1127]: Edge
+            - strong [ref=e1128]: 5.0%
+          - generic [ref=e1129]:
+            - paragraph [ref=e1130]: Confidence
+            - strong [ref=e1131]: 55.0%
+          - generic [ref=e1132]:
+            - paragraph [ref=e1133]: End Date
+            - strong [ref=e1134]: 2026-02-01T05:00:00Z
+      - article [ref=e1135]:
+        - generic [ref=e1136]:
+          - generic [ref=e1137]:
+            - heading "New Rihanna Album before GTA VI?" [level=3] [ref=e1138]
+            - link "Open market" [ref=e1139] [cursor=pointer]:
+              - /url: https://polymarket.com/event/new-rhianna-album-before-gta-vi-926
+          - generic [ref=e1140]: unknown
+        - generic [ref=e1141]:
+          - generic [ref=e1142]:
+            - paragraph [ref=e1143]: Strategy
+            - strong [ref=e1144]: s39_volume_momentum
+          - generic [ref=e1145]:
+            - paragraph [ref=e1146]: Volume
+            - strong [ref=e1147]: $651,302.89
+          - generic [ref=e1148]:
+            - paragraph [ref=e1149]: Side
+            - strong [ref=e1150]: buy
+          - generic [ref=e1151]:
+            - paragraph [ref=e1152]: Market Price
+            - strong [ref=e1153]: "0.605"
+          - generic [ref=e1154]:
+            - paragraph [ref=e1155]: Edge
+            - strong [ref=e1156]: 5.0%
+          - generic [ref=e1157]:
+            - paragraph [ref=e1158]: Confidence
+            - strong [ref=e1159]: 55.0%
+          - generic [ref=e1160]:
+            - paragraph [ref=e1161]: End Date
+            - strong [ref=e1162]: 2026-07-31T12:00:00Z
+      - article [ref=e1163]:
+        - generic [ref=e1164]:
+          - generic [ref=e1165]:
+            - heading "Will Poland qualify for the 2026 FIFA World Cup?" [level=3] [ref=e1166]
+            - link "Open market" [ref=e1167] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-poland-qualify-for-the-2026-fifa-world-cup
+          - generic [ref=e1168]: unknown
+        - generic [ref=e1169]:
+          - generic [ref=e1170]:
+            - paragraph [ref=e1171]: Strategy
+            - strong [ref=e1172]: s39_volume_momentum
+          - generic [ref=e1173]:
+            - paragraph [ref=e1174]: Volume
+            - strong [ref=e1175]: $458,513.32
+          - generic [ref=e1176]:
+            - paragraph [ref=e1177]: Side
+            - strong [ref=e1178]: buy
+          - generic [ref=e1179]:
+            - paragraph [ref=e1180]: Market Price
+            - strong [ref=e1181]: "0.625"
+          - generic [ref=e1182]:
+            - paragraph [ref=e1183]: Edge
+            - strong [ref=e1184]: 5.0%
+          - generic [ref=e1185]:
+            - paragraph [ref=e1186]: Confidence
+            - strong [ref=e1187]: 55.0%
+          - generic [ref=e1188]:
+            - paragraph [ref=e1189]: End Date
+            - strong [ref=e1190]: 2026-04-12T00:00:00Z
+      - article [ref=e1191]:
+        - generic [ref=e1192]:
+          - generic [ref=e1193]:
+            - heading "Will the Tampa Bay Lightning win the 2026 NHL Stanley Cup?" [level=3] [ref=e1194]
+            - link "Open market" [ref=e1195] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-tampa-bay-lightning-win-the-2026-nhl-stanley-cup
+          - generic [ref=e1196]: unknown
+        - generic [ref=e1197]:
+          - generic [ref=e1198]:
+            - paragraph [ref=e1199]: Strategy
+            - strong [ref=e1200]: s39_volume_momentum
+          - generic [ref=e1201]:
+            - paragraph [ref=e1202]: Volume
+            - strong [ref=e1203]: $223,772.64
+          - generic [ref=e1204]:
+            - paragraph [ref=e1205]: Side
+            - strong [ref=e1206]: buy
+          - generic [ref=e1207]:
+            - paragraph [ref=e1208]: Market Price
+            - strong [ref=e1209]: "0.852"
+          - generic [ref=e1210]:
+            - paragraph [ref=e1211]: Edge
+            - strong [ref=e1212]: 5.0%
+          - generic [ref=e1213]:
+            - paragraph [ref=e1214]: Confidence
+            - strong [ref=e1215]: 55.0%
+          - generic [ref=e1216]:
+            - paragraph [ref=e1217]: End Date
+            - strong [ref=e1218]: 2026-06-30T00:00:00Z
+      - article [ref=e1219]:
+        - generic [ref=e1220]:
+          - generic [ref=e1221]:
+            - heading "Will Italy qualify for the 2026 FIFA World Cup?" [level=3] [ref=e1222]
+            - link "Open market" [ref=e1223] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-italy-qualify-for-the-2026-fifa-world-cup
+          - generic [ref=e1224]: unknown
+        - generic [ref=e1225]:
+          - generic [ref=e1226]:
+            - paragraph [ref=e1227]: Strategy
+            - strong [ref=e1228]: s39_volume_momentum
+          - generic [ref=e1229]:
+            - paragraph [ref=e1230]: Volume
+            - strong [ref=e1231]: $213,983.60
+          - generic [ref=e1232]:
+            - paragraph [ref=e1233]: Side
+            - strong [ref=e1234]: buy
+          - generic [ref=e1235]:
+            - paragraph [ref=e1236]: Market Price
+            - strong [ref=e1237]: "0.595"
+          - generic [ref=e1238]:
+            - paragraph [ref=e1239]: Edge
+            - strong [ref=e1240]: 5.0%
+          - generic [ref=e1241]:
+            - paragraph [ref=e1242]: Confidence
+            - strong [ref=e1243]: 55.0%
+          - generic [ref=e1244]:
+            - paragraph [ref=e1245]: End Date
+            - strong [ref=e1246]: 2026-04-12T00:00:00Z
+      - article [ref=e1247]:
+        - generic [ref=e1248]:
+          - generic [ref=e1249]:
+            - heading "Will the Carolina Hurricanes win the 2026 NHL Stanley Cup?" [level=3] [ref=e1250]
+            - link "Open market" [ref=e1251] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-carolina-hurricanes-win-the-2026-nhl-stanley-cup
+          - generic [ref=e1252]: unknown
+        - generic [ref=e1253]:
+          - generic [ref=e1254]:
+            - paragraph [ref=e1255]: Strategy
+            - strong [ref=e1256]: s39_volume_momentum
+          - generic [ref=e1257]:
+            - paragraph [ref=e1258]: Volume
+            - strong [ref=e1259]: $181,076.36
+          - generic [ref=e1260]:
+            - paragraph [ref=e1261]: Side
+            - strong [ref=e1262]: buy
+          - generic [ref=e1263]:
+            - paragraph [ref=e1264]: Market Price
+            - strong [ref=e1265]: "0.895"
+          - generic [ref=e1266]:
+            - paragraph [ref=e1267]: Edge
+            - strong [ref=e1268]: 5.0%
+          - generic [ref=e1269]:
+            - paragraph [ref=e1270]: Confidence
+            - strong [ref=e1271]: 55.0%
+          - generic [ref=e1272]:
+            - paragraph [ref=e1273]: End Date
+            - strong [ref=e1274]: 2026-06-30T00:00:00Z
+      - article [ref=e1275]:
+        - generic [ref=e1276]:
+          - generic [ref=e1277]:
+            - heading "Will Ukraine qualify for the 2026 FIFA World Cup?" [level=3] [ref=e1278]
+            - link "Open market" [ref=e1279] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-ukraine-qualify-for-the-2026-fifa-world-cup
+          - generic [ref=e1280]: unknown
+        - generic [ref=e1281]:
+          - generic [ref=e1282]:
+            - paragraph [ref=e1283]: Strategy
+            - strong [ref=e1284]: s39_volume_momentum
+          - generic [ref=e1285]:
+            - paragraph [ref=e1286]: Volume
+            - strong [ref=e1287]: $138,659.14
+          - generic [ref=e1288]:
+            - paragraph [ref=e1289]: Side
+            - strong [ref=e1290]: buy
+          - generic [ref=e1291]:
+            - paragraph [ref=e1292]: Market Price
+            - strong [ref=e1293]: "0.730"
+          - generic [ref=e1294]:
+            - paragraph [ref=e1295]: Edge
+            - strong [ref=e1296]: 5.0%
+          - generic [ref=e1297]:
+            - paragraph [ref=e1298]: Confidence
+            - strong [ref=e1299]: 55.0%
+          - generic [ref=e1300]:
+            - paragraph [ref=e1301]: End Date
+            - strong [ref=e1302]: 2026-04-12T00:00:00Z
+      - article [ref=e1303]:
+        - generic [ref=e1304]:
+          - generic [ref=e1305]:
+            - heading "Will Harvey Weinstein be sentenced to between 20 and 30 years in prison?" [level=3] [ref=e1306]
+            - link "Open market" [ref=e1307] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-harvey-weinstein-be-sentenced-to-between-20-and-30-years-in-prison
+          - generic [ref=e1308]: unknown
+        - generic [ref=e1309]:
+          - generic [ref=e1310]:
+            - paragraph [ref=e1311]: Strategy
+            - strong [ref=e1312]: s39_volume_momentum
+          - generic [ref=e1313]:
+            - paragraph [ref=e1314]: Volume
+            - strong [ref=e1315]: $132,285.85
+          - generic [ref=e1316]:
+            - paragraph [ref=e1317]: Side
+            - strong [ref=e1318]: buy
+          - generic [ref=e1319]:
+            - paragraph [ref=e1320]: Market Price
+            - strong [ref=e1321]: "0.826"
+          - generic [ref=e1322]:
+            - paragraph [ref=e1323]: Edge
+            - strong [ref=e1324]: 5.0%
+          - generic [ref=e1325]:
+            - paragraph [ref=e1326]: Confidence
+            - strong [ref=e1327]: 55.0%
+          - generic [ref=e1328]:
+            - paragraph [ref=e1329]: End Date
+            - strong [ref=e1330]: 2025-12-31T12:00:00Z
+      - article [ref=e1331]:
+        - generic [ref=e1332]:
+          - generic [ref=e1333]:
+            - heading "Will Harvey Weinstein be sentenced to between 10 and 20 years in prison?" [level=3] [ref=e1334]
+            - link "Open market" [ref=e1335] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-harvey-weinstein-be-sentenced-to-between-10-and-20-years-in-prison
+          - generic [ref=e1336]: unknown
+        - generic [ref=e1337]:
+          - generic [ref=e1338]:
+            - paragraph [ref=e1339]: Strategy
+            - strong [ref=e1340]: s39_volume_momentum
+          - generic [ref=e1341]:
+            - paragraph [ref=e1342]: Volume
+            - strong [ref=e1343]: $108,000.01
+          - generic [ref=e1344]:
+            - paragraph [ref=e1345]: Side
+            - strong [ref=e1346]: buy
+          - generic [ref=e1347]:
+            - paragraph [ref=e1348]: Market Price
+            - strong [ref=e1349]: "0.818"
+          - generic [ref=e1350]:
+            - paragraph [ref=e1351]: Edge
+            - strong [ref=e1352]: 5.0%
+          - generic [ref=e1353]:
+            - paragraph [ref=e1354]: Confidence
+            - strong [ref=e1355]: 55.0%
+          - generic [ref=e1356]:
+            - paragraph [ref=e1357]: End Date
+            - strong [ref=e1358]: 2025-12-31T12:00:00Z
+      - article [ref=e1359]:
+        - generic [ref=e1360]:
+          - generic [ref=e1361]:
+            - heading "Will Sweden qualify for the 2026 FIFA World Cup?" [level=3] [ref=e1362]
+            - link "Open market" [ref=e1363] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-sweden-qualify-for-the-2026-fifa-world-cup
+          - generic [ref=e1364]: unknown
+        - generic [ref=e1365]:
+          - generic [ref=e1366]:
+            - paragraph [ref=e1367]: Strategy
+            - strong [ref=e1368]: s39_volume_momentum
+          - generic [ref=e1369]:
+            - paragraph [ref=e1370]: Volume
+            - strong [ref=e1371]: $104,778.14
+          - generic [ref=e1372]:
+            - paragraph [ref=e1373]: Side
+            - strong [ref=e1374]: buy
+          - generic [ref=e1375]:
+            - paragraph [ref=e1376]: Market Price
+            - strong [ref=e1377]: "0.705"
+          - generic [ref=e1378]:
+            - paragraph [ref=e1379]: Edge
+            - strong [ref=e1380]: 5.0%
+          - generic [ref=e1381]:
+            - paragraph [ref=e1382]: Confidence
+            - strong [ref=e1383]: 55.0%
+          - generic [ref=e1384]:
+            - paragraph [ref=e1385]: End Date
+            - strong [ref=e1386]: 2026-04-12T00:00:00Z
+      - article [ref=e1387]:
+        - generic [ref=e1388]:
+          - generic [ref=e1389]:
+            - heading "BitBoy convicted?" [level=3] [ref=e1390]
+            - link "Open market" [ref=e1391] [cursor=pointer]:
+              - /url: https://polymarket.com/event/bitboy-convicted
+          - generic [ref=e1392]: unknown
+        - generic [ref=e1393]:
+          - generic [ref=e1394]:
+            - paragraph [ref=e1395]: Strategy
+            - strong [ref=e1396]: s39_volume_momentum
+          - generic [ref=e1397]:
+            - paragraph [ref=e1398]: Volume
+            - strong [ref=e1399]: $80,526.47
+          - generic [ref=e1400]:
+            - paragraph [ref=e1401]: Side
+            - strong [ref=e1402]: buy
+          - generic [ref=e1403]:
+            - paragraph [ref=e1404]: Market Price
+            - strong [ref=e1405]: "0.720"
+          - generic [ref=e1406]:
+            - paragraph [ref=e1407]: Edge
+            - strong [ref=e1408]: 5.0%
+          - generic [ref=e1409]:
+            - paragraph [ref=e1410]: Confidence
+            - strong [ref=e1411]: 55.0%
+          - generic [ref=e1412]:
+            - paragraph [ref=e1413]: End Date
+            - strong [ref=e1414]: 2026-03-31T12:00:00Z
+      - article [ref=e1415]:
+        - generic [ref=e1416]:
+          - generic [ref=e1417]:
+            - heading "Will the Denver Nuggets win the 2026 NBA Finals?" [level=3] [ref=e1418]
+            - link "Open market" [ref=e1419] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-denver-nuggets-win-the-2026-nba-finals
+          - generic [ref=e1420]: unknown
+        - generic [ref=e1421]:
+          - generic [ref=e1422]:
+            - paragraph [ref=e1423]: Strategy
+            - strong [ref=e1424]: s39_volume_momentum
+          - generic [ref=e1425]:
+            - paragraph [ref=e1426]: Volume
+            - strong [ref=e1427]: $2,857,467.74
+          - generic [ref=e1428]:
+            - paragraph [ref=e1429]: Side
+            - strong [ref=e1430]: buy
+          - generic [ref=e1431]:
+            - paragraph [ref=e1432]: Market Price
+            - strong [ref=e1433]: "0.905"
+          - generic [ref=e1434]:
+            - paragraph [ref=e1435]: Edge
+            - strong [ref=e1436]: 4.5%
+          - generic [ref=e1437]:
+            - paragraph [ref=e1438]: Confidence
+            - strong [ref=e1439]: 55.0%
+          - generic [ref=e1440]:
+            - paragraph [ref=e1441]: End Date
+            - strong [ref=e1442]: 2026-07-01T00:00:00Z
+      - article [ref=e1443]:
+        - generic [ref=e1444]:
+          - generic [ref=e1445]:
+            - heading "Will the Edmonton Oilers win the 2026 NHL Stanley Cup?" [level=3] [ref=e1446]
+            - link "Open market" [ref=e1447] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-the-edmonton-oilers-win-the-2026-nhl-stanley-cup
+          - generic [ref=e1448]: unknown
+        - generic [ref=e1449]:
+          - generic [ref=e1450]:
+            - paragraph [ref=e1451]: Strategy
+            - strong [ref=e1452]: s39_volume_momentum
+          - generic [ref=e1453]:
+            - paragraph [ref=e1454]: Volume
+            - strong [ref=e1455]: $348,676.40
+          - generic [ref=e1456]:
+            - paragraph [ref=e1457]: Side
+            - strong [ref=e1458]: buy
+          - generic [ref=e1459]:
+            - paragraph [ref=e1460]: Market Price
+            - strong [ref=e1461]: "0.905"
+          - generic [ref=e1462]:
+            - paragraph [ref=e1463]: Edge
+            - strong [ref=e1464]: 4.5%
+          - generic [ref=e1465]:
+            - paragraph [ref=e1466]: Confidence
+            - strong [ref=e1467]: 55.0%
+          - generic [ref=e1468]:
+            - paragraph [ref=e1469]: End Date
+            - strong [ref=e1470]: 2026-06-30T00:00:00Z
+      - article [ref=e1471]:
+        - generic [ref=e1472]:
+          - generic [ref=e1473]:
+            - heading "Will Alexandria Ocasio-Cortez win the 2028 Democratic presidential nomination?" [level=3] [ref=e1474]
+            - link "Open market" [ref=e1475] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-alexandria-ocasio-cortez-win-the-2028-democratic-presidential-nomination-653
+          - generic [ref=e1476]: unknown
+        - generic [ref=e1477]:
+          - generic [ref=e1478]:
+            - paragraph [ref=e1479]: Strategy
+            - strong [ref=e1480]: s39_volume_momentum
+          - generic [ref=e1481]:
+            - paragraph [ref=e1482]: Volume
+            - strong [ref=e1483]: $5,489,240.04
+          - generic [ref=e1484]:
+            - paragraph [ref=e1485]: Side
+            - strong [ref=e1486]: buy
+          - generic [ref=e1487]:
+            - paragraph [ref=e1488]: Market Price
+            - strong [ref=e1489]: "0.913"
+          - generic [ref=e1490]:
+            - paragraph [ref=e1491]: Edge
+            - strong [ref=e1492]: 3.7%
+          - generic [ref=e1493]:
+            - paragraph [ref=e1494]: Confidence
+            - strong [ref=e1495]: 55.0%
+          - generic [ref=e1496]:
+            - paragraph [ref=e1497]: End Date
+            - strong [ref=e1498]: 2028-11-07T00:00:00Z
+      - article [ref=e1499]:
+        - generic [ref=e1500]:
+          - generic [ref=e1501]:
+            - heading "Xi Jinping out before 2027?" [level=3] [ref=e1502]
+            - link "Open market" [ref=e1503] [cursor=pointer]:
+              - /url: https://polymarket.com/event/xi-jinping-out-before-2027
+          - generic [ref=e1504]: unknown
+        - generic [ref=e1505]:
+          - generic [ref=e1506]:
+            - paragraph [ref=e1507]: Strategy
+            - strong [ref=e1508]: s39_volume_momentum
+          - generic [ref=e1509]:
+            - paragraph [ref=e1510]: Volume
+            - strong [ref=e1511]: $7,119,213.90
+          - generic [ref=e1512]:
+            - paragraph [ref=e1513]: Side
+            - strong [ref=e1514]: buy
+          - generic [ref=e1515]:
+            - paragraph [ref=e1516]: Market Price
+            - strong [ref=e1517]: "0.914"
+          - generic [ref=e1518]:
+            - paragraph [ref=e1519]: Edge
+            - strong [ref=e1520]: 3.5%
+          - generic [ref=e1521]:
+            - paragraph [ref=e1522]: Confidence
+            - strong [ref=e1523]: 55.0%
+          - generic [ref=e1524]:
+            - paragraph [ref=e1525]: End Date
+            - strong [ref=e1526]: 2026-12-31T00:00:00Z
+      - article [ref=e1527]:
+        - generic [ref=e1528]:
+          - generic [ref=e1529]:
+            - heading "Will Brazil win the 2026 FIFA World Cup?" [level=3] [ref=e1530]
+            - link "Open market" [ref=e1531] [cursor=pointer]:
+              - /url: https://polymarket.com/event/will-brazil-win-the-2026-fifa-world-cup-183
+          - generic [ref=e1532]: unknown
+        - generic [ref=e1533]:
+          - generic [ref=e1534]:
+            - paragraph [ref=e1535]: Strategy
+            - strong [ref=e1536]: s39_volume_momentum
+          - generic [ref=e1537]:
+            - paragraph [ref=e1538]: Volume
+            - strong [ref=e1539]: $3,437,403.05
+          - generic [ref=e1540]:
+            - paragraph [ref=e1541]: Side
+            - strong [ref=e1542]: buy
+          - generic [ref=e1543]:
+            - paragraph [ref=e1544]: Market Price
+            - strong [ref=e1545]: "0.914"
+          - generic [ref=e1546]:
+            - paragraph [ref=e1547]: Edge
+            - strong [ref=e1548]: 3.5%
+          - generic [ref=e1549]:
+            - paragraph [ref=e1550]: Confidence
+            - strong [ref=e1551]: 55.0%
+          - generic [ref=e1552]:
+            - paragraph [ref=e1553]: End Date
+            - strong [ref=e1554]: 2026-07-20T00:00:00Z
