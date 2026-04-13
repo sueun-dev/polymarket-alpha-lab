@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+data/
+output/
+*.egg-info/
+.DS_Store
+linkedin.md
