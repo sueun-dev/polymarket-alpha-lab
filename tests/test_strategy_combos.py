@@ -13,14 +13,13 @@ Tests combinations of 2-3 strategies together and measures:
 import sys
 import os
 import itertools
-import json
 from collections import defaultdict
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List
 
 # Add project root to path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from core.models import Market, Opportunity, Signal
+from core.models import Market
 
 # ---------------------------------------------------------------------------
 # Strategy metadata registry -- classifies each strategy's edge type, domain,
@@ -660,7 +659,6 @@ def print_individual_strategy_results(all_results: Dict, markets: List[Market]):
                        key=lambda n: (-all_results[n]["signals"], n)):
         r = all_results[name]
         meta = STRATEGY_META.get(name, {})
-        cats = ",".join(sorted(r["categories"])) if r["categories"] else "-"
         print(f"{meta.get('id','?')}: {name:<30} {meta.get('tier','?'):>4} "
               f"{r['scanned']:>8} {r['signals']:>8} {len(r['categories']):>5} "
               f"{r['avg_confidence']:>8.3f} {r['avg_edge']:>8.4f} "
@@ -760,7 +758,7 @@ def print_recommendations(combo_analyses: List[Dict]):
 
     # Top overall
     top = by_composite[0]
-    print(f"  BEST OVERALL COMBO:")
+    print("  BEST OVERALL COMBO:")
     print(f"    {' + '.join(top['combo_ids'])}")
     print(f"    Strategies: {', '.join(top['combo'])}")
     print(f"    Composite Score: {top['composite_score']:.4f}")
@@ -769,20 +767,22 @@ def print_recommendations(combo_analyses: List[Dict]):
     print()
 
     # Best for beginners (high feasibility + good coverage)
-    beginner_score = lambda ca: ca["feasibility_score"] * 0.5 + (ca["coverage"] / ca["total_markets"]) * 0.3 + (1 - ca["correlation_proxy"]) * 0.2
+    def beginner_score(ca):
+        return ca["feasibility_score"] * 0.5 + (ca["coverage"] / ca["total_markets"]) * 0.3 + (1 - ca["correlation_proxy"]) * 0.2
     by_beginner = sorted(combo_analyses, key=lambda x: -beginner_score(x))
     beg = by_beginner[0]
-    print(f"  BEST FOR BEGINNERS (high feasibility + good coverage):")
+    print("  BEST FOR BEGINNERS (high feasibility + good coverage):")
     print(f"    {' + '.join(beg['combo_ids'])}")
     print(f"    Strategies: {', '.join(beg['combo'])}")
     print(f"    Feasibility: {beg['feasibility_score']:.2f}, Coverage: {beg['coverage_pct']}%")
     print()
 
     # Best for advanced traders (max diversification)
-    adv_score = lambda ca: ca["complementarity"] * 0.3 + ca["edge_diversity"] / 5 * 0.3 + ca["risk_diversity"] / 5 * 0.2 + ca["category_diversity"] / 7 * 0.2
+    def adv_score(ca):
+        return ca["complementarity"] * 0.3 + ca["edge_diversity"] / 5 * 0.3 + ca["risk_diversity"] / 5 * 0.2 + ca["category_diversity"] / 7 * 0.2
     by_adv = sorted(combo_analyses, key=lambda x: -adv_score(x))
     adv = by_adv[0]
-    print(f"  BEST FOR ADVANCED TRADERS (max diversification):")
+    print("  BEST FOR ADVANCED TRADERS (max diversification):")
     print(f"    {' + '.join(adv['combo_ids'])}")
     print(f"    Strategies: {', '.join(adv['combo'])}")
     print(f"    Edge types: {', '.join(adv['edge_types'])}")
@@ -795,7 +795,7 @@ def print_recommendations(combo_analyses: List[Dict]):
                      key=lambda x: -x["avg_agreement_confidence"])
     if by_conf:
         conf = by_conf[0]
-        print(f"  HIGHEST CONFIDENCE WHEN STRATEGIES AGREE:")
+        print("  HIGHEST CONFIDENCE WHEN STRATEGIES AGREE:")
         print(f"    {' + '.join(conf['combo_ids'])}")
         print(f"    Agreement on {conf['agreement_count']} markets, "
               f"avg confidence={conf['avg_agreement_confidence']:.3f}, "

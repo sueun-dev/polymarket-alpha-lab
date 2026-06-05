@@ -1,5 +1,4 @@
 # tests/test_main.py
-import pytest
 from main import load_config
 
 def test_load_config():

@@ -1,4 +1,3 @@
-import pytest
 from datetime import datetime, timezone, timedelta
 
 from core.models import Market, Opportunity

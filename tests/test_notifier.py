@@ -1,5 +1,4 @@
 # tests/test_notifier.py
-import pytest
 from unittest.mock import patch
 from core.notifier import Notifier
 

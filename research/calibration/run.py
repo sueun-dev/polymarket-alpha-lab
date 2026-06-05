@@ -84,8 +84,8 @@ def main():
     print(f"  Brier Skill Score:      {brier['skill_score']:.4f}")
     print(f"  Baseline Brier:         {brier['baseline']['brier_score']:.4f}")
     print(f"  Charts generated:       {len(charts)}")
-    print(f"\n  Results: output/results.json")
-    print(f"  Charts:  output/charts/")
+    print("\n  Results: output/results.json")
+    print("  Charts:  output/charts/")
     print("=" * 60)
 
 

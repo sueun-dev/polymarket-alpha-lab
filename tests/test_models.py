@@ -1,6 +1,6 @@
 # tests/test_models.py
 import pytest
-from core.models import Market, Signal, Opportunity, Order, Position
+from core.models import Market, Signal, Order, Position
 
 def test_market_creation():
     m = Market(condition_id="0x123", question="Will BTC hit 100K?", tokens=[{"token_id": "yes_id", "outcome": "Yes"}], active=True, volume=50000.0)

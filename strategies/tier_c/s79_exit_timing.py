@@ -71,7 +71,6 @@ class ExitTiming(BaseStrategy):
         if entry_price is None:
             return None
         current = opportunity.market_price
-        remaining_edge = abs(current - entry_price)
         # If position is profitable and remaining edge is thin, exit
         if current > entry_price and (1.0 - current) < self.EXIT_THRESHOLD:
             token_id = self._get_token_id(opportunity, "yes")

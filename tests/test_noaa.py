@@ -482,7 +482,6 @@ class TestCachingBehaviour:
     def test_grid_cache_shared_across_forecast_calls(self, mock_http: mock.MagicMock) -> None:
         """Two forecast calls for the same city should reuse the grid cache."""
         periods_1 = [_make_period(temperature=65)]
-        periods_2 = [_make_period(temperature=78)]
         mock_http.side_effect = [
             _make_points_response("OKX", 33, 37),  # grid info (1st call)
             _make_forecast_response(periods_1),     # forecast (1st call)

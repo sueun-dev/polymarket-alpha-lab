@@ -1,5 +1,4 @@
-import pytest
-from core.models import Market, Opportunity
+from core.models import Market
 from strategies.tier_b.s31_asymmetric_lowprob import AsymmetricLowProb
 from strategies.tier_b.s32_parlay_optimizer import ParlayOptimizer
 from strategies.tier_b.s33_news_speed import NewsSpeedTrading

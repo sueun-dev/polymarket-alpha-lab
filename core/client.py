@@ -206,8 +206,6 @@ class PolymarketClient:
             logger.error(f"Live order failed: {exc}")
             return order
 
-        return order
-
     def get_balance(self) -> float:
         if not self.is_live:
             return self._paper_balance

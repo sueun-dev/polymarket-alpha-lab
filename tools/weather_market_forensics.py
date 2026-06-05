@@ -24,8 +24,8 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from data.historical_fetcher import HistoricalFetcher, normalize_yes_no
-from data.http_utils import http_get_json, parse_close_ts, parse_float, parse_json_array
+from data.historical_fetcher import HistoricalFetcher, normalize_yes_no  # noqa: E402
+from data.http_utils import http_get_json, parse_close_ts, parse_float, parse_json_array  # noqa: E402
 
 
 GAMMA_BASE = "https://gamma-api.polymarket.com"

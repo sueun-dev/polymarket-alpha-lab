@@ -2,13 +2,11 @@
 from __future__ import annotations
 
 import json
-import os
 import tempfile
 from pathlib import Path
-from typing import Any, List, Tuple
+from typing import List, Tuple
 from unittest import mock
 
-import pytest
 
 from data.historical_fetcher import HistoricalFetcher, MarketSample, normalize_yes_no
 

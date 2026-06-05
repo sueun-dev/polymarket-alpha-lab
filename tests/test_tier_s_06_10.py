@@ -1,4 +1,3 @@
-import pytest
 
 from core.models import Market, Opportunity
 from strategies.tier_s.s06_btc_latency_arb import BTCLatencyArb

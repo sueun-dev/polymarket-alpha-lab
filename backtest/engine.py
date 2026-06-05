@@ -1,7 +1,6 @@
 from core.base_strategy import BaseStrategy
 from core.risk import RiskManager
-from core.models import Market
-from backtest.data_loader import DataLoader, HistoricalDataPoint
+from backtest.data_loader import HistoricalDataPoint
 from backtest.simulator import TradeSimulator
 
 class BacktestResult:

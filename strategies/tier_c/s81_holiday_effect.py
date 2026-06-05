@@ -7,7 +7,7 @@ drops, spreads widen, and prices can drift from fair value.  Place
 limit orders during holiday periods to capture mean-reversion when
 normal activity resumes.
 """
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy

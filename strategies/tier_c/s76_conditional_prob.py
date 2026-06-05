@@ -23,7 +23,6 @@ class ConditionalProbChains(BaseStrategy):
     def scan(self, markets: List[Market]) -> List[Opportunity]:
         """Find related event sequences that may form conditional chains."""
         opportunities: List[Opportunity] = []
-        questions = {m.condition_id: m for m in markets if m.active}
         for m in markets:
             if not m.active:
                 continue

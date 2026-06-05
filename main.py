@@ -10,10 +10,8 @@ from dotenv import load_dotenv
 
 from core.client import PolymarketClient
 from core.risk import RiskManager
-from core.kelly import KellyCriterion
 from core.scanner import MarketScanner
 from core.notifier import Notifier
-from core.base_strategy import BaseStrategy
 from strategies import StrategyRegistry
 from data import DataRegistry
 
@@ -110,7 +108,6 @@ def run_bot(config: dict, strategy_filter: str | None = None, dry_run: bool = Fa
         while True:
             try:
                 bankroll = client.get_balance()
-                positions = client.get_positions()
                 markets = scanner.scan()
                 logger.info(f"Scanned {len(markets)} markets | Balance: ${bankroll:.2f}")
 

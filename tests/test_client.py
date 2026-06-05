@@ -1,6 +1,5 @@
 # tests/test_client.py
-import pytest
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 from core.client import PolymarketClient
 
 def test_paper_mode():

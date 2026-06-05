@@ -1,7 +1,6 @@
 """Tests for the feature engine -- FeatureRow, build_feature_rows, LiveFeatureBuilder."""
 from __future__ import annotations
 
-import math
 import statistics
 from typing import List, Tuple
 
