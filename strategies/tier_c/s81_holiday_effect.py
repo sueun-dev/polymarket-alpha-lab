@@ -7,7 +7,7 @@ drops, spreads widen, and prices can drift from fair value.  Place
 limit orders during holiday periods to capture mean-reversion when
 normal activity resumes.
 """
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
@@ -54,7 +54,9 @@ class HolidayEffect(BaseStrategy):
         return opportunities
 
     def _near_holiday(self) -> bool:
-        today = datetime.now().date()
+        # Use a UTC calendar date rather than naive local time so the holiday
+        # window does not depend on the host machine's timezone.
+        today = datetime.now(timezone.utc).date()
         year = today.year
         for month, day in HOLIDAYS:
             try:

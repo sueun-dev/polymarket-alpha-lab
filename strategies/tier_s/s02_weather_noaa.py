@@ -7,7 +7,7 @@ Casual traders price by gut feeling; NOAA data gives precise probabilities.
 """
 import math
 import re
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from typing import List, Optional, Tuple
 
 from core.base_strategy import BaseStrategy
@@ -240,7 +240,7 @@ class WeatherNOAA(BaseStrategy):
         if month is None:
             return None
         day = int(m.group(2))
-        year = int(m.group(3)) if m.group(3) else datetime.utcnow().year
+        year = int(m.group(3)) if m.group(3) else datetime.now(timezone.utc).year
         try:
             return date(year, month, day)
         except Exception:

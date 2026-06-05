@@ -1,5 +1,7 @@
 from core.base_strategy import BaseStrategy
 from core.risk import RiskManager
+from core.kelly import dollars_to_shares
+from core.models import Position
 from backtest.data_loader import HistoricalDataPoint
 from backtest.simulator import TradeSimulator
 
@@ -22,6 +24,7 @@ class BacktestEngine:
         result = BacktestResult()
         result.initial_balance = self.initial_balance
         result.equity_curve.append(self.balance)
+        open_positions: list[Position] = []
         for dp in sorted(data, key=lambda x: x.timestamp):
             markets = [dp.market]
             opportunities = self.strategy.scan(markets)
@@ -29,9 +32,11 @@ class BacktestEngine:
                 signal = self.strategy.analyze(opp)
                 if signal is None:
                     continue
-                if not self.risk.can_trade(signal, bankroll=self.balance, current_positions=[]):
+                if not self.risk.can_trade(signal, bankroll=self.balance, current_positions=open_positions):
                     continue
-                size = self.strategy.size_position(signal, bankroll=self.balance)
+                # Kelly sizing returns a dollar stake; orders are in shares.
+                stake_usd = self.strategy.size_position(signal, bankroll=self.balance)
+                size = dollars_to_shares(stake_usd, signal.market_price)
                 if size <= 0:
                     continue
                 trade = self.simulator.simulate_fill(
@@ -42,6 +47,12 @@ class BacktestEngine:
                 )
                 self.balance -= trade.total_cost
                 result.trades.append(trade)
+                open_positions.append(Position(
+                    market_id=signal.market_id, token_id=signal.token_id,
+                    side=signal.side, entry_price=signal.market_price,
+                    size=size, current_price=signal.market_price,
+                    strategy_name=self.strategy.name,
+                ))
             result.equity_curve.append(self.balance)
         result.final_balance = self.balance
         return result

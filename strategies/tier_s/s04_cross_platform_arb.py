@@ -2,8 +2,11 @@
 """
 S04: Cross-Platform Arbitrage
 
-Find same event on Polymarket and Kalshi. If YES_poly + NO_kalshi < $1.00
-(after fees), risk-free arbitrage.
+Find the same event on Polymarket and Kalshi. If YES_poly + NO_kalshi < $1.00
+(after fees), the pair is a risk-free arbitrage -- BUT ONLY IF BOTH LEGS ARE
+PLACED. The Kalshi order leg is not implemented here, so ``execute`` refuses to
+fire (it would otherwise leave an unhedged single-platform directional bet).
+This strategy is therefore inert until the Kalshi hedge is wired in.
 """
 from typing import List, Optional
 
@@ -65,12 +68,22 @@ class CrossPlatformArb(BaseStrategy):
         return Signal(
             market_id=opportunity.market_id,
             token_id=yes_token_id,
+            # NOT a standalone edge: estimated_prob reflects only the Polymarket
+            # YES leg (bought at market), which on its own has ~zero edge. The
+            # arbitrage profit lives in metadata["arb_profit"] and is only
+            # realized if the Kalshi NO hedge is also placed. Do NOT set this to
+            # 1.0 ("guaranteed") -- that inflated the Kelly edge and let an
+            # unhedged single leg masquerade as a risk-free max-size bet.
             side="buy",
-            estimated_prob=1.0,  # Arb = guaranteed
+            estimated_prob=poly_yes,
             market_price=poly_yes,
             confidence=0.95,
             strategy_name=self.name,
-            metadata={"kalshi_no": kalshi_no, "arb_profit": arb_profit},
+            metadata={
+                "kalshi_no": kalshi_no,
+                "arb_profit": arb_profit,
+                "requires_kalshi_hedge": True,
+            },
         )
 
     def _get_kalshi_no_price(self, question: str) -> Optional[float]:
@@ -96,7 +109,13 @@ class CrossPlatformArb(BaseStrategy):
     def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
         if client is None:
             return None
-        # Execute Polymarket side
+        # SAFETY GUARD: cross-platform arb is only risk-free when BOTH legs
+        # fire (buy YES on Polymarket AND buy NO on Kalshi). The Kalshi leg is
+        # not implemented, so placing only the Polymarket leg would leave an
+        # unhedged directional position -- the opposite of "risk-free". Refuse
+        # to fire a half-arb until a Kalshi order client is wired in.
+        if signal.metadata.get("requires_kalshi_hedge"):
+            return None
         return client.place_order(
             token_id=signal.token_id,
             side=signal.side,
