@@ -10,10 +10,10 @@ from dotenv import load_dotenv
 
 from core.client import PolymarketClient
 from core.risk import RiskManager
-from core.kelly import KellyCriterion
+from core.kelly import dollars_to_shares
 from core.scanner import MarketScanner
 from core.notifier import Notifier
-from core.base_strategy import BaseStrategy
+from core.models import Position, Signal
 from strategies import StrategyRegistry
 from data import DataRegistry
 
@@ -56,6 +56,50 @@ def init_data_registry() -> DataRegistry:
         logger.info(f"Registered data provider: {p.name}")
 
     return registry
+
+
+def _normalize_positions(raw_positions: list) -> list[Position]:
+    """Coerce client position records into ``Position`` objects for the risk check.
+
+    ``PolymarketClient.get_positions`` returns plain dicts; ``RiskManager``
+    needs objects exposing ``market_id``. Records that cannot be parsed are
+    skipped rather than crashing the scan loop.
+    """
+    positions: list[Position] = []
+    for p in raw_positions:
+        if isinstance(p, Position):
+            positions.append(p)
+            continue
+        if not isinstance(p, dict):
+            continue
+        try:
+            positions.append(
+                Position(
+                    market_id=str(p.get("market_id", p.get("condition_id", ""))),
+                    token_id=str(p.get("token_id", "")),
+                    side=str(p.get("side", "buy")),
+                    entry_price=float(p.get("entry_price", p.get("price", 0.0)) or 0.0),
+                    size=float(p.get("size", 0.0) or 0.0),
+                    current_price=float(p.get("current_price", p.get("price", 0.0)) or 0.0),
+                    strategy_name=str(p.get("strategy_name", "")),
+                )
+            )
+        except Exception:
+            continue
+    return positions
+
+
+def _signal_to_position(signal: Signal, size: float) -> Position:
+    """Build a ``Position`` representing an order just placed this cycle."""
+    return Position(
+        market_id=signal.market_id,
+        token_id=signal.token_id,
+        side=signal.side,
+        entry_price=signal.market_price,
+        size=size,
+        current_price=signal.market_price,
+        strategy_name=signal.strategy_name,
+    )
 
 
 def run_bot(config: dict, strategy_filter: str | None = None, dry_run: bool = False):
@@ -110,7 +154,7 @@ def run_bot(config: dict, strategy_filter: str | None = None, dry_run: bool = Fa
         while True:
             try:
                 bankroll = client.get_balance()
-                positions = client.get_positions()
+                current_positions = _normalize_positions(client.get_positions())
                 markets = scanner.scan()
                 logger.info(f"Scanned {len(markets)} markets | Balance: ${bankroll:.2f}")
 
@@ -121,13 +165,18 @@ def run_bot(config: dict, strategy_filter: str | None = None, dry_run: bool = Fa
                             signal = strategy.analyze(opp)
                             if signal is None:
                                 continue
-                            if not risk.can_trade(signal, bankroll=bankroll, current_positions=[]):
+                            if not risk.can_trade(signal, bankroll=bankroll, current_positions=current_positions):
                                 continue
-                            size = strategy.size_position(signal, bankroll=bankroll)
+                            # Kelly sizing is a USDC dollar stake; Polymarket orders
+                            # are denominated in shares (cost = price * size), so
+                            # convert at the order boundary.
+                            stake_usd = strategy.size_position(signal, bankroll=bankroll)
+                            size = dollars_to_shares(stake_usd, signal.market_price)
                             if size <= 0:
                                 continue
                             order = strategy.execute(signal, size, client=client)
-                            if order:
+                            if order is not None and order.status in ("paper", "live"):
+                                current_positions.append(_signal_to_position(signal, order.size))
                                 notifier.trade_alert(
                                     strategy=strategy.name,
                                     side=order.side,
@@ -136,6 +185,11 @@ def run_bot(config: dict, strategy_filter: str | None = None, dry_run: bool = Fa
                                     size=order.size,
                                 )
                                 logger.info(f"[{strategy.name}] Order: {order.side} {order.size}x @ {order.price}")
+                            elif order is not None:
+                                logger.warning(
+                                    f"[{strategy.name}] Order not filled (status={order.status}): "
+                                    f"{order.side} {order.size}x @ {order.price}"
+                                )
                     except Exception as e:
                         logger.error(f"Strategy {strategy.name} error: {e}")
                         notifier.error_alert(f"{strategy.name}: {e}")

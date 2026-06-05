@@ -18,5 +18,20 @@ class KellyCriterion:
         return min(f, self.max_fraction)
 
     def bet_amount(self, bankroll: float, p: float, market_price: float) -> float:
+        """Kelly stake expressed in account currency (USDC dollars)."""
         f = self.optimal_size(p, market_price)
         return bankroll * f
+
+
+def dollars_to_shares(dollars: float, price: float) -> float:
+    """Convert a USDC dollar stake into a Polymarket share/contract count.
+
+    Polymarket orders are denominated in shares, where each share costs
+    ``price`` USDC and pays out $1 if the outcome resolves true, so the
+    notional cost of an order is ``price * size``. Kelly sizing produces a
+    dollar stake, so the order layer must divide by the per-share price to get
+    the share count. Returns 0.0 for a non-positive price.
+    """
+    if price <= 0:
+        return 0.0
+    return dollars / price

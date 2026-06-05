@@ -7,7 +7,7 @@ spreads. This strategy places limit orders during weekend hours to
 capture spread-widening opportunities, getting better entry prices
 than would be possible during high-liquidity weekday trading.
 """
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
@@ -53,8 +53,14 @@ class WeekendLiquidity(BaseStrategy):
         return opportunities
 
     def _is_weekend(self) -> bool:
-        """Check if current day is Saturday (5) or Sunday (6)."""
-        return datetime.now().weekday() >= 5
+        """Check if the current UTC day is Saturday (5) or Sunday (6).
+
+        Polymarket markets settle on a UTC calendar, so the weekend-liquidity
+        window must be measured in UTC -- a naive ``datetime.now()`` would use
+        the host machine's local timezone and could shift the weekend boundary
+        by several hours.
+        """
+        return datetime.now(timezone.utc).weekday() >= 5
 
     def _get_yes_price(self, market: Market) -> Optional[float]:
         for t in market.tokens:
