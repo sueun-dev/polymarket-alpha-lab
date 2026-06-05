@@ -98,7 +98,6 @@ class SuperforecasterMethod(BaseStrategy):
 
         # Determine direction: do we think YES is overpriced or underpriced?
         edge_yes = estimated_prob - yes_price
-        edge_no = (1 - estimated_prob) - (1 - yes_price)  # same magnitude, opposite sign
 
         if abs(edge_yes) < self.MIN_EDGE:
             return None

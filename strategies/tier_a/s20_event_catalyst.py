@@ -6,7 +6,7 @@ Position before known catalysts (FOMC, earnings, elections, verdicts).
 Markets often misprice the impact of imminent known events. Find
 markets with end dates 3-7 days away that reference catalyst keywords.
 """
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy

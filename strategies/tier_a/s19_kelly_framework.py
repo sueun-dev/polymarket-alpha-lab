@@ -26,7 +26,7 @@ class KellySizingFramework(BaseStrategy):
 
     DEFAULT_FRACTION = QUARTER_KELLY  # Conservative default
 
-    def __init__(self, kelly_fraction: float = None):
+    def __init__(self, kelly_fraction: Optional[float] = None):
         super().__init__()
         fraction = kelly_fraction if kelly_fraction is not None else self.DEFAULT_FRACTION
         self.kelly = KellyCriterion(fraction=fraction)

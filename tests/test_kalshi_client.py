@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import time
-from typing import Any, Dict, List
+from typing import List
 from unittest import mock
 
 import pytest
@@ -498,7 +498,7 @@ class TestFetchDispatch:
     def test_fetch_action_markets(self, mock_http: mock.MagicMock) -> None:
         mock_http.return_value = {"markets": SAMPLE_MARKETS}
         provider = KalshiDataProvider()
-        result = provider.fetch(action="markets", limit=10, status="closed")
+        provider.fetch(action="markets", limit=10, status="closed")
         url = mock_http.call_args[0][0]
         assert "limit=10" in url
         assert "status=closed" in url

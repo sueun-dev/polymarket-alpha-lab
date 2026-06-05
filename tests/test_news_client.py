@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import datetime as dt
 import time
-from typing import Any, List
+from typing import List
 from unittest import mock
 
 import pytest

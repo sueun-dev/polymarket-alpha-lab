@@ -111,7 +111,6 @@ class CalendarSpread(BaseStrategy):
     def analyze(self, opportunity: Opportunity) -> Optional[Signal]:
         """Exploit time value differences between near and far expiries."""
         near_price = opportunity.metadata.get("near_price", 0)
-        far_price = opportunity.metadata.get("far_price", 0)
         price_spread = opportunity.metadata.get("price_spread", 0)
 
         if abs(price_spread) < self.MIN_PRICE_SPREAD:

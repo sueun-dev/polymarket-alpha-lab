@@ -4,7 +4,7 @@ Tests both WITH and WITHOUT data registries to ensure backward compatibility.
 All existing 596 tests must continue to pass unchanged.
 """
 import pytest
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
 from core.models import Opportunity
 from data import DataRegistry

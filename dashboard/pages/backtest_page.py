@@ -6,9 +6,9 @@ def render():
     st.subheader("Run Backtest")
     col1, col2 = st.columns(2)
     with col1:
-        strategy_name = st.text_input("Strategy Name", value="s01_reversing_stupidity")
+        st.text_input("Strategy Name", value="s01_reversing_stupidity")
     with col2:
-        initial_balance = st.number_input("Initial Balance ($)", value=10000.0, step=1000.0)
+        st.number_input("Initial Balance ($)", value=10000.0, step=1000.0)
 
     data_file = st.file_uploader("Upload Historical Data (CSV)", type=["csv"])
 

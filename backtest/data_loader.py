@@ -2,7 +2,6 @@ import json
 import csv
 from pathlib import Path
 from datetime import datetime
-from typing import Optional
 from core.models import Market
 
 class HistoricalDataPoint:

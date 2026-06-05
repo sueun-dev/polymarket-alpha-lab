@@ -3,7 +3,6 @@ from __future__ import annotations
 
 from typing import Any, List, Optional
 
-import pytest
 
 from data import DataRegistry
 from data.base_provider import BaseDataProvider

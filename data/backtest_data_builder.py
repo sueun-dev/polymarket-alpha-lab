@@ -4,7 +4,7 @@ from __future__ import annotations
 import csv
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import List, Optional, Sequence, Tuple
+from typing import List, Optional, Tuple
 
 from backtest.data_loader import HistoricalDataPoint
 from core.models import Market

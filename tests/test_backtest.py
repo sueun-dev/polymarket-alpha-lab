@@ -1,6 +1,6 @@
 import pytest
 from datetime import datetime
-from backtest.data_loader import DataLoader, HistoricalDataPoint
+from backtest.data_loader import HistoricalDataPoint
 from backtest.simulator import TradeSimulator
 from backtest.engine import BacktestEngine
 from backtest.report import BacktestReport

@@ -2,13 +2,13 @@
 from __future__ import annotations
 
 import re
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional
 
 from data.base_provider import BaseDataProvider
 from data.http_utils import http_get_json
 
 # Stop words removed during fuzzy matching to focus on meaningful tokens.
-_STOP_WORDS: Set[str] = frozenset({
+_STOP_WORDS: frozenset[str] = frozenset({
     "the", "a", "an", "is", "will", "be", "to", "in", "on", "at", "of",
     "for", "by", "and", "or", "this", "that", "it", "its", "are", "was",
     "were", "been", "being", "have", "has", "had", "do", "does", "did",

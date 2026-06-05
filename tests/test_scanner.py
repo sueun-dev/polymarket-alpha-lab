@@ -1,5 +1,4 @@
 # tests/test_scanner.py
-import pytest
 from unittest.mock import MagicMock
 from core.scanner import MarketScanner
 from core.models import Market

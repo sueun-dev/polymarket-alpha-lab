@@ -1,5 +1,4 @@
-import pytest
-from core.models import Market, Opportunity
+from core.models import Market
 from strategies.tier_c.s71_kaito_attention import KaitoAttention
 from strategies.tier_c.s72_chainlink_oracle_timing import ChainlinkOracleTiming
 from strategies.tier_c.s73_chinese_archetype import ChineseArchetype

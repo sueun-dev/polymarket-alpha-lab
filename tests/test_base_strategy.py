@@ -1,5 +1,4 @@
 # tests/test_base_strategy.py
-import pytest
 from core.base_strategy import BaseStrategy
 from core.models import Market, Opportunity, Signal
 from strategies import StrategyRegistry

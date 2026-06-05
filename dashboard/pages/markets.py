@@ -7,9 +7,9 @@ def render():
 
     col1, col2 = st.columns(2)
     with col1:
-        min_volume = st.number_input("Min Volume ($)", value=1000, step=500)
+        st.number_input("Min Volume ($)", value=1000, step=500)
     with col2:
-        min_edge = st.number_input("Min Edge (%)", value=5.0, step=1.0)
+        st.number_input("Min Edge (%)", value=5.0, step=1.0)
 
     if st.button("Scan Markets"):
         st.info("Market scanning requires API connection. Configure .env and start the bot.")

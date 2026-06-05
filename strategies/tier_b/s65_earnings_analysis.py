@@ -78,7 +78,12 @@ class DeepEarningsAnalysis(BaseStrategy):
         margin_score = opportunity.metadata.get("margin_score")
 
         # All scores must be present (0.0 - 1.0 range)
-        if any(s is None for s in [revenue_score, guidance_score, sector_score, margin_score]):
+        if (
+            revenue_score is None
+            or guidance_score is None
+            or sector_score is None
+            or margin_score is None
+        ):
             return None
 
         composite = (

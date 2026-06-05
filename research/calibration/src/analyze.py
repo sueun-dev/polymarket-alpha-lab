@@ -5,7 +5,6 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy import stats
 
 
 def compute_calibration(df: pd.DataFrame, group_col: str | None = None) -> pd.DataFrame:

@@ -1,9 +1,7 @@
 """Tests for data.http_utils and data.base_provider."""
 from __future__ import annotations
 
-import io
 import json
-import math
 import time
 import urllib.error
 from typing import Any

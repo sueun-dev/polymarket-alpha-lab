@@ -1,4 +1,3 @@
-import pytest
 from core.models import Market, Opportunity
 from strategies.tier_a.s21_text_video_delay import TextVideoDelay
 from strategies.tier_a.s22_longshot_bias import LongshotBias

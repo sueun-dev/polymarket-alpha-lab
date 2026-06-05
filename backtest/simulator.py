@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 from datetime import datetime
+from typing import Optional
 
 @dataclass
 class SimulatedTrade:
@@ -20,7 +21,7 @@ class TradeSimulator:
     fee_pct: float = 0.0001  # 0.01%
     trades: list = field(default_factory=list)
 
-    def simulate_fill(self, market_id: str, side: str, token: str, price: float, size: float, strategy_name: str = "", timestamp: datetime = None) -> SimulatedTrade:
+    def simulate_fill(self, market_id: str, side: str, token: str, price: float, size: float, strategy_name: str = "", timestamp: Optional[datetime] = None) -> SimulatedTrade:
         slippage = price * self.slippage_pct
         fee = price * size * self.fee_pct
         fill_price = price + slippage if side == "buy" else price - slippage
