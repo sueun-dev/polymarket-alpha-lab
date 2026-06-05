@@ -2,8 +2,26 @@
 """
 S05: NegRisk Rebalancing
 
-In multi-outcome markets (3+ options), if sum of all YES prices > $1.00,
-buy NO on overpriced outcomes for risk-free profit.
+In multi-outcome markets (3+ options), if the sum of all YES prices > $1.00,
+the basket is overpriced and the edge is to take short exposure on the
+overpriced outcome(s).
+
+WARNING -- NOT EXECUTABLE / NOT RISK-FREE AS WRITTEN. This strategy is
+currently a research stub and must not be enabled live without changes:
+
+  * It emits ``side="sell"`` on the overpriced *YES* token. On the Polymarket
+    CLOB you cannot naked-short a token you do not hold; short exposure is
+    obtained by BUYING that outcome's NO token. The opportunity metadata only
+    carries per-outcome YES tokens, so the NO token id needed to place a real
+    order is not available here.
+  * The signal's ``estimated_prob`` is below ``market_price``, so ``edge`` is
+    negative and ``RiskManager.can_trade`` rejects it (the strategy never
+    fires under the default risk checks). This is intentional belt-and-braces
+    until a correct NO-token buy leg is wired in -- do not "fix" the edge sign
+    without also fixing the order leg, or the bot will repeatedly attempt an
+    un-executable YES sell.
+  * It is not risk-free: capturing the negrisk spread requires simultaneously
+    taking the NO side of every outcome, which this single-leg stub does not.
 """
 from typing import List, Optional
 
@@ -46,7 +64,10 @@ class NegRiskRebalancing(BaseStrategy):
         if overprice < self.MIN_OVERPRICE:
             return None
 
-        # Find most overpriced token to sell NO against
+        # Identify the most overpriced outcome. NOTE: to actually trade this we
+        # would need to BUY this outcome's NO token (not sell its YES token);
+        # that NO token id is not present in the opportunity metadata. See the
+        # module docstring -- this signal is deliberately non-executable.
         most_overpriced = max(tokens, key=lambda t: float(t.get("price", 0)))
         token_id = most_overpriced.get("token_id", "")
         yes_price = float(most_overpriced.get("price", 0))
@@ -66,8 +87,8 @@ class NegRiskRebalancing(BaseStrategy):
         return Signal(
             market_id=opportunity.market_id,
             token_id=token_id,
-            side="sell",  # Sell YES (equivalent to buy NO)
-            estimated_prob=yes_price - overprice / len(tokens),  # Fair value lower
+            side="sell",  # NOT executable: cannot naked-short YES; see docstring
+            estimated_prob=yes_price - overprice / len(tokens),  # < market_price -> negative edge by design
             market_price=yes_price,
             confidence=0.9,
             strategy_name=self.name,
