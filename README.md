@@ -23,6 +23,12 @@ Research repository + fully executable Python trading bot implementing 100 strat
 
 All 100 strategies are implemented as executable Python modules with shared core infrastructure.
 
+### Prerequisites
+
+- Python **>= 3.11**
+- A C++17 compiler (`clang++`/`g++`) — only for the optional native weather kernel (step 12)
+- Node.js — only for the optional React dashboard (step 11)
+
 ### Quick Start
 
 ```bash
@@ -44,35 +50,41 @@ python3 main.py run
 # 5. List available strategies
 python3 main.py list
 
-# 6. Run specific strategies only
-python3 main.py run --strategy s01_reversing_stupidity --strategy s03_nothing_ever_happens
+# 6. Run a single strategy (--strategy is a substring filter; the last value wins)
+python3 main.py run --strategy s01_reversing_stupidity
 
-# 7. Dry run (scan only, no orders)
+# 7. Dry run (force paper mode regardless of config.yaml)
 python3 main.py run --dry-run
 
-# 8. Run backtests
+# 8. Run backtests (a sample dataset ships in data/historical/sample.csv)
 python3 main.py backtest --data-dir data/historical/
 
-# 9. Launch dashboard
+# 9. Collect historical Polymarket data for backtesting/analysis
+python3 main.py collect-data
+
+# 10. Launch Streamlit dashboard
 streamlit run dashboard/app.py
 
-# 10. Launch React dashboard (liquid glass UI)
-# terminal 1
+# 11. Launch React dashboard (liquid glass UI), opens on http://localhost:3001
+# NOTE: dashboard-react/package.json is not committed (the repo .gitignore ignores
+#       *.json), so install React/Vite tooling yourself before running. Vite proxies
+#       /api to the backend on port 8001.
+# terminal 1 — live API backend
 python3 dashboard_api.py --host 127.0.0.1 --port 8001
 
-# terminal 2
+# terminal 2 — React app
 cd dashboard-react
-npm install
-npm run dev
+npm init -y && npm install react react-dom vite @vitejs/plugin-react
+npx vite   # then open http://localhost:3001
 
-# 11. Run NOAA weather strategy (s02) with native C++ weather kernel
+# 12. Run NOAA weather strategy (s02) with native C++ weather kernel
 # Optional: compile native weather kernel
 clang++ -O3 -march=native -std=c++17 -o native/s02_weather_signal_engine native/s02_weather_signal_engine.cpp
 
 # run only s02 strategy (paper/live based on config.yaml)
 python3 main.py run --strategy s02_weather_noaa
 
-# 12. Forensic audit on closed weather markets (public-data reverse analysis)
+# 13. Forensic audit on closed weather markets (public-data reverse analysis)
 python3 tools/weather_market_forensics.py --max-rows 12000 --max-markets 120 --min-trades 5 --report-path logs/weather_forensics_report.json
 ```
 
@@ -82,7 +94,7 @@ python3 tools/weather_market_forensics.py --max-rows 12000 --max-markets 120 --m
 core/               # Shared infrastructure
   client.py         # Polymarket CLOB API wrapper (paper + live modes)
   risk.py           # Portfolio risk management (position limits, daily loss)
-  kelly.py          # Kelly Criterion position sizing (Half-Kelly default)
+  kelly.py          # Kelly Criterion position sizing (fractional Kelly)
   scanner.py        # Market scanner with filtering & anomaly detection
   base_strategy.py  # Abstract base class for all strategies
   notifier.py       # Telegram / Discord notifications
@@ -94,11 +106,16 @@ strategies/         # 100 strategy plugins (auto-discovered)
   tier_c/           # #71-#100: Experimental
 backtest/           # Backtesting engine (slippage simulation, Sharpe/MDD)
 dashboard/          # Streamlit web dashboard
-dashboard-react/    # React web dashboard (Vite)
-data/               # External data collectors (NOAA, Kalshi, sentiment, etc.)
-tests/              # Unit/integration test suite
+dashboard-react/    # React web dashboard (Vite) — npm manifests not committed
+data/               # External data collectors (NOAA, Kalshi, news, base rates, etc.)
+  historical/       # Backtest data (sample.csv included)
+native/             # C++ weather signal engine source (s02, optional)
+tools/              # Standalone analysis tools (weather market forensics)
+tests/              # Unit/integration test suite (pytest)
 research/           # Research papers/notes (EN/KR market documents)
 development/        # Development planning docs
+main.py             # CLI entry point: run / list / backtest / collect-data
+dashboard_api.py    # aiohttp API backend for the React dashboard
 config.yaml         # Strategy parameters & risk settings
 .env.example        # Environment variable template
 ```
@@ -109,11 +126,12 @@ config.yaml         # Strategy parameters & risk settings
 - `paper` (default): Simulated trading, no real orders
 - `live`: Connects to Polymarket CLOB API with real funds
 
-**Risk parameters** — `config.yaml`:
-- `max_position_pct`: Max % of portfolio per market (default 10%)
-- `max_daily_loss`: Daily stop-loss threshold (default 5%)
-- `max_open_positions`: Concurrent position limit (default 20)
-- `kelly_fraction`: Kelly sizing fraction (default 0.5 = Half-Kelly)
+**Risk parameters** — `config.yaml` (`risk:` section):
+- `max_position_pct`: Max fraction of portfolio per market (default `0.10` = 10%)
+- `max_daily_loss_pct`: Daily stop-loss threshold (default `0.05` = 5%)
+- `max_open_positions`: Concurrent position limit (default `20`)
+- `min_edge`: Minimum required edge to trade (default `0.05`)
+- `kelly_fraction`: Kelly sizing fraction (shipped config `0.25`; quarter-Kelly)
 
 ### Tests
 
@@ -161,6 +179,12 @@ Polymarket 예측 시장의 비효율성과 트레이딩 전략을 분석한 리
 
 100개 전략이 모두 실행 가능한 Python 모듈로 구현되어 있습니다.
 
+### 사전 요구사항
+
+- Python **>= 3.11**
+- C++17 컴파일러 (`clang++`/`g++`) — 선택적 네이티브 날씨 커널(12번)에만 필요
+- Node.js — 선택적 React 대시보드(11번)에만 필요
+
 ### 빠른 시작
 
 ```bash
@@ -182,35 +206,40 @@ python3 main.py run
 # 5. 전략 목록 확인
 python3 main.py list
 
-# 6. 특정 전략만 실행
-python3 main.py run --strategy s01_reversing_stupidity --strategy s03_nothing_ever_happens
+# 6. 단일 전략 실행 (--strategy는 부분 문자열 필터이며, 여러 번 주면 마지막 값만 적용됨)
+python3 main.py run --strategy s01_reversing_stupidity
 
-# 7. 드라이런 (스캔만, 주문 없음)
+# 7. 드라이런 (config.yaml과 무관하게 강제로 페이퍼 모드)
 python3 main.py run --dry-run
 
-# 8. 백테스트 실행
+# 8. 백테스트 실행 (data/historical/sample.csv 샘플 데이터 포함)
 python3 main.py backtest --data-dir data/historical/
 
-# 9. 대시보드 실행
+# 9. 백테스트/분석용 과거 Polymarket 데이터 수집
+python3 main.py collect-data
+
+# 10. Streamlit 대시보드 실행
 streamlit run dashboard/app.py
 
-# 10. React 대시보드 실행 (liquid glass UI)
-# 터미널 1
+# 11. React 대시보드 실행 (liquid glass UI), http://localhost:3001 에서 열림
+# 참고: dashboard-react/package.json 은 저장소에 포함되어 있지 않습니다 (.gitignore가 *.json 제외).
+#       실행 전에 React/Vite 툴링을 직접 설치하세요. Vite가 /api 를 8001 포트로 프록시합니다.
+# 터미널 1 — 라이브 API 백엔드
 python3 dashboard_api.py --host 127.0.0.1 --port 8001
 
-# 터미널 2
+# 터미널 2 — React 앱
 cd dashboard-react
-npm install
-npm run dev
+npm init -y && npm install react react-dom vite @vitejs/plugin-react
+npx vite   # 이후 http://localhost:3001 접속
 
-# 11. NOAA 날씨 전략(s02) 네이티브 C++ 커널 실행
+# 12. NOAA 날씨 전략(s02) 네이티브 C++ 커널 실행
 # 선택: 네이티브 날씨 커널 빌드
 clang++ -O3 -march=native -std=c++17 -o native/s02_weather_signal_engine native/s02_weather_signal_engine.cpp
 
 # s02 전략만 실행 (config.yaml의 paper/live 모드 따름)
 python3 main.py run --strategy s02_weather_noaa
 
-# 12. 종료된 날씨 시장 포렌식 분석 (공개 데이터 기반 역추적)
+# 13. 종료된 날씨 시장 포렌식 분석 (공개 데이터 기반 역추적)
 python3 tools/weather_market_forensics.py --max-rows 12000 --max-markets 120 --min-trades 5 --report-path logs/weather_forensics_report.json
 ```
 
@@ -220,11 +249,12 @@ python3 tools/weather_market_forensics.py --max-rows 12000 --max-markets 120 --m
 - `paper` (기본): 시뮬레이션, 실제 주문 없음
 - `live`: Polymarket CLOB API 연결, 실제 자금 사용
 
-**리스크 파라미터** — `config.yaml`:
-- `max_position_pct`: 마켓당 최대 포트폴리오 비율 (기본 10%)
-- `max_daily_loss`: 일일 손실 한도 (기본 5%)
-- `max_open_positions`: 동시 포지션 한도 (기본 20개)
-- `kelly_fraction`: 켈리 비율 (기본 0.5 = Half-Kelly)
+**리스크 파라미터** — `config.yaml` (`risk:` 섹션):
+- `max_position_pct`: 마켓당 최대 포트폴리오 비율 (기본 `0.10` = 10%)
+- `max_daily_loss_pct`: 일일 손실 한도 (기본 `0.05` = 5%)
+- `max_open_positions`: 동시 포지션 한도 (기본 `20`개)
+- `min_edge`: 거래에 필요한 최소 엣지 (기본 `0.05`)
+- `kelly_fraction`: 켈리 비율 (제공 config 기준 `0.25`; 쿼터 켈리)
 
 ### 테스트
 
