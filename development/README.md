@@ -1,11 +1,12 @@
 # Development Folder
 
-This folder contains engineering planning materials used while building and refactoring the system.
+This folder is reserved for engineering notes related to the strategy research
+repository.
 
 ## Contents
 
 - `plans/`
-  - Implementation plans and architecture notes.
+  - Future strategy-analysis plans and architecture notes.
 
 ## Notes
 

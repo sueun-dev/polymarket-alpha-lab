@@ -10,7 +10,7 @@ knowledge. Flag these markets for manual review with higher estimated edge.
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 class CulturalRegionalBias(BaseStrategy):
@@ -128,16 +128,3 @@ class CulturalRegionalBias(BaseStrategy):
             if t.get("outcome", "").lower() == "no":
                 return t.get("token_id", "")
         return None
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        # Reduced size due to lower confidence / need for manual review
-        adjusted_size = size * 0.5
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=signal.market_price,
-            size=adjusted_size,
-            strategy_name=self.name,
-        )

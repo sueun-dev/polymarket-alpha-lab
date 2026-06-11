@@ -10,7 +10,7 @@ to trade on score changes before the video-watching crowd reacts.
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 class SportsTextVideo(BaseStrategy):
@@ -65,14 +65,3 @@ class SportsTextVideo(BaseStrategy):
            appears in text before the market moves
         """
         return None
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=signal.market_price,
-            size=size,
-            strategy_name=self.name,
-        )

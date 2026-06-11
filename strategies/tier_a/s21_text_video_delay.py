@@ -9,7 +9,7 @@ window lets you trade on outcomes the broader market hasn't seen yet.
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 class TextVideoDelay(BaseStrategy):
@@ -57,14 +57,3 @@ class TextVideoDelay(BaseStrategy):
         # If text feed shows a decisive event (goal, ace, round win) that
         # the video-watching crowd hasn't priced in yet, generate a signal.
         return None
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=signal.market_price,
-            size=size,
-            strategy_name=self.name,
-        )

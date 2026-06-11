@@ -7,7 +7,7 @@ from typing import Any, List, Optional
 from data import DataRegistry
 from data.base_provider import BaseDataProvider
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 # ---------------------------------------------------------------------------
@@ -38,9 +38,6 @@ class _StubStrategy(BaseStrategy):
         return []
 
     def analyze(self, opportunity: Opportunity) -> Optional[Signal]:
-        return None
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
         return None
 
 

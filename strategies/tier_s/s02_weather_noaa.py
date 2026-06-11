@@ -11,7 +11,7 @@ from datetime import date, datetime, timezone
 from typing import List, Optional, Tuple
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 from core.native_weather_kernel import NativeS02WeatherKernel
 
 
@@ -349,18 +349,3 @@ class WeatherNOAA(BaseStrategy):
             if t.get("outcome", "").lower() == "yes":
                 return t.get("token_id", "")
         return None
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        # Cap at MAX_BET for micro-betting
-        capped_size = min(size, self.MAX_BET / signal.market_price) if signal.market_price > 0 else 0
-        if capped_size <= 0:
-            return None
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=signal.market_price,
-            size=capped_size,
-            strategy_name=self.name,
-        )

@@ -9,7 +9,7 @@ Profit from the spread while providing liquidity.
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 class AutomatedMarketMaking(BaseStrategy):
@@ -89,16 +89,3 @@ class AutomatedMarketMaking(BaseStrategy):
             if t.get("outcome", "").lower() == "yes":
                 return t.get("token_id", "")
         return None
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        # Place the bid side order; in production would also place ask
-        bid_price = signal.metadata.get("bid_price", signal.market_price)
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=bid_price,
-            size=size,
-            strategy_name=self.name,
-        )

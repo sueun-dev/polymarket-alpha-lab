@@ -11,7 +11,7 @@ This strategy is therefore inert until the Kalshi hedge is wired in.
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 class CrossPlatformArb(BaseStrategy):
@@ -105,21 +105,3 @@ class CrossPlatformArb(BaseStrategy):
             if t.get("outcome", "").lower() == "yes":
                 return t.get("token_id", "")
         return None
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        # SAFETY GUARD: cross-platform arb is only risk-free when BOTH legs
-        # fire (buy YES on Polymarket AND buy NO on Kalshi). The Kalshi leg is
-        # not implemented, so placing only the Polymarket leg would leave an
-        # unhedged directional position -- the opposite of "risk-free". Refuse
-        # to fire a half-arb until a Kalshi order client is wired in.
-        if signal.metadata.get("requires_kalshi_hedge"):
-            return None
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=signal.market_price,
-            size=size,
-            strategy_name=self.name,
-        )

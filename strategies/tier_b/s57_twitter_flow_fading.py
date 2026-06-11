@@ -9,7 +9,7 @@ hours. This strategy detects Twitter-correlated spikes and fades them.
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 class TwitterFlowFading(BaseStrategy):
@@ -56,14 +56,3 @@ class TwitterFlowFading(BaseStrategy):
         4. Generate a fade signal (opposite direction of spike)
         """
         return None
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=signal.market_price,
-            size=size,
-            strategy_name=self.name,
-        )

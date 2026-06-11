@@ -11,7 +11,7 @@ from datetime import datetime
 from typing import Dict, List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 class CalendarSpread(BaseStrategy):
@@ -139,15 +139,4 @@ class CalendarSpread(BaseStrategy):
                 "days_apart": opportunity.metadata.get("days_apart", 0),
                 "far_market_id": opportunity.metadata.get("far_market_id", ""),
             },
-        )
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=signal.market_price,
-            size=size,
-            strategy_name=self.name,
         )

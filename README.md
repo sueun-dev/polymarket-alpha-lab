@@ -1,276 +1,181 @@
 # Polymarket Alpha Lab
 
-Research repository + fully executable Python trading bot implementing 100 strategies for Polymarket prediction markets.
+Polymarket Alpha Lab is a strategy research repository for prediction markets.
+It contains research notes, 100 strategy modules, read-only market-data tools,
+backtesting utilities, and dashboards for studying strategy signals.
+
+This repository is not a live trading bot. It does not contain wallet
+credential handling, paper/live order placement, Telegram trade alerts, or an
+infinite automated execution loop.
+
+## What This Project Does
+
+- Catalogs 100 Polymarket strategy ideas across S/A/B/C tiers.
+- Implements each strategy as Python logic that scans markets and emits
+  analytical `Signal` objects.
+- Pulls read-only market data from public Polymarket endpoints.
+- Provides optional external data providers for NOAA weather, Kalshi, news,
+  base rates, historical prices, and derived market features.
+- Supports historical backtests for strategy evaluation.
+- Provides Streamlit and React dashboards for strategy exploration.
+- Includes English and Korean research documents under `research/`.
+
+## What Was Removed
+
+The repository intentionally does not include the old trading-bot execution
+surface:
+
+- no `place_order(...)` client method
+- no paper/live mode
+- no wallet or Polymarket private-key configuration
+- no risk manager for live position gates
+- no notifier module for trade alerts
+- no `run` command that loops forever and executes orders
+- no strategy `execute(...)` methods
+
+Strategies now stop at signal generation. Any real execution layer should live
+outside this repository and be reviewed separately.
 
 ## Research Documents
 
 | File | Language | Description |
-|------|----------|-------------|
-| `research/EN-polymarket-market-inefficiencies.md` | EN | Comprehensive market inefficiency research — past cases, academic foundations, live mispricings (as of Feb 2026), strategies, risks, and 100+ cited sources across EN/KR/CN |
-| `research/EN-polymarket-top-100-strategies.md` | EN | Top 100 trading strategies curated from 600+ internet sources (Reddit, Twitter/X, Substack, Medium, academic papers, GitHub, KR/CN sources). Ranked by Tier S/A/B/C |
-| `research/KR-polymarket-top-100-strategies.md` | KR | Same top 100 strategies document in Korean |
+| --- | --- | --- |
+| `research/EN-polymarket-market-inefficiencies.md` | EN | Market inefficiency research, examples, academic context, risks, and sources. |
+| `research/EN-polymarket-top-100-strategies.md` | EN | Top 100 strategy catalog ranked by S/A/B/C tier. |
+| `research/KR-polymarket-top-100-strategies.md` | KR | Korean version of the Top 100 strategy catalog. |
+| `research/KR-단일전략-TOP10.md` | KR | Korean Top 10 single-strategy research note. |
+| `research/KR-조합전략-TOP10.md` | KR | Korean Top 10 combination-strategy research note. |
 
 ## Strategy Tiers
 
-| Tier | # | Description |
-|------|---|-------------|
-| **S** | #1-10 | Verified alpha with documented profit records |
-| **A** | #11-30 | Strong edge backed by data/research |
-| **B** | #31-70 | Solid strategies with reasonable evidence |
-| **C** | #71-100 | Experimental edge — innovative but needs validation |
+| Tier | Range | Meaning |
+| --- | --- | --- |
+| S | #1-10 | Highest-priority ideas with stronger documented evidence. |
+| A | #11-30 | Strong strategies backed by data or research. |
+| B | #31-70 | Plausible strategies with reasonable evidence. |
+| C | #71-100 | Experimental strategies that need more validation. |
 
-## Trading Bot
-
-All 100 strategies are implemented as executable Python modules with shared core infrastructure.
-
-### Prerequisites
-
-- Python **>= 3.11**
-- A C++17 compiler (`clang++`/`g++`) — only for the optional native weather kernel (step 12)
-- Node.js — only for the optional React dashboard (step 11)
-
-### Quick Start
+## Quick Start
 
 ```bash
-# 1. Clone
 git clone https://github.com/sueun-dev/polymarket-alpha-lab.git
 cd polymarket-alpha-lab
 
-# 2. Install dependencies
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 
-# 3. Configure
 cp .env.example .env
-# Edit .env with your API keys (Polymarket, NOAA, Kalshi, etc.)
-# Edit config.yaml to enable/disable strategies and tune parameters
-
-# 4. Run (paper trading mode by default)
-python3 main.py run
-
-# 5. List available strategies
 python3 main.py list
-
-# 6. Run a single strategy (--strategy is a substring filter; the last value wins)
-python3 main.py run --strategy s01_reversing_stupidity
-
-# 7. Dry run (force paper mode regardless of config.yaml)
-python3 main.py run --dry-run
-
-# 8. Run backtests (a sample dataset ships in data/historical/sample.csv)
-python3 main.py backtest --data-dir data/historical/
-
-# 9. Collect historical Polymarket data for backtesting/analysis
-python3 main.py collect-data
-
-# 10. Launch Streamlit dashboard
-streamlit run dashboard/app.py
-
-# 11. Launch React dashboard (liquid glass UI), opens on http://localhost:3001
-# NOTE: dashboard-react/package.json is not committed (the repo .gitignore ignores
-#       *.json), so install React/Vite tooling yourself before running. Vite proxies
-#       /api to the backend on port 8001.
-# terminal 1 — live API backend
-python3 dashboard_api.py --host 127.0.0.1 --port 8001
-
-# terminal 2 — React app
-cd dashboard-react
-npm init -y && npm install react react-dom vite @vitejs/plugin-react
-npx vite   # then open http://localhost:3001
-
-# 12. Run NOAA weather strategy (s02) with native C++ weather kernel
-# Optional: compile native weather kernel
-clang++ -O3 -march=native -std=c++17 -o native/s02_weather_signal_engine native/s02_weather_signal_engine.cpp
-
-# run only s02 strategy (paper/live based on config.yaml)
-python3 main.py run --strategy s02_weather_noaa
-
-# 13. Forensic audit on closed weather markets (public-data reverse analysis)
-python3 tools/weather_market_forensics.py --max-rows 12000 --max-markets 120 --min-trades 5 --report-path logs/weather_forensics_report.json
 ```
 
-### Project Structure
+## CLI Commands
 
-```
-core/               # Shared infrastructure
-  client.py         # Polymarket CLOB API wrapper (paper + live modes)
-  risk.py           # Portfolio risk management (position limits, daily loss)
-  kelly.py          # Kelly Criterion position sizing (fractional Kelly)
-  scanner.py        # Market scanner with filtering & anomaly detection
-  base_strategy.py  # Abstract base class for all strategies
-  notifier.py       # Telegram / Discord notifications
-  models.py         # Pydantic data models (Market, Signal, Order, etc.)
-strategies/         # 100 strategy plugins (auto-discovered)
-  tier_s/           # #1-#10: Verified alpha
-  tier_a/           # #11-#30: Strong edge
-  tier_b/           # #31-#70: Solid strategies
-  tier_c/           # #71-#100: Experimental
-backtest/           # Backtesting engine (slippage simulation, Sharpe/MDD)
-dashboard/          # Streamlit web dashboard
-dashboard-react/    # React web dashboard (Vite) — npm manifests not committed
-data/               # External data collectors (NOAA, Kalshi, news, base rates, etc.)
-  historical/       # Backtest data (sample.csv included)
-native/             # C++ weather signal engine source (s02, optional)
-tools/              # Standalone analysis tools (weather market forensics)
-tests/              # Unit/integration test suite (pytest)
-research/           # Research papers/notes (EN/KR market documents)
-development/        # Development planning docs
-main.py             # CLI entry point: run / list / backtest / collect-data
-dashboard_api.py    # aiohttp API backend for the React dashboard
-config.yaml         # Strategy parameters & risk settings
-.env.example        # Environment variable template
-```
-
-### Configuration
-
-**Trading mode** — set in `config.yaml`:
-- `paper` (default): Simulated trading, no real orders
-- `live`: Connects to Polymarket CLOB API with real funds
-
-**Risk parameters** — `config.yaml` (`risk:` section):
-- `max_position_pct`: Max fraction of portfolio per market (default `0.10` = 10%)
-- `max_daily_loss_pct`: Daily stop-loss threshold (default `0.05` = 5%)
-- `max_open_positions`: Concurrent position limit (default `20`)
-- `min_edge`: Minimum required edge to trade (default `0.05`)
-- `kelly_fraction`: Kelly sizing fraction (shipped config `0.25`; quarter-Kelly)
-
-### Tests
+List all strategies:
 
 ```bash
-python3 -m pytest tests/ -v
-# Run the full test suite
+python3 main.py list
 ```
 
-## How to Read the Research
+Run a one-shot read-only strategy scan:
 
-1. Start with `research/EN-polymarket-market-inefficiencies.md` for the research foundation
-2. Then read `research/EN-polymarket-top-100-strategies.md` (or KR version) for actionable strategies
-3. Each strategy includes: source, evidence, execution steps, expected edge, and key risks
+```bash
+python3 main.py scan --limit 20
+python3 main.py scan --strategy s02_weather_noaa
+```
+
+Run backtests using historical data files:
+
+```bash
+python3 main.py backtest --data-dir data/historical/
+python3 main.py backtest --strategy s01_reversing_stupidity
+```
+
+Collect historical Polymarket data for research:
+
+```bash
+python3 main.py collect-data
+```
+
+Run the Streamlit dashboard:
+
+```bash
+streamlit run dashboard/app.py
+```
+
+Run the React dashboard with the live read-only API:
+
+```bash
+python3 dashboard_api.py --host 127.0.0.1 --port 8001
+
+cd dashboard-react
+npm init -y
+npm install react react-dom vite @vitejs/plugin-react
+npx vite
+```
+
+The React app opens on `http://localhost:3001` and proxies `/api` to the
+backend on port `8001`.
+
+## Project Structure
+
+```text
+core/
+  base_strategy.py        # Strategy interface: scan/analyze only
+  kelly.py                # Research/backtest sizing helper
+  models.py               # Market, Opportunity, Signal, Position models
+  native_weather_kernel.py
+  scanner.py              # Read-only market filtering
+data/
+  polymarket.py           # Read-only Polymarket public data client
+  historical_fetcher.py   # Historical market and price-history retrieval
+  noaa.py                 # NOAA weather provider
+  kalshi_client.py        # Kalshi read-only data provider
+  news_client.py          # Optional GNews provider
+  base_rates.py           # Category base-rate priors
+  feature_engine.py       # Momentum/volatility features
+strategies/
+  tier_s/                 # Strategies #1-10
+  tier_a/                 # Strategies #11-30
+  tier_b/                 # Strategies #31-70
+  tier_c/                 # Strategies #71-100
+backtest/                 # Historical strategy evaluation
+dashboard/                # Streamlit dashboard
+dashboard-react/          # React dashboard UI
+research/                 # Strategy research documents
+native/                   # Optional native weather probability kernel source
+tools/                    # Standalone research tools
+tests/                    # Pytest suite
+main.py                   # Strategy research CLI
+dashboard_api.py          # Read-only API for the React dashboard
+config.yaml               # Scanner/backtest/data settings
+.env.example              # Optional data-provider keys only
+```
+
+## Configuration
+
+`config.yaml` only controls analysis settings:
+
+- `scanner.max_markets`
+- `scanner.min_volume`
+- `scanner.min_liquidity`
+- `scanner.categories`
+- `signals.min_edge`
+- `backtest.initial_balance`
+- `backtest.slippage`
+- `data.max_markets`
+
+`.env.example` only includes optional data-provider keys. It does not include
+wallet keys or Polymarket private credentials.
+
+## Tests
+
+```bash
+python3 -m pytest tests/ -q
+```
 
 ## Disclaimer
 
-- All data is as of **2026-02-27**
-- This repository is for **research purposes only** and does not constitute investment advice
-- Prediction market trading involves risk of loss
-
----
-
-# Polymarket Alpha Lab (한국어)
-
-Polymarket 예측 시장의 비효율성과 트레이딩 전략을 분석한 리서치 + 100개 전략을 구현한 Python 트레이딩 봇 저장소입니다.
-
-## 리서치 문서
-
-| 파일 | 언어 | 설명 |
-|------|------|------|
-| `research/EN-polymarket-market-inefficiencies.md` | EN | 시장 비효율성 종합 연구 — 과거 사례, 학술 근거, 라이브 미스프라이싱 (2026년 2월 기준), 전략, 리스크, 영/한/중 100+개 출처 |
-| `research/EN-polymarket-top-100-strategies.md` | EN | 인터넷 600+개 글에서 엄선한 Top 100 트레이딩 전략 (영어 버전) |
-| `research/KR-polymarket-top-100-strategies.md` | KR | 동일한 Top 100 전략 문서 (한국어 버전) |
-
-## 전략 티어
-
-| 티어 | 번호 | 설명 |
-|------|------|------|
-| **S** | #1-10 | 검증된 알파 — 실제 수익 기록 존재 |
-| **A** | #11-30 | 강한 엣지 — 데이터/연구 기반 |
-| **B** | #31-70 | 견고한 전략 — 합리적 증거 존재 |
-| **C** | #71-100 | 실험적 엣지 — 혁신적이나 검증 필요 |
-
-## 트레이딩 봇
-
-100개 전략이 모두 실행 가능한 Python 모듈로 구현되어 있습니다.
-
-### 사전 요구사항
-
-- Python **>= 3.11**
-- C++17 컴파일러 (`clang++`/`g++`) — 선택적 네이티브 날씨 커널(12번)에만 필요
-- Node.js — 선택적 React 대시보드(11번)에만 필요
-
-### 빠른 시작
-
-```bash
-# 1. 클론
-git clone https://github.com/sueun-dev/polymarket-alpha-lab.git
-cd polymarket-alpha-lab
-
-# 2. 의존성 설치
-pip install -r requirements.txt
-
-# 3. 설정
-cp .env.example .env
-# .env에 API 키 입력 (Polymarket, NOAA, Kalshi 등)
-# config.yaml에서 전략 활성화/비활성화 및 파라미터 조정
-
-# 4. 실행 (기본: 페이퍼 트레이딩)
-python3 main.py run
-
-# 5. 전략 목록 확인
-python3 main.py list
-
-# 6. 단일 전략 실행 (--strategy는 부분 문자열 필터이며, 여러 번 주면 마지막 값만 적용됨)
-python3 main.py run --strategy s01_reversing_stupidity
-
-# 7. 드라이런 (config.yaml과 무관하게 강제로 페이퍼 모드)
-python3 main.py run --dry-run
-
-# 8. 백테스트 실행 (data/historical/sample.csv 샘플 데이터 포함)
-python3 main.py backtest --data-dir data/historical/
-
-# 9. 백테스트/분석용 과거 Polymarket 데이터 수집
-python3 main.py collect-data
-
-# 10. Streamlit 대시보드 실행
-streamlit run dashboard/app.py
-
-# 11. React 대시보드 실행 (liquid glass UI), http://localhost:3001 에서 열림
-# 참고: dashboard-react/package.json 은 저장소에 포함되어 있지 않습니다 (.gitignore가 *.json 제외).
-#       실행 전에 React/Vite 툴링을 직접 설치하세요. Vite가 /api 를 8001 포트로 프록시합니다.
-# 터미널 1 — 라이브 API 백엔드
-python3 dashboard_api.py --host 127.0.0.1 --port 8001
-
-# 터미널 2 — React 앱
-cd dashboard-react
-npm init -y && npm install react react-dom vite @vitejs/plugin-react
-npx vite   # 이후 http://localhost:3001 접속
-
-# 12. NOAA 날씨 전략(s02) 네이티브 C++ 커널 실행
-# 선택: 네이티브 날씨 커널 빌드
-clang++ -O3 -march=native -std=c++17 -o native/s02_weather_signal_engine native/s02_weather_signal_engine.cpp
-
-# s02 전략만 실행 (config.yaml의 paper/live 모드 따름)
-python3 main.py run --strategy s02_weather_noaa
-
-# 13. 종료된 날씨 시장 포렌식 분석 (공개 데이터 기반 역추적)
-python3 tools/weather_market_forensics.py --max-rows 12000 --max-markets 120 --min-trades 5 --report-path logs/weather_forensics_report.json
-```
-
-### 설정
-
-**트레이딩 모드** — `config.yaml`:
-- `paper` (기본): 시뮬레이션, 실제 주문 없음
-- `live`: Polymarket CLOB API 연결, 실제 자금 사용
-
-**리스크 파라미터** — `config.yaml` (`risk:` 섹션):
-- `max_position_pct`: 마켓당 최대 포트폴리오 비율 (기본 `0.10` = 10%)
-- `max_daily_loss_pct`: 일일 손실 한도 (기본 `0.05` = 5%)
-- `max_open_positions`: 동시 포지션 한도 (기본 `20`개)
-- `min_edge`: 거래에 필요한 최소 엣지 (기본 `0.05`)
-- `kelly_fraction`: 켈리 비율 (제공 config 기준 `0.25`; 쿼터 켈리)
-
-### 테스트
-
-```bash
-python3 -m pytest tests/ -v
-# 전체 테스트 스위트 실행
-```
-
-## 읽는 방법
-
-1. `research/EN-polymarket-market-inefficiencies.md`로 리서치 기반 파악
-2. `research/KR-polymarket-top-100-strategies.md` (또는 EN 버전)으로 실행 가능한 전략 확인
-3. 각 전략에는 출처, 증거, 실행 방법, 예상 엣지, 핵심 리스크 포함
-
-## 참고
-
-- 모든 데이터는 **2026-02-27** 기준입니다
-- 본 저장소는 **연구 목적**이며 투자 조언이 아닙니다
-- 예측 시장 트레이딩에는 손실 위험이 수반됩니다
+This repository is for research and education. Prediction market strategies can
+lose money, and this repository does not provide investment advice or a
+production execution system.

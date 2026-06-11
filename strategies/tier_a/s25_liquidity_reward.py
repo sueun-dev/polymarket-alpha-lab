@@ -10,7 +10,7 @@ near the midpoint to maximise the Q-score reward share.
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 class LiquidityReward(BaseStrategy):
@@ -89,15 +89,4 @@ class LiquidityReward(BaseStrategy):
                 "ask": round(midpoint + self.SPREAD_HALF_WIDTH, 2),
                 "liquidity": opportunity.metadata.get("liquidity", 0),
             },
-        )
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=signal.market_price,
-            size=size,
-            strategy_name=self.name,
         )

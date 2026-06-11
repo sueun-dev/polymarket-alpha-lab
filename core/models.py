@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 from pydantic import BaseModel, Field, computed_field
-from datetime import datetime
 from typing import Any, Optional, List, Dict
 
 class Market(BaseModel):
@@ -38,22 +37,6 @@ class Signal(BaseModel):
     @property
     def edge(self) -> float:
         return self.estimated_prob - self.market_price
-
-class Order(BaseModel):
-    market_id: str
-    token_id: str
-    side: str
-    price: float
-    size: float
-    strategy_name: str
-    order_id: Optional[str] = None
-    status: str = "pending"
-    timestamp: Optional[datetime] = None
-
-    @computed_field
-    @property
-    def total_cost(self) -> float:
-        return self.price * self.size
 
 class Position(BaseModel):
     market_id: str

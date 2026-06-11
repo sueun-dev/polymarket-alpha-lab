@@ -9,7 +9,7 @@ smart-money positioning, and unusual order patterns before they move price.
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 class OnchainOrderflow(BaseStrategy):
@@ -56,14 +56,3 @@ class OnchainOrderflow(BaseStrategy):
         4. Generate a signal if order flow diverges from current price
         """
         return None
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=signal.market_price,
-            size=size,
-            strategy_name=self.name,
-        )

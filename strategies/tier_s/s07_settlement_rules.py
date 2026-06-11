@@ -1,5 +1,5 @@
 from typing import List, Optional
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 from core.base_strategy import BaseStrategy
 
 
@@ -36,11 +36,3 @@ class SettlementRules(BaseStrategy):
         # Real implementation: NLP analysis of resolution criteria vs headline
         # Placeholder logic: flag for manual review
         return None
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        return client.place_order(
-            token_id=signal.token_id, side=signal.side,
-            price=signal.market_price, size=size, strategy_name=self.name
-        )

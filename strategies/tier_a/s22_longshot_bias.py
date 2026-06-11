@@ -10,7 +10,7 @@ certain payoffs as most of these contracts expire worthless.
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 class LongshotBias(BaseStrategy):
@@ -83,15 +83,4 @@ class LongshotBias(BaseStrategy):
             confidence=self.MIN_CONFIDENCE,
             strategy_name=self.name,
             metadata={"yes_price": yes_price, "edge": edge},
-        )
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=signal.market_price,
-            size=size,
-            strategy_name=self.name,
         )

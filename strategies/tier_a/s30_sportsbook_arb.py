@@ -10,7 +10,7 @@ setting expertise; Polymarket often lags on sports markets.
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 class CrossPlatformSportsbookArb(BaseStrategy):
@@ -80,14 +80,3 @@ class CrossPlatformSportsbookArb(BaseStrategy):
         4. Return the de-vigged probability
         """
         return None
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=signal.market_price,
-            size=size,
-            strategy_name=self.name,
-        )

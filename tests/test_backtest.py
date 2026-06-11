@@ -24,9 +24,6 @@ class SimpleStrategy(BaseStrategy):
             return Signal(market_id=opp.market_id, token_id=token_id, side="buy", estimated_prob=0.60, market_price=opp.market_price, confidence=0.7, strategy_name=self.name)
         return None
 
-    def execute(self, signal, size, client=None):
-        return None
-
 def test_simulator_fill():
     sim = TradeSimulator(slippage_pct=0.01, fee_pct=0.001)
     trade = sim.simulate_fill("m1", "buy", "yes", 0.50, 100.0)

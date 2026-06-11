@@ -10,7 +10,7 @@ proportion to maintain near-zero net exposure while collecting rewards.
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 class HedgedAirdrop(BaseStrategy):
@@ -117,16 +117,4 @@ class HedgedAirdrop(BaseStrategy):
                 "spread_cost": spread,
                 "liquidity": opportunity.metadata.get("liquidity", 0),
             },
-        )
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        # Place the YES side of the hedge
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=signal.market_price,
-            size=size,
-            strategy_name=self.name,
         )

@@ -1,9 +1,9 @@
 import streamlit as st
 
 def render():
-    st.header("Live Market Scanner")
+    st.header("Read-only Market Scanner")
 
-    st.info("Connect to Polymarket API to scan live markets.")
+    st.info("Scan public Polymarket data and generate strategy signals without placing orders.")
 
     col1, col2 = st.columns(2)
     with col1:
@@ -12,8 +12,8 @@ def render():
         st.number_input("Min Edge (%)", value=5.0, step=1.0)
 
     if st.button("Scan Markets"):
-        st.info("Market scanning requires API connection. Configure .env and start the bot.")
+        st.info("Use the CLI for now: `python main.py scan --limit 20`.")
 
     st.markdown("---")
-    st.subheader("Detected Opportunities")
-    st.info("No opportunities detected. Start the bot to see live signals.")
+    st.subheader("Detected Signals")
+    st.info("No scan has been run in this Streamlit page yet.")

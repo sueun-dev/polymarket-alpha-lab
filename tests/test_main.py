@@ -3,6 +3,6 @@ from main import load_config
 
 def test_load_config():
     config = load_config("config.yaml")
-    assert "bot" in config
-    assert "risk" in config
-    assert config["bot"]["mode"] == "paper"
+    assert "scanner" in config
+    assert "signals" in config
+    assert "bot" not in config

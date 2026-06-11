@@ -1,46 +1,46 @@
 export const NAV_ITEMS = [
   { id: 'overview', label: 'Overview' },
-  { id: 'betting', label: 'Where to Bet' },
+  { id: 'sources', label: 'Data Sources' },
   { id: 'strategies', label: 'Strategies' },
   { id: 'markets', label: 'Markets' },
   { id: 'backtest', label: 'Backtest' },
 ]
 
-export const BETTING_PLATFORMS = [
+export const DATA_SOURCES = [
   {
     id: 'polymarket',
     nameEn: 'Polymarket',
     nameKr: 'Polymarket (폴리마켓)',
     url: 'https://polymarket.com',
-    regionEn: 'Primary venue for this project. US access can be restricted by policy/jurisdiction.',
-    regionKr: '이 프로젝트의 핵심 거래소. 미국 사용자는 정책/관할에 따라 접근 제한이 있을 수 있습니다.',
-    notesEn: 'Best coverage for politics, macro, crypto, and event markets.',
-    notesKr: '정치, 매크로, 크립토, 이벤트 시장 커버리지가 가장 넓습니다.',
+    regionEn: 'Primary public market-data source for this project.',
+    regionKr: '이 프로젝트의 핵심 공개 시장 데이터 소스입니다.',
+    notesEn: 'Used for market metadata, prices, volume, liquidity, and historical analysis.',
+    notesKr: '시장 메타데이터, 가격, 거래량, 유동성, 히스토리 분석에 사용됩니다.',
   },
   {
     id: 'kalshi',
     nameEn: 'Kalshi',
     nameKr: 'Kalshi (칼시)',
     url: 'https://kalshi.com',
-    regionEn: 'US-regulated prediction market, useful for cross-platform comparison.',
+    regionEn: 'Reference source for cross-platform prediction-market comparison.',
     regionKr: '미국 규제 기반 예측시장으로, 크로스 플랫폼 가격 비교에 유용합니다.',
-    notesEn: 'Useful for settlement-rule checks and cross-platform arb monitoring.',
+    notesEn: 'Used for settlement-rule checks and cross-platform price comparison research.',
     notesKr: '정산 규칙 검증 및 크로스 플랫폼 차익 감시에 유용합니다.',
   },
 ]
 
-export const BETTING_STEPS = {
+export const RESEARCH_STEPS = {
   en: [
-    'Pick your market and read resolution rules first.',
-    'Decide YES or NO and place a small starter position.',
-    'Only scale when edge, liquidity, and risk limits are clear.',
-    'Track entry price, thesis, invalidation, and exit time in a log.',
+    'Pick a market and read the resolution rules first.',
+    'Compare market price with the strategy probability estimate.',
+    'Check volume, liquidity, data freshness, and resolution-source risk.',
+    'Log the thesis, invalidation condition, and observed outcome.',
   ],
   kr: [
     '먼저 시장의 정산 규칙을 읽고 이해합니다.',
-    'YES 또는 NO를 선택하고 작은 금액으로 시작합니다.',
-    '엣지, 유동성, 리스크 한도가 명확할 때만 비중을 늘립니다.',
-    '진입가, 근거, 무효화 조건, 청산 시점을 로그에 기록합니다.',
+    '시장 가격과 전략의 확률 추정치를 비교합니다.',
+    '거래량, 유동성, 데이터 최신성, 정산 소스 리스크를 확인합니다.',
+    '논리, 무효화 조건, 실제 결과를 기록합니다.',
   ],
 }
 

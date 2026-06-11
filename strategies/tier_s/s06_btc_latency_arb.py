@@ -8,7 +8,7 @@ from __future__ import annotations
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Order, Signal
+from core.models import Market, Opportunity, Signal
 
 
 class BTCLatencyArb(BaseStrategy):
@@ -27,7 +27,4 @@ class BTCLatencyArb(BaseStrategy):
         return []
 
     def analyze(self, opportunity: Opportunity) -> Optional[Signal]:
-        return None
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
         return None

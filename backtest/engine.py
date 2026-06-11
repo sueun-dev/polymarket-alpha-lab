@@ -1,6 +1,5 @@
 from core.base_strategy import BaseStrategy
-from core.risk import RiskManager
-from core.kelly import dollars_to_shares
+from core.kelly import KellyCriterion, dollars_to_shares
 from core.models import Position
 from backtest.data_loader import HistoricalDataPoint
 from backtest.simulator import TradeSimulator
@@ -18,7 +17,9 @@ class BacktestEngine:
         self.initial_balance = initial_balance
         self.balance = initial_balance
         self.simulator = TradeSimulator(slippage_pct=slippage)
-        self.risk = RiskManager()
+        self.kelly = KellyCriterion(fraction=0.25)
+        self.min_edge = 0.05
+        self.max_open_positions = 20
 
     def run(self, data: list[HistoricalDataPoint]) -> BacktestResult:
         result = BacktestResult()
@@ -32,10 +33,17 @@ class BacktestEngine:
                 signal = self.strategy.analyze(opp)
                 if signal is None:
                     continue
-                if not self.risk.can_trade(signal, bankroll=self.balance, current_positions=open_positions):
+                if signal.edge < self.min_edge:
                     continue
-                # Kelly sizing returns a dollar stake; orders are in shares.
-                stake_usd = self.strategy.size_position(signal, bankroll=self.balance)
+                if len(open_positions) >= self.max_open_positions:
+                    continue
+                if any(p.market_id == signal.market_id for p in open_positions):
+                    continue
+                stake_usd = self.kelly.bet_amount(
+                    bankroll=self.balance,
+                    p=signal.estimated_prob,
+                    market_price=signal.market_price,
+                )
                 size = dollars_to_shares(stake_usd, signal.market_price)
                 if size <= 0:
                     continue

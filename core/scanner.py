@@ -1,13 +1,13 @@
 # core/scanner.py
 import logging
 from typing import List, Dict, Optional
-from core.client import PolymarketClient
+from data.polymarket import PolymarketMarketDataClient
 from core.models import Market
 
 logger = logging.getLogger(__name__)
 
 class MarketScanner:
-    def __init__(self, client: PolymarketClient, min_volume: float = 1000, min_liquidity: float = 0, categories: Optional[List[str]] = None):
+    def __init__(self, client: PolymarketMarketDataClient, min_volume: float = 1000, min_liquidity: float = 0, categories: Optional[List[str]] = None):
         self.client = client
         self.min_volume = min_volume
         self.min_liquidity = min_liquidity

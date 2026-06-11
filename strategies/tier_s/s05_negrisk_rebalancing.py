@@ -6,8 +6,8 @@ In multi-outcome markets (3+ options), if the sum of all YES prices > $1.00,
 the basket is overpriced and the edge is to take short exposure on the
 overpriced outcome(s).
 
-WARNING -- NOT EXECUTABLE / NOT RISK-FREE AS WRITTEN. This strategy is
-currently a research stub and must not be enabled live without changes:
+WARNING -- RESEARCH-ONLY / NOT RISK-FREE AS WRITTEN. This strategy is a
+signal stub and should not be treated as an executable trade plan:
 
   * It emits ``side="sell"`` on the overpriced *YES* token. On the Polymarket
     CLOB you cannot naked-short a token you do not hold; short exposure is
@@ -15,18 +15,14 @@ currently a research stub and must not be enabled live without changes:
     carries per-outcome YES tokens, so the NO token id needed to place a real
     order is not available here.
   * The signal's ``estimated_prob`` is below ``market_price``, so ``edge`` is
-    negative and ``RiskManager.can_trade`` rejects it (the strategy never
-    fires under the default risk checks). This is intentional belt-and-braces
-    until a correct NO-token buy leg is wired in -- do not "fix" the edge sign
-    without also fixing the order leg, or the bot will repeatedly attempt an
-    un-executable YES sell.
+    negative by design until a correct NO-token leg can be modeled.
   * It is not risk-free: capturing the negrisk spread requires simultaneously
     taking the NO side of every outcome, which this single-leg stub does not.
 """
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 class NegRiskRebalancing(BaseStrategy):
@@ -87,21 +83,10 @@ class NegRiskRebalancing(BaseStrategy):
         return Signal(
             market_id=opportunity.market_id,
             token_id=token_id,
-            side="sell",  # NOT executable: cannot naked-short YES; see docstring
+            side="sell",  # Research marker only: cannot naked-short YES; see docstring
             estimated_prob=yes_price - overprice / len(tokens),  # < market_price -> negative edge by design
             market_price=yes_price,
             confidence=0.9,
             strategy_name=self.name,
             metadata={"overprice": overprice, "total_yes": opportunity.market_price},
-        )
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=signal.market_price,
-            size=size,
-            strategy_name=self.name,
         )

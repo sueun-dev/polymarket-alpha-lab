@@ -10,7 +10,7 @@ allocation. Avoids over-concentration and maximizes long-term growth rate.
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 class PortfolioBettingAgent(BaseStrategy):
@@ -124,16 +124,3 @@ class PortfolioBettingAgent(BaseStrategy):
             if t.get("outcome", "").lower() == "no":
                 return t.get("token_id", "")
         return None
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        # Cap single-market allocation
-        capped_size = min(size, size * self.MAX_SINGLE_ALLOCATION / 0.06)
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=signal.market_price,
-            size=capped_size,
-            strategy_name=self.name,
-        )

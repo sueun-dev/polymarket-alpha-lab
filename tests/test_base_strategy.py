@@ -15,19 +15,15 @@ class MockStrategy(BaseStrategy):
     def analyze(self, opportunity):
         return Signal(market_id=opportunity.market_id, token_id="t1", side="buy", estimated_prob=0.70, market_price=0.50, confidence=0.8, strategy_name=self.name)
 
-    def execute(self, signal, size, client=None):
-        return None
-
 def test_scan():
     s = MockStrategy()
     markets = [Market(condition_id="0x1", question="Test?", tokens=[], volume=5000)]
     assert len(s.scan(markets)) == 1
 
-def test_size_position():
+def test_base_strategy_has_no_execution_surface():
     s = MockStrategy()
-    sig = Signal(market_id="0x1", token_id="t1", side="buy", estimated_prob=0.70, market_price=0.50, confidence=0.8, strategy_name="mock")
-    size = s.size_position(sig, bankroll=10000)
-    assert size > 0
+    assert not hasattr(s, "execute")
+    assert not hasattr(s, "size_position")
 
 def test_registry():
     reg = StrategyRegistry()

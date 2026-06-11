@@ -9,7 +9,7 @@ ratio justifies a small position.
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 class AsymmetricLowProb(BaseStrategy):
@@ -88,14 +88,3 @@ class AsymmetricLowProb(BaseStrategy):
             if t.get("outcome", "").lower() == outcome:
                 return t.get("token_id", "")
         return None
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=signal.market_price,
-            size=size,
-            strategy_name=self.name,
-        )

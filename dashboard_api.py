@@ -19,7 +19,6 @@ from aiohttp import web
 from backtest.data_loader import HistoricalDataPoint
 from backtest.engine import BacktestEngine
 from backtest.report import BacktestReport
-from core.client import PolymarketClient
 from core.models import Market
 from data import DataRegistry
 from data.base_rates import BaseRateProvider
@@ -28,6 +27,7 @@ from data.historical_fetcher import HistoricalFetcher
 from data.kalshi_client import KalshiDataProvider
 from data.news_client import NewsDataProvider
 from data.noaa import NOAAWeatherProvider
+from data.polymarket import PolymarketMarketDataClient
 from strategies import StrategyRegistry
 
 logger = logging.getLogger("dashboard_api")
@@ -64,7 +64,7 @@ CORE_SCANNER_STRATEGIES = [
 
 class Runtime:
     def __init__(self) -> None:
-        self.client = PolymarketClient(mode="paper")
+        self.client = PolymarketMarketDataClient()
         self.data_registry = self._init_data_registry()
         self.strategy_registry = StrategyRegistry()
         self.strategy_registry.discover()

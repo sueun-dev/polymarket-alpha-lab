@@ -10,7 +10,7 @@ sufficient order-flow data, would follow the informed direction.
 from typing import List, Optional
 
 from core.base_strategy import BaseStrategy
-from core.models import Market, Opportunity, Signal, Order
+from core.models import Market, Opportunity, Signal
 
 
 class InsiderPatternDetection(BaseStrategy):
@@ -68,14 +68,3 @@ class InsiderPatternDetection(BaseStrategy):
         4. Follow the informed direction if conviction is high
         """
         return None
-
-    def execute(self, signal: Signal, size: float, client=None) -> Optional[Order]:
-        if client is None:
-            return None
-        return client.place_order(
-            token_id=signal.token_id,
-            side=signal.side,
-            price=signal.market_price,
-            size=size,
-            strategy_name=self.name,
-        )

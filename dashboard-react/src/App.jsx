@@ -1,6 +1,6 @@
 import { useEffect, useId, useMemo, useState } from 'react'
 import './App.css'
-import { BETTING_PLATFORMS, BETTING_STEPS, NAV_ITEMS, TIER_OPTIONS } from './data/mockData'
+import { DATA_SOURCES, NAV_ITEMS, RESEARCH_STEPS, TIER_OPTIONS } from './data/mockData'
 
 const API_BASE = '/api'
 
@@ -13,21 +13,21 @@ const I18N = {
     language: 'Language',
     nav: {
       overview: 'Overview',
-      betting: 'Where to Bet',
+      sources: 'Data Sources',
       strategies: 'Strategies',
       markets: 'Markets',
       backtest: 'Backtest',
     },
     viewTitle: {
       overview: 'Live Market Overview',
-      betting: 'Where You Can Bet',
+      sources: 'Data Sources',
       strategies: 'Strategy Registry (All 100)',
       markets: 'Live Opportunity Scanner',
       backtest: 'Historical Backtest (Live Data)',
     },
     viewSubtitle: {
       overview: 'Real-time data from Polymarket API and strategy runtime scans.',
-      betting: 'Platforms, setup flow, and first-trade checklist.',
+      sources: 'Reference sources used for read-only strategy research.',
       strategies: 'Complete strategy inventory synced to repository files.',
       markets: 'Signal filters over live markets and live strategy logic.',
       backtest: 'Runs on real historical markets from Polymarket APIs.',
@@ -54,11 +54,11 @@ const I18N = {
     active: 'Active',
     loading: 'Loading live data...',
     refresh: 'Refresh',
-    whereToBetHeading: 'Recommended Platforms',
-    whereToBetSub: 'Use official links and verify region/policy eligibility before funding.',
-    firstTradeHeading: 'How to place your first bet safely',
-    firstTradeSub: 'Execution checklist',
-    region: 'Availability',
+    dataSourcesHeading: 'Reference Data Sources',
+    dataSourcesSub: 'Official links for inspecting source markets and context.',
+    researchFlowHeading: 'Research Workflow',
+    researchFlowSub: 'Signal review checklist',
+    region: 'Role',
     notes: 'Notes',
     openSite: 'Open Site',
     strategySearch: 'Search strategy',
@@ -123,9 +123,9 @@ const I18N = {
       peakToTrough: 'Peak-to-trough',
       equity: 'Backtest Equity',
       equitySub: 'Generated from live historical fetch',
-      summary: 'Execution Summary',
+      summary: 'Backtest Summary',
       summarySub: 'Runtime stats',
-      trades: 'Trades',
+      trades: 'Simulated Trades',
       winRate: 'Win Rate',
       slippageInput: 'Slippage Input',
       pointsUsed: 'Historical Points',
@@ -139,21 +139,21 @@ const I18N = {
     language: '언어',
     nav: {
       overview: '개요',
-      betting: '베팅 가이드',
+      sources: '데이터 소스',
       strategies: '전략',
       markets: '마켓',
       backtest: '백테스트',
     },
     viewTitle: {
       overview: '실시간 마켓 개요',
-      betting: '어디서 베팅할 수 있나',
+      sources: '데이터 소스',
       strategies: '전략 레지스트리 (전체 100개)',
       markets: '실시간 기회 스캐너',
       backtest: '히스토리 기반 백테스트 (실데이터)',
     },
     viewSubtitle: {
       overview: 'Polymarket API와 전략 런타임 스캔 기반 실시간 데이터입니다.',
-      betting: '플랫폼, 세팅 순서, 첫 베팅 체크리스트를 제공합니다.',
+      sources: '읽기 전용 전략 리서치에 쓰는 참조 소스입니다.',
       strategies: '저장소의 실제 전략 파일과 동기화된 전체 목록입니다.',
       markets: '실시간 시장 + 실전략 로직 결과를 필터링합니다.',
       backtest: 'Polymarket 과거 시장 API 기반으로 실행됩니다.',
@@ -180,11 +180,11 @@ const I18N = {
     active: '활성',
     loading: '실시간 데이터 로딩 중...',
     refresh: '새로고침',
-    whereToBetHeading: '추천 베팅 플랫폼',
-    whereToBetSub: '공식 링크를 사용하고, 입금 전 지역/정책 제한을 확인하세요.',
-    firstTradeHeading: '첫 베팅을 안전하게 진행하는 방법',
-    firstTradeSub: '실행 체크리스트',
-    region: '이용 가능 범위',
+    dataSourcesHeading: '참조 데이터 소스',
+    dataSourcesSub: '시장과 맥락을 확인하기 위한 공식 링크입니다.',
+    researchFlowHeading: '리서치 워크플로',
+    researchFlowSub: '시그널 검토 체크리스트',
+    region: '역할',
     notes: '설명',
     openSite: '사이트 열기',
     strategySearch: '전략 검색',
@@ -251,7 +251,7 @@ const I18N = {
       equitySub: '실시간 히스토리 페치로 생성',
       summary: '실행 요약',
       summarySub: '런타임 통계',
-      trades: '거래 수',
+      trades: '시뮬레이션 거래 수',
       winRate: '승률',
       slippageInput: '입력 슬리피지',
       pointsUsed: '히스토리 포인트',
@@ -564,25 +564,25 @@ function OverviewView({ text, data, loading, error, onRefresh }) {
   )
 }
 
-function BettingView({ language, text }) {
+function DataSourcesView({ language, text }) {
   return (
     <div className="view-grid">
       <section className="glass section full-span">
         <div className="section-head">
-          <h3>{text.whereToBetHeading}</h3>
-          <span>{text.whereToBetSub}</span>
+          <h3>{text.dataSourcesHeading}</h3>
+          <span>{text.dataSourcesSub}</span>
         </div>
         <div className="platform-grid">
-          {BETTING_PLATFORMS.map((platform) => (
-            <article key={platform.id} className="platform-card">
-              <h4>{language === 'kr' ? platform.nameKr : platform.nameEn}</h4>
+          {DATA_SOURCES.map((source) => (
+            <article key={source.id} className="platform-card">
+              <h4>{language === 'kr' ? source.nameKr : source.nameEn}</h4>
               <p>
-                <strong>{text.region}:</strong> {language === 'kr' ? platform.regionKr : platform.regionEn}
+                <strong>{text.region}:</strong> {language === 'kr' ? source.regionKr : source.regionEn}
               </p>
               <p>
-                <strong>{text.notes}:</strong> {language === 'kr' ? platform.notesKr : platform.notesEn}
+                <strong>{text.notes}:</strong> {language === 'kr' ? source.notesKr : source.notesEn}
               </p>
-              <a href={platform.url} target="_blank" rel="noreferrer">
+              <a href={source.url} target="_blank" rel="noreferrer">
                 {text.openSite}
               </a>
             </article>
@@ -592,11 +592,11 @@ function BettingView({ language, text }) {
 
       <section className="glass section full-span">
         <div className="section-head">
-          <h3>{text.firstTradeHeading}</h3>
-          <span>{text.firstTradeSub}</span>
+          <h3>{text.researchFlowHeading}</h3>
+          <span>{text.researchFlowSub}</span>
         </div>
         <ol className="steps-list">
-          {BETTING_STEPS[language].map((step) => (
+          {RESEARCH_STEPS[language].map((step) => (
             <li key={step}>{step}</li>
           ))}
         </ol>
@@ -1177,8 +1177,8 @@ function App() {
   }
 
   function renderView() {
-    if (activeView === 'betting') {
-      return <BettingView language={language} text={text} />
+    if (activeView === 'sources') {
+      return <DataSourcesView language={language} text={text} />
     }
 
     if (activeView === 'strategies') {
